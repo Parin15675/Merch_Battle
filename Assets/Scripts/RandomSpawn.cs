@@ -6,12 +6,12 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] private GameObject heroUIPrefab; // UI Prefab with RectTransform
     [SerializeField] private RectTransform spawnArea; // Area within the Canvas
 
-    private void Start()
+    public void Start()
     {
         StartCoroutine(SpawnHeroRoutine());
     }
 
-    private IEnumerator SpawnHeroRoutine()
+    public IEnumerator SpawnHeroRoutine()
     {
         while (true)
         {
@@ -20,7 +20,7 @@ public class RandomSpawn : MonoBehaviour
         }
     }
 
-    private void SpawnHero()
+    public void SpawnHero()
     {
         if (heroUIPrefab == null || spawnArea == null)
         {

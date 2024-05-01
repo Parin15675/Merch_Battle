@@ -6,7 +6,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 {
     private Transform parentAfterDrag;
     private Vector3 startPosition;
-    public GameManeger gameManager; // Reference to the GameManager
+    public Tile tile;
+    public GameObject heroUIPrefab;
+    public RectTransform spawnArea;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -29,8 +31,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         transform.SetParent(parentAfterDrag);
         transform.position = new Vector3(transform.position.x, transform.position.y, startPosition.z);
 
-        gameManager.NewGame();
-
+        if (tile != null)
+        {
+            tile.DeleteTile();
+            GameObject heroInstance = Instantiate(heroUIPrefab, spawnArea, false);
+            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x, transform.position.y); 
+        }
     }
 
     private bool IsOverGameBoard(PointerEventData eventData)

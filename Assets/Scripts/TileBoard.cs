@@ -158,6 +158,10 @@ public class TileBoard : MonoBehaviour
 
         waiting = false;
 
+        tiles.RemoveAll(x => x == null);
+
+        Debug.Log(tiles.Count);
+
         foreach(var tile in tiles)
         {
             tile.locked = false; 

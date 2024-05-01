@@ -8,27 +8,27 @@ public class Tile : MonoBehaviour
     public TileState state { get; private set; }
     public TileCell cell { get; private set; }
     public int number { get; private set; }
-    private Image backgroud;
+    private Image background;
     private TextMeshProUGUI text;
     private Image hero;
     public bool locked { get; set; }
 
     private void Awake()
     {
-        backgroud = GetComponent<Image>();
+        background = GetComponent<Image>();
         text = GetComponentInChildren<TextMeshProUGUI>();
         hero = GetComponentInChildren<Image>();
     }
 
     public void SetState(TileState state, int number)
     {
-        this.state = state; 
+        this.state = state;
         this.number = number;
 
-        backgroud.color = state.backgroundColor;
+        background.color = state.backgroundColor;
         text.color = state.textColor;
         text.text = number.ToString();
-        hero.sprite = state.tileImage; // 'hero' is your Image component where you want to set the sprite
+        hero.sprite = state.tileImage; // Assumes 'hero' is an Image component used to display the tile image
     }
 
     public void Spawn(TileCell cell)
@@ -41,7 +41,7 @@ public class Tile : MonoBehaviour
         this.cell = cell;
         this.cell.tile = this;
 
-        transform.position = cell.transform.position; 
+        transform.position = cell.transform.position;
     }
 
     public void MoveTo(TileCell cell)
@@ -56,7 +56,7 @@ public class Tile : MonoBehaviour
 
         StartCoroutine(Animate(cell.transform.position, false));
     }
-    
+
     public void Merge(TileCell cell)
     {
         if (this.cell != null)
@@ -70,15 +70,26 @@ public class Tile : MonoBehaviour
         StartCoroutine(Animate(cell.transform.position, true));
     }
 
+    public void DeleteTile()
+    {
+        if (this.cell != null)
+        {
+            this.cell.tile = null; // Clear the reference in the cell
+            this.cell = null; // Clear the reference to the cell
+        }
+
+        Destroy(gameObject); // Destroy the tile GameObject
+    }
+
     private IEnumerator Animate(Vector3 to, bool merging)
     {
         float elapsed = 0f;
         float duration = 0.1f;
-
         Vector3 from = transform.position;
 
-        while (elapsed < duration) { 
-            transform.position = Vector3.Lerp(from, to, elapsed/duration);
+        while (elapsed < duration)
+        {
+            transform.position = Vector3.Lerp(from, to, elapsed / duration);
             elapsed += Time.deltaTime;
             yield return null;
         }
