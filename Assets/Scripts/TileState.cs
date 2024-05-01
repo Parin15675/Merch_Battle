@@ -1,0 +1,12 @@
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Tile State")]
+
+public class TileState : ScriptableObject
+{
+
+    public Color backgroundColor;
+    public Color textColor;
+    public Sprite tileImage; // Add this line to include an image
+}
+
