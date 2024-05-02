@@ -282,10 +282,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885ea948265d82d42957caa2c671ae5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   tile: {fileID: 7453207933971359650}
   heroUIPrefab: {fileID: 4892949698514333483, guid: 29610bcdbe719d64fbec999f7189672f, type: 3}
   spawnArea: {fileID: 0}
-=======
-  gameManager: {fileID: 0}
->>>>>>> 3fd07e0fabddd544b22f2c0abb2eafa2b2c17093

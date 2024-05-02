@@ -35,7 +35,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             tile.DeleteTile();
             GameObject heroInstance = Instantiate(heroUIPrefab, spawnArea, false);
-            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x, transform.position.y); 
+            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x, transform.position.y);
         }
     }
 
