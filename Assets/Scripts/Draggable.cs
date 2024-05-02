@@ -1,14 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Transform parentAfterDrag;
     private Vector3 startPosition;
     public Tile tile;
-    public GameObject heroUIPrefab;
-    public RectTransform spawnArea;
+    public GameObject heroUIPrefab; // UI Prefab with RectTransform
+    public GameObject heroInstance;
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -28,14 +29,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End drag");
-        transform.SetParent(parentAfterDrag);
-        transform.position = new Vector3(transform.position.x, transform.position.y, startPosition.z);
+        //transform.SetParent(parentAfterDrag);
+        //transform.position = new Vector3(transform.position.x, transform.position.y, startPosition.z);
 
         if (tile != null)
         {
             tile.DeleteTile();
-            GameObject heroInstance = Instantiate(heroUIPrefab, spawnArea, false);
-            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x, transform.position.y);
+            heroInstance = Instantiate(heroUIPrefab);
+            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x,heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
+            heroInstance.transform.SetParent(transform.parent);
         }
     }
 
