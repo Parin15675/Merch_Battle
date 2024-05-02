@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HeroMovement : MonoBehaviour
 {
-    public float speed = 2.0f; // Speed at which the hero should move
+    public float speed = 30.0f; // Speed at which the hero should move
     private bool canMove = true; // Flag to control movement
 
     void Update()
@@ -28,5 +28,12 @@ public class HeroMovement : MonoBehaviour
     {
         canMove = false;
         speed = 0;
+    }
+
+    public void StartMovement(float newSpeed)
+    {
+        speed = 30.0f; // Set new speed if needed
+        canMove = true;
+        Debug.Log("Movement restarted at speed: " + newSpeed);
     }
 }

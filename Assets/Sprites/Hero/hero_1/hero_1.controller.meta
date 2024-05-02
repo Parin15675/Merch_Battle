@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/Hero/hero_1/hero_1.controller.meta
 guid: 76a0e1cf40803af48930d3a0bd75754b
+=======
+guid: f0ef73051f6420f4589877214cd3d2c9
+>>>>>>> 262fcc69a1d79da4294e46062afc1784b652c4de:Assets/Sprites/hero_animation/hero_1/hero_1.controller.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 9100000
