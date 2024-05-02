@@ -1,19 +1,20 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform parentAfterDrag;
+
     private Vector3 startPosition;
     public Tile tile;
     public GameObject heroUIPrefab;
-    public RectTransform spawnArea;
+    public GameObject heroInstance;
+    public Transform square; 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin drag");
-        parentAfterDrag = transform.parent;
         startPosition = transform.position; // Store start position to preserve z value
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -28,14 +29,29 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End drag");
-        transform.SetParent(parentAfterDrag);
-        transform.position = new Vector3(transform.position.x, transform.position.y, startPosition.z);
 
-        if (tile != null)
+        float topX = square.transform.localPosition.x;
+        float topY = square.transform.localPosition.y;
+        float w = square.transform.lossyScale.x / 2;
+        float h = square.transform.lossyScale.y / 2;
+
+
+        if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h)
         {
-            tile.DeleteTile();
-            GameObject heroInstance = Instantiate(heroUIPrefab, spawnArea, false);
-            heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.position.x, transform.position.y);
+            Debug.Log("w " + w + "h " + h + "topX " + topX + "topY " + topY + "posX " + transform.localPosition.x + "posY " + transform.localPosition.y);
+
+            if (tile != null)
+            {
+                tile.DeleteTile();
+                heroInstance = Instantiate(heroUIPrefab);
+                heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
+                heroInstance.transform.SetParent(transform.parent);
+            }
+        }
+        else
+        {
+            tile.GetComponent<RectTransform>().transform.position = startPosition;
         }
     }
 

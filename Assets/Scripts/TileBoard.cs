@@ -7,11 +7,13 @@ public class TileBoard : MonoBehaviour
     public Tile tilePrefab;
 
     private TileGrid grid;
-    private List<Tile> tiles;
+    public List<Tile> tiles;
 
     private bool waiting;
     public TileState[] tileStates;
     public GameManeger gamemaneger;
+
+    public int getTiles() { return tiles.Count; }
 
     private void Awake()
     {
