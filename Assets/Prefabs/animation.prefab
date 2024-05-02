@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 6322628823389407062}
   - component: {fileID: 8261334796849968434}
   - component: {fileID: 1486622663835795866}
-  - component: {fileID: 8349190232260762219}
   - component: {fileID: 6697498564930975712}
   - component: {fileID: 4574474264907745949}
   - component: {fileID: 3970291634352924416}
+  - component: {fileID: 6951426173213885719}
   m_Layer: 0
   m_Name: animation
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,33 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &8349190232260762219
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4892949698514333483}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &6697498564930975712
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +143,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -198,7 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7255a458556f484b857954a38d8cfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8349190232260762219}
   speed: 30
 --- !u!114 &3970291634352924416
 MonoBehaviour:
@@ -214,3 +186,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroPrefabs: []
   spawnArea: {fileID: 0}
+  targetObject: {fileID: 0}
+--- !u!114 &6951426173213885719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4892949698514333483}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b72c8a00e63ff4d92ab8f2e93f40ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
