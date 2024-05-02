@@ -12,7 +12,7 @@ public class HeroMovement : MonoBehaviour
     void Update()
     {
         // This will automatically move the hero at a constant speed
-        rb.velocity = new Vector2(speed, rb.velocity.y);
+        rb.velocity = new Vector3(speed, rb.velocity.y, 0f);
 
     }
 }

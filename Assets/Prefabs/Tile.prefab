@@ -284,4 +284,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tile: {fileID: 7453207933971359650}
   heroUIPrefab: {fileID: 4892949698514333483, guid: 29610bcdbe719d64fbec999f7189672f, type: 3}
-  spawnArea: {fileID: 0}
+  heroInstance: {fileID: 0}
+  canvas: {fileID: 7870136820572342753, guid: a06904f864a1fdb488663b382dcc12a5, type: 3}
