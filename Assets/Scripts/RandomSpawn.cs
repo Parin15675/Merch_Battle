@@ -3,8 +3,9 @@ using System.Collections;
 
 public class RandomSpawn : MonoBehaviour
 {
-    [SerializeField] private GameObject heroUIPrefab; // UI Prefab with RectTransform
+    [SerializeField] private GameObject[] heroPrefabs; // Array of hero prefabs with RectTransform
     [SerializeField] private RectTransform spawnArea; // Area within the Canvas
+    [SerializeField] private Transform targetObject; // Target object to base the spawn position on
 
     private void Start()
     {
@@ -22,14 +23,19 @@ public class RandomSpawn : MonoBehaviour
 
     private void SpawnHero()
     {
-        if (heroUIPrefab == null || spawnArea == null)
+        if (heroPrefabs.Length == 0 || spawnArea == null || targetObject == null)
         {
-            Debug.LogError("Prefab or Spawn Area not set!");
+            Debug.LogError("Hero prefabs, Spawn Area, or Target Object not set!");
             return;
         }
 
-        GameObject heroInstance = Instantiate(heroUIPrefab, spawnArea, false);
-        heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(85, 0); // Fixed position at (85, 0)
+        // Select a random prefab from the array
+        GameObject selectedPrefab = heroPrefabs[Random.Range(0, heroPrefabs.Length)];
+        GameObject heroInstance = Instantiate(selectedPrefab, spawnArea, false);
+
+        // Set the position to be the same as the target object
+        Vector3 position = spawnArea.InverseTransformPoint(targetObject.position);
+        heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.y);
 
         Debug.Log("Hero spawned at: " + heroInstance.GetComponent<RectTransform>().anchoredPosition);
     }

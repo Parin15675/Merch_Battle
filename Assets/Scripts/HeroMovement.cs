@@ -7,7 +7,7 @@ public class HeroMovement : MonoBehaviour
     [SerializeField]
     private Rigidbody2D rb;
 
-    public float speed = 2.0f; // Speed at which the hero should move
+    public float speed = -2.0f; // Speed at which the hero should move
 
     void Update()
     {
