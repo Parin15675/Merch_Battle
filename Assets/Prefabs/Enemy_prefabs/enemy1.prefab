@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8969509019885883795}
   m_Layer: 0
   m_Name: enemy1
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,6 +198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7255a458556f484b857954a38d8cfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 4683250951793066764}
   speed: -30
 --- !u!114 &8969509019885883795
 MonoBehaviour:
@@ -211,6 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126813c411e5b1c4092d0165aac1ca5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroPrefabs: []
+  heroUIPrefab: {fileID: 0}
   spawnArea: {fileID: 0}
-  targetObject: {fileID: 0}
