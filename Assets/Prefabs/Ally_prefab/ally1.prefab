@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1876807780523676063}
   - component: {fileID: -2816017005018688153}
   m_Layer: 0
-  m_Name: animation
+  m_Name: ally1
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
