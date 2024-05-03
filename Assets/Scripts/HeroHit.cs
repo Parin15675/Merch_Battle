@@ -19,13 +19,10 @@ public class HeroHit : MonoBehaviour
         {
             Debug.Log("Hit Enemy");
             Health enemyHealth = target.gameObject.GetComponent<Health>();
-
-            if (heroMovement != null && enemyHealth != null)
-            {
-                Debug.Log("Speed 0");
-                heroMovement.StopMovement();
-                StartCoroutine(AttackEnemy(enemyHealth));
-            }
+            Debug.Log("Speed  hero 0");
+            heroMovement.StopMovement();
+            StartCoroutine(AttackEnemy(enemyHealth));
+            
 
         }
         else if (target.gameObject.CompareTag("Hero"))
@@ -35,7 +32,7 @@ public class HeroHit : MonoBehaviour
             Debug.Log(rect.transform.localPosition.y + " and " + thisRect.transform.localPosition.y);
 
             Debug.Log("met hero");
-            if (heroMovement != null && thisRect.transform.localPosition.y > rect.transform.localPosition.y)
+            if (!(thisRect.transform.localPosition.y > rect.transform.localPosition.y))
             {
                 Debug.Log("Met another hero, stopping.");
                 isAnotherHeroNearby = true;
