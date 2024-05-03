@@ -30,8 +30,12 @@ public class HeroHit : MonoBehaviour
         }
         else if (target.gameObject.CompareTag("Hero"))
         {
+            RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
+            RectTransform rect = target.gameObject.GetComponent<RectTransform>();
+            Debug.Log(rect.transform.localPosition.y + " and " + thisRect.transform.localPosition.y);
+
             Debug.Log("met hero");
-            if (heroMovement != null)
+            if (heroMovement != null && thisRect.transform.localPosition.y > rect.transform.localPosition.y)
             {
                 Debug.Log("Met another hero, stopping.");
                 isAnotherHeroNearby = true;
