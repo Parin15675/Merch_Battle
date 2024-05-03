@@ -39,7 +39,7 @@ public class EnemyHit : MonoBehaviour
             Debug.Log("met enemy01");
             if (enemyMovement != null)
             {
-                Debug.Log("Speed 0");
+                Debug.Log("Speed 000");
                 enemyMovement.StopMovement();
 
             }
