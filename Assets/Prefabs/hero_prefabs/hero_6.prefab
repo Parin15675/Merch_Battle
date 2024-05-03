@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 8199271315223473556}
   - component: {fileID: 4274747266570884667}
   - component: {fileID: 3763920617015797637}
+  - component: {fileID: 5000334209159902380}
+  - component: {fileID: 256476314630150158}
   m_Layer: 0
   m_Name: hero_6
   m_TagString: Untagged
@@ -102,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 471404349176581252}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fdb314b33a071ec4988ee91c46ea5fa7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 77f9de263f6558043a14334515f8ba09, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -198,3 +200,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &5000334209159902380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471404349176581252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 10
+  isAttacking: 0
+--- !u!114 &256476314630150158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471404349176581252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
