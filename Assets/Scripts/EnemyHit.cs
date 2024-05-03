@@ -22,7 +22,11 @@ public class EnemyHit : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D target)
     {
         Debug.Log("Collision with: " + target.gameObject.name);
-        
+
+        RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
+        RectTransform rect = target.gameObject.GetComponent<RectTransform>();
+        Debug.Log(rect.transform.localPosition.x + " and " + thisRect.transform.localPosition.x);
+
         if (target.gameObject.CompareTag("Hero") )
         {
             Health heroHealth = target.gameObject.GetComponent<Health>();
@@ -38,7 +42,7 @@ public class EnemyHit : MonoBehaviour
         else if (target.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("met enemy01");
-            if (enemyMovement != null)
+            if (enemyMovement != null && thisRect.transform.localPosition.x > rect.transform.localPosition.x)
             {
                 Debug.Log("Speed 000");
                 isAnotherEnemyNearby = true;
@@ -54,12 +58,12 @@ public class EnemyHit : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hero"))
-        {
+        //if (collision.gameObject.CompareTag("Hero"))
+        //{
             Debug.Log("Another hero left, resuming.");
             isAnotherEnemyNearby = false;
             enemyMovement.StartMovement(-30.0f);
-        }
+        //}
     }
 
     private IEnumerator AttackEnemy(Health enemyHealth)
