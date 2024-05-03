@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemyHit : MonoBehaviour
 {
     private EnemyMovement enemyMovement;
+    private bool isAnotherEnemyNearby = false;
     public int attackDamage = 10;
     public bool isAttacking = false;
 
@@ -40,6 +41,7 @@ public class EnemyHit : MonoBehaviour
             if (enemyMovement != null)
             {
                 Debug.Log("Speed 000");
+                isAnotherEnemyNearby = true;
                 enemyMovement.StopMovement();
 
             }
@@ -50,12 +52,13 @@ public class EnemyHit : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D target)
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        if (!target.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Hero"))
         {
-            Debug.Log("Enemy has left, resuming movement.");
-            enemyMovement.StartMovement(-30.0f); 
+            Debug.Log("Another hero left, resuming.");
+            isAnotherEnemyNearby = false;
+            enemyMovement.StartMovement(-30.0f);
         }
     }
 
