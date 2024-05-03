@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -8,7 +9,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private Vector3 startPosition;
     public Tile tile;
-    public GameObject heroUIPrefab;
+    public List<GameObject> HeroPrefab;
     public GameObject heroInstance;
     public Transform square; 
 
@@ -38,12 +39,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h)
         {
-            Debug.Log("w " + w + "h " + h + "topX " + topX + "topY " + topY + "posX " + transform.localPosition.x + "posY " + transform.localPosition.y);
+            //Debug.Log("w " + w + "h " + h + "topX " + topX + "topY " + topY + "posX " + transform.localPosition.x + "posY " + transform.localPosition.y);
 
             if (tile != null)
             {
                 tile.DeleteTile();
-                heroInstance = Instantiate(heroUIPrefab);
+                heroInstance = Instantiate(HeroPrefab[(int)Mathf.Log(tile.number, 2) - 1]);
                 heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
                 heroInstance.transform.SetParent(transform.parent);

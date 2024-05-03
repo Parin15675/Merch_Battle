@@ -283,6 +283,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 7453207933971359650}
-  heroUIPrefab: {fileID: 4892949698514333483, guid: 29610bcdbe719d64fbec999f7189672f, type: 3}
+  HeroPrefab:
+  - {fileID: 6407685646115975564, guid: 28cc0328bf950884183e81e3763458d3, type: 3}
+  - {fileID: 8048860882690829280, guid: c4c2589c54752b341af2f4f7369d9ebf, type: 3}
+  - {fileID: 8088364092686317637, guid: a6b47c96df4f18241ad092dc79fc7896, type: 3}
+  - {fileID: 8084412907762210887, guid: 70e888abd05553741a4dfa1d681f9aa6, type: 3}
+  - {fileID: 2957903931981359603, guid: cb574565b07787544b83d341e41b9de1, type: 3}
+  - {fileID: 471404349176581252, guid: 53ff7df6a3a85a54f947a71d5c88644f, type: 3}
+  - {fileID: 7276044650244767503, guid: b0b3da16c4e39414485d38b722b1f5a1, type: 3}
+  - {fileID: 2808708892285239374, guid: 851c99b627759d1418be156165cb5337, type: 3}
   heroInstance: {fileID: 0}
   square: {fileID: 8160183590103307979, guid: 2d9f195c36b41894cbed525ab00c9e48, type: 3}
