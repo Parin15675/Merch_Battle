@@ -55,12 +55,12 @@ public class EnemyHit : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hero"))
-        {
-            Debug.Log("Another hero left, resuming.");
-            isAnotherEnemyNearby = false;
-            enemyMovement.StartMovement();
-        }
+        //if (collision.gameObject.CompareTag("Hero"))
+        //{
+        Debug.Log("Another hero left, resuming.");
+        isAnotherEnemyNearby = false;
+        enemyMovement.StartMovement();
+        //}
     }
 
     private IEnumerator AttackEnemy(Health enemyHealth)

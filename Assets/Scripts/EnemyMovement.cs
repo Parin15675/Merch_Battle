@@ -30,10 +30,10 @@ public class EnemyMovement : MonoBehaviour
         speed = 0;
     }
 
-    public void StartMovement(float newSpeed)
+    public void StartMovement()
     {
         speed = -30.0f; // Set new speed if needed
         canMove = true;
-        Debug.Log("Movement restarted at speed: " + newSpeed);
+        
     }
 }
