@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 7956799595374834252}
   - component: {fileID: 3994990221998389330}
   - component: {fileID: 5252453948916705227}
-  - component: {fileID: -4266084794500081904}
-  - component: {fileID: -8543619537772377057}
+  - component: {fileID: 6654506081279606876}
+  - component: {fileID: 1528363270814624751}
   m_Layer: 0
   m_Name: hero_7
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 7276044650244767503}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b3ebc97292015e742a79e1e6c0607c03, type: 2}
+  m_Controller: {fileID: 9100000, guid: bb1ce7f922292c640815472db0214e43, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
---- !u!114 &-4266084794500081904
+--- !u!114 &6654506081279606876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
---- !u!114 &-8543619537772377057
+--- !u!114 &1528363270814624751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,4 +227,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100

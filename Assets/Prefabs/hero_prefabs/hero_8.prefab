@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 1848607002336887762}
   - component: {fileID: 4998292106277740609}
   - component: {fileID: 7188448071779645782}
-  - component: {fileID: -26057399405275099}
-  - component: {fileID: -1348486316293837561}
+  - component: {fileID: 1182421853605292833}
+  - component: {fileID: -8992206766658344072}
   m_Layer: 0
   m_Name: hero_8
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 2808708892285239374}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1a5ee7f9392a71e4ebe50b90a426ac23, type: 2}
+  m_Controller: {fileID: 9100000, guid: 08c8057c00a8bf848bf8164fd5ad2b5f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,7 +200,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 0.54}
   m_EdgeRadius: 0
---- !u!114 &-26057399405275099
+--- !u!114 &1182421853605292833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2808708892285239374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+--- !u!114 &-8992206766658344072
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,17 +228,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
---- !u!114 &-1348486316293837561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2808708892285239374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0

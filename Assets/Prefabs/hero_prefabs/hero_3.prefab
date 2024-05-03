@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 5636500711738521788}
   - component: {fileID: 1047720415464199524}
   - component: {fileID: 4280486755127868174}
-  - component: {fileID: 3459896894701300092}
-  - component: {fileID: 6845919877566944290}
+  - component: {fileID: 1754141691458214994}
+  - component: {fileID: -4293821954830149980}
   m_Layer: 0
   m_Name: hero_3
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
---- !u!114 &3459896894701300092
+--- !u!114 &1754141691458214994
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
---- !u!114 &6845919877566944290
+--- !u!114 &-4293821954830149980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

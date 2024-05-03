@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 1785107953690776090}
   - component: {fileID: 638215262429968568}
   - component: {fileID: 6952946874386381839}
-  - component: {fileID: 2596022044763923058}
-  - component: {fileID: -3142625631841067880}
+  - component: {fileID: 2362871931506333434}
+  - component: {fileID: 7142625346426383163}
   m_Layer: 0
   m_Name: hero_5
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ Animator:
   m_GameObject: {fileID: 2957903931981359603}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0f00de391f6f39e49a5a12ce515c74be, type: 2}
+  m_Controller: {fileID: 9100000, guid: f7c2de14eb811ea449670a23af61a7df, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
---- !u!114 &2596022044763923058
+--- !u!114 &2362871931506333434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
---- !u!114 &-3142625631841067880
+--- !u!114 &7142625346426383163
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,4 +227,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100

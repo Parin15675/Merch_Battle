@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 3265236752780139780}
   - component: {fileID: 2900590323460352704}
   - component: {fileID: 5920186889675208544}
-  - component: {fileID: 1528505771450837413}
-  - component: {fileID: -2035655979228905521}
+  - component: {fileID: -938438092963935829}
+  - component: {fileID: 2593146833736532267}
   m_Layer: 0
   m_Name: hero_2
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,7 +200,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &1528505771450837413
+--- !u!114 &-938438092963935829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048860882690829280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+--- !u!114 &2593146833736532267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,17 +228,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
---- !u!114 &-2035655979228905521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8048860882690829280}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
