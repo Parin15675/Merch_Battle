@@ -215,6 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  healthBar: {fileID: 0}
 --- !u!114 &2593146833736532267
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,15 +5,19 @@ public class Health : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
 
+    public HealthBar healthBar;
+
     void Start()
     {
         currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         Debug.Log(gameObject.name + " takes " + damage + " damage.");
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
