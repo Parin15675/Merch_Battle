@@ -13,7 +13,7 @@ public class HeroHit : MonoBehaviour
         heroMovement = GetComponent<HeroMovement>();
     }
 
-    private void OnCollisionEnter2D(Collision2D target)
+    private void OnTriggerEnter2D(Collider2D target)
     {
         if (target.gameObject.CompareTag("Enemy"))
         {
@@ -22,24 +22,38 @@ public class HeroHit : MonoBehaviour
             Debug.Log(gameObject.name + "Speed  hero 0");
             heroMovement.StopMovement();
             StartCoroutine(AttackEnemy(enemyHealth));
-            
 
-        }
-        else if (target.gameObject.CompareTag("Hero"))
-        {
-            RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
-            RectTransform rect = target.gameObject.GetComponent<RectTransform>();
-            Debug.Log(rect.transform.localPosition.y + " and " + thisRect.transform.localPosition.y);
 
-            Debug.Log(gameObject.name + "met hero");
-            if (!(thisRect.transform.localPosition.y > rect.transform.localPosition.y) || (thisRect.transform.localPosition.x < rect.transform.localPosition.x))
-            {
-                Debug.Log(gameObject.name + "Met another hero, stopping.");
-                isAnotherHeroNearby = true;
-                heroMovement.StopMovement();
-            }
         }
     }
+
+    //private void OnCollisionEnter2D(Collision2D target)
+    //{
+    //    if (target.gameObject.CompareTag("Enemy"))
+    //    {
+    //        Debug.Log(gameObject.name + "Hit Enemy");
+    //        Health enemyHealth = target.gameObject.GetComponent<Health>();
+    //        Debug.Log(gameObject.name + "Speed  hero 0");
+    //        heroMovement.StopMovement();
+    //        StartCoroutine(AttackEnemy(enemyHealth));
+            
+
+    //    }
+    //    //else if (target.gameObject.CompareTag("Hero"))
+    //    //{
+    //    //    RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
+    //    //    RectTransform rect = target.gameObject.GetComponent<RectTransform>();
+    //    //    Debug.Log(rect.transform.localPosition.y + " and " + thisRect.transform.localPosition.y);
+
+    //    //    Debug.Log(gameObject.name + "met hero");
+    //    //    if (!(thisRect.transform.localPosition.y > rect.transform.localPosition.y) || (thisRect.transform.localPosition.x < rect.transform.localPosition.x))
+    //    //    {
+    //    //        Debug.Log(gameObject.name + "Met another hero, stopping.");
+    //    //        isAnotherHeroNearby = true;
+    //    //        heroMovement.StopMovement();
+    //    //    }
+    //    //}
+    //}
 
     private void OnCollisionExit2D(Collision2D collision)
     {
