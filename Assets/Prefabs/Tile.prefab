@@ -292,5 +292,4 @@ MonoBehaviour:
   - {fileID: 8943888091455547942, guid: e3193d216dba28c4194e4a5b75e588cc, type: 3}
   - {fileID: 2386834764417212989, guid: d18aeaff27e6a9f4592de7e5704d544f, type: 3}
   - {fileID: 5849721920806054766, guid: 294822feb38799d4bb6ee84128578101, type: 3}
-  heroInstance: {fileID: 0}
-  square: {fileID: 8160183590103307979, guid: 2d9f195c36b41894cbed525ab00c9e48, type: 3}
+  spawnArea: {fileID: 8160183590103307979, guid: 2d9f195c36b41894cbed525ab00c9e48, type: 3}

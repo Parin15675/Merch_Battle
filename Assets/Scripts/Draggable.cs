@@ -8,10 +8,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 {
 
     private Vector3 startPosition;
+    private ResourceBarTracker resourceBar;
+    private Transform spawnArea;
+
     public Tile tile;
     public List<GameObject> HeroPrefab;
-    public GameObject heroInstance;
-    public Transform square; 
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -31,10 +32,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Debug.Log("End drag");
 
-        float topX = square.transform.localPosition.x;
-        float topY = square.transform.localPosition.y;
-        float w = square.transform.lossyScale.x / 2;
-        float h = square.transform.lossyScale.y / 2;
+        spawnArea = GameObject.Find("HeroSpawnArea").GetComponent<Transform>();
+        float topX = spawnArea.transform.localPosition.x;
+        float topY = spawnArea.transform.localPosition.y;
+        float w = spawnArea.transform.lossyScale.x / 2;
+        float h = spawnArea.transform.lossyScale.y / 2;
 
 
         if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h)
@@ -44,10 +46,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             if (tile != null)
             {
                 tile.DeleteTile();
-                heroInstance = Instantiate(HeroPrefab[(int)Mathf.Log(tile.number, 2) - 1]);
+                GameObject heroInstance = Instantiate(HeroPrefab[(int)Mathf.Log(tile.number, 2) - 1]);
                 heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
                 heroInstance.transform.SetParent(transform.parent);
+
+                resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
+                resourceBar.ChangeResourceByAmount(tile.number * -1);
             }
         }
         else

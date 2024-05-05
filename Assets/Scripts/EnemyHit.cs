@@ -24,7 +24,7 @@ public class EnemyHit : MonoBehaviour
 
         RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
         RectTransform rect = target.gameObject.GetComponent<RectTransform>();
-        Debug.Log(rect.transform.localPosition.x + " and " + thisRect.transform.localPosition.x);
+        //Debug.Log(rect.transform.localPosition.x + " and " + thisRect.transform.localPosition.x);
 
         if (target.gameObject.CompareTag("Hero"))
         {
