@@ -38,6 +38,18 @@ public class EnemyHit : MonoBehaviour
                 StartCoroutine(AttackEnemy(heroHealth));
             }
         }
+        else if(target.gameObject.CompareTag("player castle"))
+        {
+            Health castleHealth = target.gameObject.GetComponent<Health>();
+            Debug.Log(gameObject.name + "Hit castle");
+
+            if (castleHealth != null)
+            {
+                Debug.Log(gameObject.name + "Enemy speed 0");
+                enemyMovement.StopMovement();
+                StartCoroutine(AttackEnemy(castleHealth));
+            }
+        }
     }
 
     //private void OnCollisionEnter2D(Collision2D target)

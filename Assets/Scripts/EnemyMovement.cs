@@ -26,7 +26,9 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
+            FindAllHeroes();
             SelectTargetHero();
+            WalkForward();
         }
     }
 
@@ -81,7 +83,13 @@ public class EnemyMovement : MonoBehaviour
     public void StartMovement()
     {
         canMove = true;
-        speed = 5.0f;
+        speed = -30;
+        Debug.Log("StartMovement");
     }
+    private void WalkForward()
+    {
+        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+    }
+
 }
 
