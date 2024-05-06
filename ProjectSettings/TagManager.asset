@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Hero
+  - player castle
   layers:
   - Default
   - TransparentFX
