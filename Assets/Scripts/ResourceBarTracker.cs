@@ -19,6 +19,18 @@ public class ResourceBarTracker : MonoBehaviour
     [SerializeField, Range(0, 0.5f)] private float animationTime = 0.25f;
     private Coroutine _fillRoutine;
 
+    public int getCurrentResource
+    {
+        get
+        {
+            return currentResource;
+        }
+        set
+        {
+            currentResource = 100;
+        }
+    }
+
     private void Start()
     {
 
@@ -28,11 +40,10 @@ public class ResourceBarTracker : MonoBehaviour
     {
         timer += Time.deltaTime;
         float seconds = timer % 60;
-        Debug.Log(seconds);
+
         if(seconds >= manaGenerationTime)
         {
             currentResource++;
-            seconds = 0.0f;
             timer = 0.0f;
         }
 

@@ -38,11 +38,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         float w = spawnArea.transform.lossyScale.x / 2;
         float h = spawnArea.transform.lossyScale.y / 2;
 
+        resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
 
-        if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h)
+        bool checkForSufficientMana = resourceBar.getCurrentResource - tile.number >= 0 && resourceBar.getCurrentResource >= tile.number;
+
+        if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h && checkForSufficientMana)
         {
             //Debug.Log("w " + w + "h " + h + "topX " + topX + "topY " + topY + "posX " + transform.localPosition.x + "posY " + transform.localPosition.y);
-
+            
             if (tile != null)
             {
                 tile.DeleteTile();
@@ -51,7 +54,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
                 heroInstance.transform.SetParent(transform.parent);
 
-                resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
                 resourceBar.ChangeResourceByAmount(tile.number * -1);
             }
         }
