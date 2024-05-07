@@ -5,7 +5,6 @@ using UnityEngine;
 public class TileBoard : MonoBehaviour
 {
     public Tile tilePrefab;
-
     private TileGrid grid;
     public List<Tile> tiles;
 
@@ -175,7 +174,6 @@ public class TileBoard : MonoBehaviour
             gamemaneger.GameOver();
         }
 
-        
     }
 
     private bool CheckForGameOver()
