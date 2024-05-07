@@ -40,7 +40,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
 
-        bool checkForSufficientMana = resourceBar.getCurrentResource - tile.number >= 0 && resourceBar.getCurrentResource >= tile.number;
+        bool checkForSufficientMana = resourceBar.getCurrentResource - (int)Mathf.Log(tile.number, 2) >= 0 && resourceBar.getCurrentResource >= (int)Mathf.Log(tile.number, 2);
 
         if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h && checkForSufficientMana)
         {
@@ -54,7 +54,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
                 heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
                 heroInstance.transform.SetParent(transform.parent);
 
-                resourceBar.ChangeResourceByAmount(tile.number * -1);
+                resourceBar.ChangeResourceByAmount((int)Mathf.Log(tile.number, 2) * -1);
             }
         }
         else
