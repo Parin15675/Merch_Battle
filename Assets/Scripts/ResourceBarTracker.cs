@@ -12,6 +12,7 @@ public class ResourceBarTracker : MonoBehaviour
     [SerializeField] private int manaGenerationTime = 100;
     [SerializeField] private int currentResource = 100;
     [SerializeField] private int maxResource = 100;
+
     [Space]
     [SerializeField] private bool possibleOverKill;
 
@@ -47,15 +48,24 @@ public class ResourceBarTracker : MonoBehaviour
             timer = 0.0f;
         }
 
-        if (maxResource <= 0)
-        {
-            bar.fillAmount = 0;
-            return;
-        }
+        preventInvalidAmountOfResources();
 
         float fillAmount = (float) currentResource / maxResource;
 
         bar.fillAmount = fillAmount;
+    }
+
+    private void preventInvalidAmountOfResources()
+    {
+        if (currentResource > maxResource)
+        {
+            currentResource = maxResource;
+        } 
+        else if (currentResource <= 0) 
+        {
+            bar.fillAmount = 0;
+            currentResource = 0;
+        }
     }
 
     public bool ChangeResourceByAmount(int amount)
