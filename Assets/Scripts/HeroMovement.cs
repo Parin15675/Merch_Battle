@@ -84,7 +84,7 @@ public class HeroMovement : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), Vector2.zero);
 
-        if (hit.collider != null && hit.collider.CompareTag("Enemy"))
+        if (hit.collider != null && (hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("enemy wall")))
         {
 
             activeHero.tagged_hero = false;

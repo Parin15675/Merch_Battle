@@ -15,7 +15,7 @@ public class HeroHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Enemy"))
+        if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
         {
             Debug.Log(gameObject.name + "Hit Enemy");
             Health enemyHealth = target.gameObject.GetComponent<Health>();
