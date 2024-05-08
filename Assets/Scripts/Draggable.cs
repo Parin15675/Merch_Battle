@@ -17,6 +17,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin drag");
+        resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
         startPosition = transform.position; // Store start position to preserve z value
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
@@ -25,12 +26,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnDrag(PointerEventData eventData)
     {
         Debug.Log("Dragging");
+        resourceBar.renderManaNeed((int)Mathf.Log(tile.number, 2));
         transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, startPosition.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         Debug.Log("End drag");
+        resourceBar.renderManaNeed(0);
 
         spawnArea = GameObject.Find("HeroSpawnArea").GetComponent<Transform>();
         float topX = spawnArea.transform.localPosition.x;
@@ -38,14 +41,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         float w = spawnArea.transform.lossyScale.x / 2;
         float h = spawnArea.transform.lossyScale.y / 2;
 
-        resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
-
         bool checkForSufficientMana = resourceBar.getCurrentResource - (int)Mathf.Log(tile.number, 2) >= 0 && resourceBar.getCurrentResource >= (int)Mathf.Log(tile.number, 2);
 
         if (topX - w < transform.localPosition.x && transform.localPosition.x < topX + w && topY + h > transform.localPosition.y && transform.localPosition.y > topY - h && checkForSufficientMana)
         {
-            //Debug.Log("w " + w + "h " + h + "topX " + topX + "topY " + topY + "posX " + transform.localPosition.x + "posY " + transform.localPosition.y);
-            
             if (tile != null)
             {
                 tile.DeleteTile();
