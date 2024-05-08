@@ -169,11 +169,6 @@ public class TileBoard : MonoBehaviour
             CreateTile();
         }
 
-        if (CheckForGameOver())
-        {
-            gamemaneger.GameOver();
-        }
-
     }
 
     private bool CheckForGameOver()
