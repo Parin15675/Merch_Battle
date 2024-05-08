@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
 
     private Vector3 startPosition;
@@ -60,17 +60,5 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         {
             tile.GetComponent<RectTransform>().transform.position = startPosition;
         }
-    }
-
-    private bool IsOverGameBoard(PointerEventData eventData)
-    {
-        // Assuming you have some way to detect if over the game board
-        // You might need a collider or a specific tag to identify the game board area
-        if (eventData.pointerCurrentRaycast.gameObject != null &&
-            eventData.pointerCurrentRaycast.gameObject.CompareTag("GameBoard"))
-        {
-            return true;
-        }
-        return false;
     }
 }
