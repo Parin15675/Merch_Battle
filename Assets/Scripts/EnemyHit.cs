@@ -92,7 +92,7 @@ public class EnemyHit : MonoBehaviour
         //{
         Debug.Log("Another hero left, resuming.");
         isAnotherEnemyNearby = false;
-        enemyMovement.StartMovement();
+        enemyMovement.StartMovement(-30.0f);
         //}
     }
 
@@ -107,7 +107,7 @@ public class EnemyHit : MonoBehaviour
         }
 
         isAttacking = false;
-        enemyMovement.StartMovement(); 
+        enemyMovement.StartMovement(-30.0f); 
     }
 
 
