@@ -11,6 +11,8 @@ public class HeroMovement : MonoBehaviour
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
     private bool canMove = true;
+    public bool tagged_hero = false;
+    public arrow arrow;
 
     void Start()
     {
@@ -22,9 +24,11 @@ public class HeroMovement : MonoBehaviour
         // Check if this instance is the active hero
         if (this == activeHero)
         {
+            
             if (Input.GetMouseButtonDown(0))
             {
                 SelectTargetEnemyWithMouse();
+                
             }
 
             if (canMove && targetEnemy != null)
@@ -38,20 +42,30 @@ public class HeroMovement : MonoBehaviour
         }
         else if (targetEnemy != null) 
         {
+            arrow.gameObject.SetActive(false);
             MoveTowardsEnemy();
         }
         else
         {
+            arrow.gameObject.SetActive(false);
             WalkForward();
         }
     }
 
     void OnMouseDown()  // This function is called when this GameObject is clicked
     {
+        
         if (activeHero != this)
         {
             Debug.Log($"Control switched to hero: {gameObject.name}");
-            activeHero = this;  // Set this instance as the active hero
+            activeHero = this;  
+            activeHero.tagged_hero = true;
+            arrow.gameObject.SetActive(true);
+        }
+        else
+        {
+            activeHero.tagged_hero = true;
+            arrow.gameObject.SetActive(true);
         }
     }
 
@@ -72,6 +86,9 @@ public class HeroMovement : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("Enemy"))
         {
+
+            activeHero.tagged_hero = false;
+            arrow.gameObject.SetActive(false);
             targetEnemy = hit.transform;
             Debug.Log($"Player selected enemy: {targetEnemy.name}");
         }
