@@ -9,6 +9,7 @@ public class ResourceBarTracker : MonoBehaviour
 
     [Header("Core Settings")]
     [SerializeField] private Image bar;
+    [SerializeField] private GameObject manaNeed;
     [SerializeField] private int manaGenerationTime = 100;
     [SerializeField] private int currentResource = 100;
     [SerializeField] private int maxResource = 100;
@@ -49,10 +50,20 @@ public class ResourceBarTracker : MonoBehaviour
         }
 
         preventInvalidAmountOfResources();
+        updateManaNeed();
 
         float fillAmount = (float) currentResource / maxResource;
-
         bar.fillAmount = fillAmount;
+    }
+
+    public void updateManaNeed()
+    {
+        manaNeed.GetComponent<RectTransform>().transform.localPosition = new Vector3((maxResource - currentResource) * -25, manaNeed.GetComponent<RectTransform>().localPosition.y, 1f);
+    }
+
+    public void renderManaNeed(int manaForSpawn)
+    {
+        manaNeed.GetComponent<Image>().fillAmount = (float)manaForSpawn / maxResource;
     }
 
     private void preventInvalidAmountOfResources()
