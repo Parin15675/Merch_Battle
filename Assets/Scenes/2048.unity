@@ -1963,7 +1963,7 @@ GameObject:
   - component: {fileID: 1123541530}
   - component: {fileID: 1123541529}
   m_Layer: 5
-  m_Name: Resource Bar
+  m_Name: Enegy bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1987,8 +1987,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -513.93, y: -401}
-  m_SizeDelta: {x: 592.1331, y: 77.9122}
+  m_AnchoredPosition: {x: -560, y: -361.44}
+  m_SizeDelta: {x: 500, y: 77.9122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1123541529
 MonoBehaviour:
@@ -2625,8 +2625,8 @@ Transform:
   m_GameObject: {fileID: 1421307872}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -293.9001, y: 15.600006, z: 0}
-  m_LocalScale: {x: 180.00003, y: 180.00003, z: 0.9986178}
+  m_LocalPosition: {x: -256.00006, y: 7, z: 0}
+  m_LocalScale: {x: 132.64203, y: 132.64203, z: 0.7358815}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1123541528}
@@ -3657,7 +3657,7 @@ GameObject:
   - component: {fileID: 1894085939}
   - component: {fileID: 1894085938}
   m_Layer: 5
-  m_Name: Image
+  m_Name: player wall
   m_TagString: player castle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3679,7 +3679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: -50.4}
+  m_AnchoredPosition: {x: 36.9, y: -50.4}
   m_SizeDelta: {x: 77, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &1894085938
@@ -3714,7 +3714,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -18.952902, y: 3.8671722}
+  m_Offset: {x: 19.44102, y: 3.8671875}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3725,7 +3725,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 38.905903, y: 544.6981}
+  m_Size: {x: 36.613384, y: 544.6981}
   m_EdgeRadius: 0
 --- !u!114 &1894085939
 MonoBehaviour:
@@ -3762,7 +3762,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 67abc1c469df57b4ba2e3e2062821cfa, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1dd32cb2aac531d4a94a036ccea5c77f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
