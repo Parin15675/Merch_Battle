@@ -10,6 +10,7 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Vector3 startPosition;
     private ResourceBarTracker resourceBar;
     private Transform spawnArea;
+    public Renderer placableArea;
 
     public Tile tile;
     public List<GameObject> HeroPrefab;
@@ -17,6 +18,8 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin drag");
+        placableArea = GameObject.Find("HeroSpawnArea").GetComponent<Renderer>();
+        placableArea.enabled = true;
         resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
         startPosition = transform.position; // Store start position to preserve z value
         transform.SetParent(transform.root);
@@ -34,7 +37,7 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         Debug.Log("End drag");
         resourceBar.renderManaNeed(0);
-
+        placableArea.enabled = false;
         spawnArea = GameObject.Find("HeroSpawnArea").GetComponent<Transform>();
         float topX = spawnArea.transform.localPosition.x;
         float topY = spawnArea.transform.localPosition.y;
