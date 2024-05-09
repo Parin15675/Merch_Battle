@@ -9,6 +9,7 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] private Transform targetObject; // Target object to base the spawn position on
     public int count;
     public float waitSpawn;
+    public speed_adjust speed_Adjust;
 
     private void Start()
     {
@@ -53,10 +54,12 @@ public class RandomSpawn : MonoBehaviour
             heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.y);
 
             Debug.Log("Hero spawned at: " + heroInstance.GetComponent<RectTransform>().anchoredPosition);
+
+            
         }
 
         else
-        {
+        { 
             Debug.Log("count = 0");
         }
     }
