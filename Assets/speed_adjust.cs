@@ -3,12 +3,24 @@ using UnityEngine;
 
 public class speed_adjust : MonoBehaviour
 {
-    public GameObject[] heroes; 
-    public GameObject[] enemies; 
-    public float newSpeed_hero = 60f; 
-    public float newSpeed_enemy = -60f; 
 
-    public void AdjustSpeed()
+
+    public GameObject[] heroes = new GameObject[3]; 
+    public GameObject[] enemies = new GameObject[3];
+    public float newSpeed_hero = 60f; 
+    public float newSpeed_enemy = -60f;
+
+    public void allAdjustSpeed()
+    {
+        AdjustSpeed_hero();
+        AdjustSpeed_enemy();
+
+    }
+
+
+
+
+    public void AdjustSpeed_hero()
     {
         // Adjust speed for all heroes
         foreach (GameObject hero in heroes)
@@ -22,14 +34,25 @@ public class speed_adjust : MonoBehaviour
             {
                 Debug.LogWarning("HeroMovement component not found on a hero!");
             }
+            // Adjust speed for all enemies
+
         }
 
-        // Adjust speed for all enemies
+
+
+        Debug.Log("Speed adjusted to ");
+    }
+
+    public void AdjustSpeed_enemy()
+    {
+        Debug.Log("AdjustSpeed_enemy");
+
         foreach (GameObject enemy in enemies)
         {
             EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
             if (enemyMovement != null)
             {
+                Debug.Log("-60");
                 enemyMovement.speed = newSpeed_enemy;
             }
             else
@@ -37,6 +60,8 @@ public class speed_adjust : MonoBehaviour
                 Debug.LogWarning("EnemyMovement component not found on an enemy!");
             }
         }
+
+
 
         Debug.Log("Speed adjusted to ");
     }
