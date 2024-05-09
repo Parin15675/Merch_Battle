@@ -6,7 +6,6 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
     private Rigidbody2D spellRigidBody;
-    private Transform target;
     private GameObject spellAim;
     private GameObject spellObj;
     private Vector3 startPosition;
@@ -15,13 +14,9 @@ public class Spell : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    public int damage = 10;
     public GameObject spellPrefab;
     public GameObject spellAimPrefab;
-
-    public void Start()
-    {
-        
-    }
 
     public void cast()
     {
@@ -43,13 +38,20 @@ public class Spell : MonoBehaviour
         else if (Input.GetMouseButtonDown(0) && spellAim != null) 
         {
             spellObj = Instantiate(spellPrefab, new Vector3(lastAimPosition.x, lastAimPosition.y + 1000, 1), spellPrefab.transform.rotation);
+            spellObj.GetComponent<Collider2D>().enabled = false;
             spellObj.transform.SetParent(spellAim.transform.root);
             spellObj.transform.SetAsLastSibling();
         } 
-        else if(spellObj != null && spellObj.transform.position.y < lastAimPosition.y)
+        else if(spellObj != null && spellObj.transform.position.y < lastAimPosition.y + 50)
+        {
+            spellObj.GetComponent<Collider2D>().enabled = true;
+        }
+        if (spellObj != null && spellObj.transform.position.y < lastAimPosition.y)
         {
             Destroy(spellAim);
             Destroy(spellObj);
         }
     }
+
+
 }

@@ -2595,6 +2595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  damage: 10
   spellPrefab: {fileID: 7565743670843031496, guid: e948e5e3052b8954097e98d9da7f7154, type: 3}
   spellAimPrefab: {fileID: 1689582964411026328, guid: ccb486d040f92264bacc66b8e7232e57, type: 3}
 --- !u!1 &1026214801
@@ -3317,7 +3318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee782de2c6f6c0842904dc846eee3c88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textMesh: {fileID: 0}
+  textMesh: {fileID: 1285884404}
   dieCount: 14
 --- !u!114 &1285884404
 MonoBehaviour:
