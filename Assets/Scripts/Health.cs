@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+    public TextUpdater text;
 
     void Start()
     {
@@ -36,7 +37,7 @@ public class Health : MonoBehaviour
     }
 
     void Die()
-    {
+    {   
         Debug.Log(gameObject.name + " died.");
         // Optionally, destroy the game object if it's an enemy
         Destroy(gameObject);

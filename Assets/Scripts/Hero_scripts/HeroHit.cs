@@ -18,7 +18,7 @@ public class HeroHit : MonoBehaviour
         if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
         {
             Debug.Log(gameObject.name + "Hit Enemy");
-            Health enemyHealth = target.gameObject.GetComponent<Health>();
+            HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
             Debug.Log(gameObject.name + "Speed  hero 0");
             heroMovement.StopMovement();
             StartCoroutine(AttackEnemy(enemyHealth));
@@ -65,7 +65,7 @@ public class HeroHit : MonoBehaviour
         //}
     }
 
-    private IEnumerator AttackEnemy(Health enemyHealth)
+    private IEnumerator AttackEnemy(HealthEnemy enemyHealth)
     {
         isAttacking = true;
 

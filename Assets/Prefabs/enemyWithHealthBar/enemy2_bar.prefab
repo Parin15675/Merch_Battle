@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 2725657258228787312}
   - component: {fileID: 8079777138950122995}
   - component: {fileID: 7586982190003628011}
+  - component: {fileID: -6210112326749175279}
   m_Layer: 0
   m_Name: enemy2_bar
   m_TagString: Enemy
@@ -343,7 +344,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5852435071534139275}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
   m_Name: 
@@ -364,6 +365,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -30
+--- !u!114 &-6210112326749175279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5852435071534139275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98104055eb746cb41b05e679b9ad3830, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 50
+  healthBar: {fileID: 3642680205232281831}
+  text: {fileID: 0}
 --- !u!1 &8099959157426721007
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
