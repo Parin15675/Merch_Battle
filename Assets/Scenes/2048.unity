@@ -2729,6 +2729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  damage: 10
   spellPrefab: {fileID: 7565743670843031496, guid: e948e5e3052b8954097e98d9da7f7154, type: 3}
   spellAimPrefab: {fileID: 1689582964411026328, guid: ccb486d040f92264bacc66b8e7232e57, type: 3}
 --- !u!1 &1026214801
