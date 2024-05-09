@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+    public TextUpdater text;
 
     void Start()
     {

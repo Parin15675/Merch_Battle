@@ -12,6 +12,7 @@ public class HealthEnemy : MonoBehaviour
 
     void Start()
     {
+        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>(); 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -24,7 +25,7 @@ public class HealthEnemy : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            Die_enemy();
         }
     }
 
@@ -38,11 +39,14 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(gameObject.name + " healed " + amount + " health.");
     }
 
-    void Die()
+    void Die_enemy()
     {
-        Debug.Log(gameObject.name + " died.");
+        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
+        text.dieCount--;
+        Debug.Log("die count");
+        Debug.Log(gameObject.name + " died.1234");
         // Optionally, destroy the game object if it's an enemy
         Destroy(gameObject);
-        text.dieCount--;
+
     }
 }
