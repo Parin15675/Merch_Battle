@@ -14,6 +14,7 @@ public class Spell : MonoBehaviour
     [SerializeField]
     private float speed;
 
+    public int instaniateDistance = 0;
     public int damage = 10;
     public GameObject spellPrefab;
     public GameObject spellAimPrefab;
@@ -37,7 +38,7 @@ public class Spell : MonoBehaviour
         } 
         else if (Input.GetMouseButtonDown(0) && spellAim != null) 
         {
-            spellObj = Instantiate(spellPrefab, new Vector3(lastAimPosition.x, lastAimPosition.y + 1000, 1), spellPrefab.transform.rotation);
+            spellObj = Instantiate(spellPrefab, new Vector3(lastAimPosition.x, lastAimPosition.y + instaniateDistance, 1), spellPrefab.transform.rotation);
             spellObj.GetComponent<Collider2D>().enabled = false;
             spellObj.transform.SetParent(spellAim.transform.root);
             spellObj.transform.SetAsLastSibling();
