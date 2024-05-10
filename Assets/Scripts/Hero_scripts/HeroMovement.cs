@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class HeroMovement : MonoBehaviour
 {
-    public float speed = 5.0f;
+    public float speed = 30.0f;
     public static HeroMovement activeHero;  // Static reference to the currently active hero
 
     private List<Transform> enemies = new List<Transform>();
@@ -13,6 +13,8 @@ public class HeroMovement : MonoBehaviour
     private bool canMove = true;
     public bool tagged_hero = false;
     public arrow arrow;
+
+    public int point = 1;
 
     void Start()
     {

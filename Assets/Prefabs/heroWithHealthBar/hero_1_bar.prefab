@@ -268,6 +268,7 @@ MonoBehaviour:
   speed: 30
   tagged_hero: 0
   arrow: {fileID: 5556550410166875112}
+  point: 1
 --- !u!50 &4260315772665644106
 Rigidbody2D:
   serializedVersion: 4
@@ -354,7 +355,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  point: 1
   healthBar: {fileID: 1302747030070454418}
+  text: {fileID: 0}
 --- !u!114 &8841240600132663152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   isAttacking: 0
+  point: 1
 --- !u!70 &6163286799852843943
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

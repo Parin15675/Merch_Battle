@@ -4,6 +4,7 @@ public class Health : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public int point = 1;
 
     public HealthBar healthBar;
     public TextUpdater text;

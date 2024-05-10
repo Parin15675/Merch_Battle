@@ -7,6 +7,7 @@ public class HeroHit : MonoBehaviour
     private bool isAnotherHeroNearby = false;
     public int attackDamage = 10;
     public bool isAttacking = false;
+    public int point = 1;
 
     private void Awake()
     {

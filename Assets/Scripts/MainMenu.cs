@@ -11,6 +11,13 @@ public class MainMenu : MonoBehaviour
         
     }
 
+    public void Options()
+    {
+        Debug.Log("Play");
+        SceneManager.LoadScene("2048");
+
+    }
+
 
 
     public void Quit()
