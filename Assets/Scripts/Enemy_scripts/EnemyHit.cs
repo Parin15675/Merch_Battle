@@ -10,9 +10,6 @@ public class EnemyHit : MonoBehaviour
     public int attackDamage = 10;
     public bool isAttacking = false;
 
-
-
-
     private void Awake()
     {
         enemyMovement = GetComponent<EnemyMovement>();

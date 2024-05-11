@@ -34,6 +34,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+        healthBar.SetHealth(currentHealth);
         Debug.Log(gameObject.name + " healed " + amount + " health.");
     }
 

@@ -10,7 +10,7 @@ public class arrow : MonoBehaviour
 
     void Update()
     {
-        
+
         if (hero.tagged_hero)
         {
             gameObject.SetActive(true);

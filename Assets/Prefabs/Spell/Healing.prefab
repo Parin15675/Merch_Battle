@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 954552994841314447}
   - component: {fileID: 4099782180151208038}
   - component: {fileID: 4939362223144490676}
+  - component: {fileID: -4029559219905140298}
   m_Layer: 0
   m_Name: Healing
   m_TagString: Untagged
@@ -4808,7 +4809,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
-  m_MinParticleSize: 0.02
+  m_MinParticleSize: 0.03
   m_MaxParticleSize: 0.1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
@@ -4858,7 +4859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.50487196, g: 1, b: 0, a: 0.078431375}
+  m_Color: {r: 0.50487196, g: 1, b: 0, a: 0.19607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4909,4 +4910,20 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 150
+--- !u!114 &-4029559219905140298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248053185166038091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13cff9060e6c214b9957f255911caed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Heal
+  cooldownTime: 10
+  activeTime: 5
+  HealingAmount: 10
