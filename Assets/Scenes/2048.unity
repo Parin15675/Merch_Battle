@@ -2044,11 +2044,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c7af1979a2fc442a07cecc4cb19211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   spellRigidBody: {fileID: 0}
   spellAim: {fileID: 0}
   spellObj: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   lastAimPosition: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of cf5c095 (spell_update)
   speed: 0
   instaniateDistance: 0
   damage: 10
@@ -2996,11 +2999,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c7af1979a2fc442a07cecc4cb19211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   spellRigidBody: {fileID: 0}
   spellAim: {fileID: 0}
   spellObj: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   lastAimPosition: {x: 0, y: 0, z: 0}
+=======
+>>>>>>> parent of cf5c095 (spell_update)
   speed: 0
   instaniateDistance: 1000
   damage: 10
