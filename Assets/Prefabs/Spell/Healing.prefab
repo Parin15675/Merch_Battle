@@ -4926,4 +4926,4 @@ MonoBehaviour:
   name: Heal
   cooldownTime: 10
   activeTime: 5
-  HealingAmount: 10
+  HealingAmount: 5
