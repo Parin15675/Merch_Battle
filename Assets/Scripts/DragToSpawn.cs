@@ -10,8 +10,8 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     private Vector3 startPosition;
     private ResourceBarTracker resourceBar;
     private Transform spawnArea;
-    public Renderer placableArea;
 
+    public Renderer placableArea;
     public Tile tile;
     public List<GameObject> HeroPrefab;
 
@@ -22,7 +22,7 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         placableArea.enabled = true;
         resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
         startPosition = transform.position; // Store start position to preserve z value
-        transform.SetParent(transform.root);
+        transform.SetParent(GameObject.Find("Panel").transform);
         transform.SetAsLastSibling();
     }
 

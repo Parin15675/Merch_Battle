@@ -51,6 +51,7 @@ public class RandomSpawn : MonoBehaviour
             // Instantiate the selected prefab as a child of spawnArea and position it based on the targetObject's position
             GameObject heroInstance = Instantiate(selectedPrefab, spawnArea, false);
             Vector3 position = spawnArea.InverseTransformPoint(targetObject.position);
+            heroInstance.transform.SetParent(GameObject.Find("Panel").transform);
             heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.y);
 
             Debug.Log("Hero spawned at: " + heroInstance.GetComponent<RectTransform>().anchoredPosition);
