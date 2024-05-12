@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;  
 
 public class Health : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Health : MonoBehaviour
 
     public HealthBar healthBar;
     public TextUpdater text;
+    public Animator animator;
 
     void Start()
     {
@@ -39,9 +41,17 @@ public class Health : MonoBehaviour
     }
 
     void Die()
-    {   
+    {
         Debug.Log(gameObject.name + " died.");
-        // Optionally, destroy the game object if it's an enemy
+        animator.SetBool("Die", true);
+
+        StartCoroutine(DelayedDestruction());
+    }
+
+    private IEnumerator DelayedDestruction()
+    {
+        yield return new WaitForSeconds(1);
+
         Destroy(gameObject);
     }
 }

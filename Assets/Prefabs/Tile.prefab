@@ -282,14 +282,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885ea948265d82d42957caa2c671ae5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placableArea: {fileID: 0}
   tile: {fileID: 7453207933971359650}
   HeroPrefab:
-  - {fileID: 1306842086515732738, guid: 3f3bc879e3cf5b94eb25befae2840add, type: 3}
-  - {fileID: 6870610199898345969, guid: 6bf9e915bffa3ce478654db0145fd144, type: 3}
-  - {fileID: 1782874575632370032, guid: 998d87cf4dcc50743b38f5e914aab805, type: 3}
-  - {fileID: 2747541751370741882, guid: c78cf96add2504c489d13711f8954036, type: 3}
-  - {fileID: 5334590720742105564, guid: aed96a4c8a69e53428fec7627904d4fc, type: 3}
-  - {fileID: 8943888091455547942, guid: e3193d216dba28c4194e4a5b75e588cc, type: 3}
-  - {fileID: 2386834764417212989, guid: d18aeaff27e6a9f4592de7e5704d544f, type: 3}
-  - {fileID: 5849721920806054766, guid: 294822feb38799d4bb6ee84128578101, type: 3}
-  spawnArea: {fileID: 8160183590103307979, guid: 2d9f195c36b41894cbed525ab00c9e48, type: 3}
+  - {fileID: 6375947747883966403, guid: 0509cf4b293c71241b6091b94b4a4472, type: 3}
+  - {fileID: 9098851240883789147, guid: 72eb656a83bcd954889a0c0c608e0ee0, type: 3}
+  - {fileID: 386442087008178858, guid: 8659115e6bbaac34db336ed66c3af374, type: 3}
+  - {fileID: 2649749201771322687, guid: 209146c801d7a6249b883b6b992edf36, type: 3}
+  - {fileID: 8782687362973166208, guid: 1d91831625213d84383e372632f0f704, type: 3}
+  - {fileID: 3886735024089342366, guid: ea87febfbf5870b4cb127ebf8ef1b619, type: 3}
+  - {fileID: 3327035015692461527, guid: 049d7ded42e2b354b8e312d49fc8fea2, type: 3}
+  - {fileID: 1664051743352021021, guid: 0fa08c848ad35d2418c759b15ce12cee, type: 3}
+  - {fileID: 4775917420521871132, guid: 7fef0f91485ab8246ac5ea4374bd7d44, type: 3}
+  - {fileID: 502313949766168140, guid: 429f87ab25a259c4ab39c689a34d4be7, type: 3}
