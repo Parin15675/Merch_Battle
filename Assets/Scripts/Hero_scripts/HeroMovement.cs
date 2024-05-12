@@ -14,6 +14,8 @@ public class HeroMovement : MonoBehaviour
     public bool tagged_hero = false;
     public arrow arrow;
 
+    public Animator animator;
+
     public int point = 1;
 
     void Start()
@@ -26,11 +28,11 @@ public class HeroMovement : MonoBehaviour
         // Check if this instance is the active hero
         if (this == activeHero)
         {
-            
+
             if (Input.GetMouseButtonDown(0))
             {
                 SelectTargetEnemyWithMouse();
-                
+
             }
 
             if (canMove && targetEnemy != null)
@@ -42,7 +44,7 @@ public class HeroMovement : MonoBehaviour
                 WalkForward();
             }
         }
-        else if (targetEnemy != null) 
+        else if (targetEnemy != null)
         {
             arrow.gameObject.SetActive(false);
             MoveTowardsEnemy();
@@ -56,11 +58,11 @@ public class HeroMovement : MonoBehaviour
 
     void OnMouseDown()  // This function is called when this GameObject is clicked
     {
-        
+
         if (activeHero != this)
         {
             Debug.Log($"Control switched to hero: {gameObject.name}");
-            activeHero = this;  
+            activeHero = this;
             activeHero.tagged_hero = true;
             arrow.gameObject.SetActive(true);
         }
