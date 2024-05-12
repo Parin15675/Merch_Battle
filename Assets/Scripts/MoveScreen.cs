@@ -11,11 +11,27 @@ public class MoveScreen : MonoBehaviour
         isOpen = !isOpen;   
         if (isOpen)
         {
-            gameObject.transform.localPosition = new Vector3(10, 0, 1);
+            StartCoroutine(Animate(new Vector3(10, 0, 1)));
         } 
         else
         {
-            gameObject.transform.localPosition = new Vector3(-731, 0, 1);
+            StartCoroutine(Animate(new Vector3(-731, 0, 1)));
         }
+    }
+
+    private IEnumerator Animate(Vector3 to)
+    {
+        float elapsed = 0f;
+        float duration = 0.1f;
+        Vector3 from = transform.localPosition;
+
+        while (elapsed < duration)
+        {
+            transform.localPosition = Vector3.Lerp(from, to, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.localPosition = to;
     }
 }
