@@ -8,6 +8,7 @@ public class HeroHit : MonoBehaviour
     public int attackDamage = 10;
     public bool isAttacking = false;
     public int point = 1;
+    public Animator animator;
 
     private void Awake()
     {
@@ -19,6 +20,7 @@ public class HeroHit : MonoBehaviour
         if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
         {
             Debug.Log(gameObject.name + "Hit Enemy");
+            animator.SetBool("Attackig", true);
             HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
             Debug.Log(gameObject.name + "Speed  hero 0");
             heroMovement.StopMovement();
@@ -77,6 +79,7 @@ public class HeroHit : MonoBehaviour
         }
 
         isAttacking = false;
+        animator.SetBool("Attackig", false);
         heroMovement.StartMovement(30.0f); 
     }
 }
