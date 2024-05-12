@@ -1293,7 +1293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35840616781ec74fafe521a5a0e5e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 493668183}
   hero: {fileID: 0}
   delay: 0.3
 --- !u!95 &493668183
@@ -4092,7 +4091,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 766, y: 437}
+  m_AnchoredPosition: {x: 655, y: 371.45}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285884403
@@ -6204,6 +6203,7 @@ MonoBehaviour:
   point: 1
   healthBar: {fileID: 521210141}
   text: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &1894085940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7136,7 +7136,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Restart
+  m_text: 'Next Level
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
