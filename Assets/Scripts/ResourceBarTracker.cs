@@ -7,6 +7,8 @@ public class ResourceBarTracker : MonoBehaviour
 {
     float timer = 0.0f;
 
+    private float manaNeedBarStartingPosx;
+
     [Header("Core Settings")]
     [SerializeField] private Image bar;
     [SerializeField] private GameObject manaNeed;
@@ -35,7 +37,7 @@ public class ResourceBarTracker : MonoBehaviour
 
     private void Start()
     {
-
+        manaNeedBarStartingPosx = manaNeed.GetComponent<RectTransform>().transform.localPosition.x;
     }
 
     private void Update()
@@ -58,7 +60,8 @@ public class ResourceBarTracker : MonoBehaviour
 
     public void updateManaNeed()
     {
-        manaNeed.GetComponent<RectTransform>().transform.localPosition = new Vector3((maxResource - currentResource) * -25, manaNeed.GetComponent<RectTransform>().localPosition.y, 1f);
+        float calculatedX = manaNeedBarStartingPosx - ( (1f - (float) currentResource / maxResource) * manaNeed.GetComponent<RectTransform>().rect.width);
+        manaNeed.GetComponent<RectTransform>().transform.localPosition = new Vector3(calculatedX, manaNeed.GetComponent<RectTransform>().localPosition.y, 1f);
     }
 
     public void renderManaNeed(int manaForSpawn)

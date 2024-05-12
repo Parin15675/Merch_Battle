@@ -1293,7 +1293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e35840616781ec74fafe521a5a0e5e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 493668183}
   hero: {fileID: 0}
   delay: 0.3
 --- !u!95 &493668183
@@ -4240,10 +4239,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1123541528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.04788971, y: 0.77563}
-  m_SizeDelta: {x: -87.56641, y: -16.33586}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 87.05261, y: -11.22437}
+  m_SizeDelta: {x: 87.43097, y: 7.6641407}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1323333623
 MonoBehaviour:
@@ -4258,7 +4257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 1, g: 0, b: 0, a: 0.65882355}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6204,6 +6203,7 @@ MonoBehaviour:
   point: 1
   healthBar: {fileID: 521210141}
   text: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!114 &1894085940
 MonoBehaviour:
   m_ObjectHideFlags: 0
