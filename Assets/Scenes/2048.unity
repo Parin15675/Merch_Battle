@@ -449,6 +449,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07aaf55cef7b58468eec374b5bf1c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &132943550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132943551}
+  - component: {fileID: 132943552}
+  m_Layer: 5
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &132943551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132943550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 787080486}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &132943552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132943550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ab34d9d49ec5a45a19f6535d5f330d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnArea: {fileID: 132943551}
+  targetObject: {fileID: 1850458803}
+  spawnSequence:
+  - enemy: {fileID: 6375947747883966403, guid: ef804433ddd4b5c41847df7ab21c02be, type: 3}
+    amount: 3
+  - enemy: {fileID: 9098851240883789147, guid: 72eb656a83bcd954889a0c0c608e0ee0, type: 3}
+    amount: 2
+  - enemy: {fileID: 386442087008178858, guid: 8659115e6bbaac34db336ed66c3af374, type: 3}
+    amount: 2
+  - enemy: {fileID: 2649749201771322687, guid: 209146c801d7a6249b883b6b992edf36, type: 3}
+    amount: 1
+  count: 0
+  waitSpawn: 5
 --- !u!1 &161220537
 GameObject:
   m_ObjectHideFlags: 0
@@ -4384,6 +4445,7 @@ RectTransform:
   - {fileID: 1894085937}
   - {fileID: 1850458803}
   - {fileID: 1751871579}
+  - {fileID: 132943551}
   m_Father: {fileID: 1338257436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9022,8 +9084,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 818192517
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a3a5f0f19abc224392e56232607b61f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9514,7 +9576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1751871579
 RectTransform:
   m_ObjectHideFlags: 0
