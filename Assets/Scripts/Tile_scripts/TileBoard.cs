@@ -47,7 +47,6 @@ public class TileBoard : MonoBehaviour
     private void Update()
     {
         tiles.RemoveAll(item => item == null);
-        Debug.Log(tiles.Count);
 
         if (!waiting)
         {

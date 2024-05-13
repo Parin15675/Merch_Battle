@@ -40,15 +40,10 @@ public class AbilityHiolder : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     abilityObj = Instantiate(abilityPrefab);
-
                     ability = abilityObj.GetComponent<Ability>();
-
                     ability.Activate(spellCastCircle);
-
                     activeTime = ability.activeTime;
-
                     state = AbilityState.active;
-
                     spellCastCircle.GetComponent<Image>().enabled = false;
 
                     Debug.Log("Abilty active");

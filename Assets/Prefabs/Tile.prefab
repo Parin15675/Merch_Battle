@@ -282,10 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 885ea948265d82d42957caa2c671ae5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placableArea: {fileID: 0}
   tile: {fileID: 7453207933971359650}
   HeroPrefab:
-  - {fileID: 6375947747883966403, guid: 0509cf4b293c71241b6091b94b4a4472, type: 3}
+  - {fileID: 6375947747883966403, guid: ef804433ddd4b5c41847df7ab21c02be, type: 3}
   - {fileID: 9098851240883789147, guid: 72eb656a83bcd954889a0c0c608e0ee0, type: 3}
   - {fileID: 386442087008178858, guid: 8659115e6bbaac34db336ed66c3af374, type: 3}
   - {fileID: 2649749201771322687, guid: 209146c801d7a6249b883b6b992edf36, type: 3}
