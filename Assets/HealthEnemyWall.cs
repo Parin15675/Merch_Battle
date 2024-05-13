@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthEnemy : MonoBehaviour
+public class HealthEnemyWall : MonoBehaviour
 {
-    public int maxHealth = 100;
+    public int maxHealth = 1000;
     public int currentHealth;
 
     public HealthBar healthBar;
@@ -12,12 +12,25 @@ public class HealthEnemy : MonoBehaviour
 
     void Start()
     {
-        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>(); 
+        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
-
+    private void Update()
+    {
+        if (text.dieCount == 0)
+        {
+            if(currentHealth > 300)
+            {
+                healthBar.SetMaxHealth(300);
+            }
+        }
+        else
+        {
+            Debug.Log("Update enemy wall");
+        }
+    }
 
     public void TakeDamage(int damage)
     {

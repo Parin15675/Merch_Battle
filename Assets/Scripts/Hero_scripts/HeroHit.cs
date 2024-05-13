@@ -25,8 +25,6 @@ public class HeroHit : MonoBehaviour
             Debug.Log(gameObject.name + "Speed  hero 0");
             heroMovement.StopMovement();
             StartCoroutine(AttackEnemy(enemyHealth));
-
-
         }
     }
 

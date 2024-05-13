@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.36862746, g: 0.74509805, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -413,9 +413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  point: 1
+  maxHealth: 150
+  currentHealth: 150
+  point: 6
   healthBar: {fileID: 4090809690012904969}
   text: {fileID: 0}
   animator: {fileID: 2243693570282851783}
@@ -431,11 +431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7255a458556f484b857954a38d8cfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 40
   tagged_hero: 0
   arrow: {fileID: 3037036836488083598}
   animator: {fileID: 2243693570282851783}
-  point: 1
+  point: 6
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4
