@@ -20,9 +20,6 @@ public class EnemyHit : MonoBehaviour
     {
         Debug.Log("Collision with: " + target.gameObject.name);
 
-        RectTransform thisRect = this.gameObject.GetComponent<RectTransform>();
-        RectTransform rect = target.gameObject.GetComponent<RectTransform>();
-
         if (target.gameObject.CompareTag("Hero"))
         {
             Health heroHealth = target.gameObject.GetComponent<Health>();
@@ -52,25 +49,10 @@ public class EnemyHit : MonoBehaviour
         else if (target.gameObject.CompareTag("Human arrow"))
         {
             enemyMovement.speed = enemyMovement.speed / 2;
-            
-            
-            //if (target.gameObject.CompareTag("Human"))
-            //{
-            //    Health heroHealth = target.gameObject.GetComponent<Health>();
-            //    Debug.Log(gameObject.name + "Hit Hero");
-
-            //    if (enemyMovement != null && heroHealth != null)
-            //    {
-            //        Debug.Log(gameObject.name + "Enemy speed 0");
-            //        enemyMovement.StopMovement();
-
-            //        StartCoroutine(AttackEnemy(heroHealth));
-            //    }
-            //}
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log("Another hero left, resuming.");
         isAnotherEnemyNearby = false;
