@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HeroHit : MonoBehaviour
 {
-    private HeroMovement heroMovement;
+    public HeroMovement heroMovement;
     private bool isAnotherHeroNearby = false;
     public int attackDamage = 10;
     public bool isAttacking = false;

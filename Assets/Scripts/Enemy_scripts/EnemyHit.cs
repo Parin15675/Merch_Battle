@@ -49,9 +49,28 @@ public class EnemyHit : MonoBehaviour
                 StartCoroutine(AttackEnemy(castleHealth));
             }
         }
+        else if (target.gameObject.CompareTag("Human arrow"))
+        {
+            enemyMovement.speed = enemyMovement.speed / 2;
+            
+            
+            //if (target.gameObject.CompareTag("Human"))
+            //{
+            //    Health heroHealth = target.gameObject.GetComponent<Health>();
+            //    Debug.Log(gameObject.name + "Hit Hero");
+
+            //    if (enemyMovement != null && heroHealth != null)
+            //    {
+            //        Debug.Log(gameObject.name + "Enemy speed 0");
+            //        enemyMovement.StopMovement();
+
+            //        StartCoroutine(AttackEnemy(heroHealth));
+            //    }
+            //}
+        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Another hero left, resuming.");
         isAnotherEnemyNearby = false;
