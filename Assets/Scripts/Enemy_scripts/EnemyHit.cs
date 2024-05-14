@@ -1,12 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyHit : MonoBehaviour
 {
     private EnemyMovement enemyMovement;
-    private bool isAnotherEnemyNearby = false;
     public int attackDamage = 10;
     public bool isAttacking = false;
     public Animator animator;
@@ -18,68 +15,30 @@ public class EnemyHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        Debug.Log("Collision with: " + target.gameObject.name);
-
-        if (target.gameObject.CompareTag("Hero"))
+        if (target.CompareTag("Hero") || target.CompareTag("PlayerCastle"))
         {
-            Health heroHealth = target.gameObject.GetComponent<Health>();
-            Debug.Log(gameObject.name + "Hit Hero");
-
-            if (enemyMovement != null && heroHealth != null)
+            Health targetHealth = target.GetComponent<Health>();
+            if (targetHealth != null)
             {
-                Debug.Log(gameObject.name + "Enemy speed 0");
                 enemyMovement.StopMovement();
-                
-                StartCoroutine(AttackEnemy(heroHealth));
+                StartCoroutine(AttackTarget(targetHealth));
             }
-        }
-        else if(target.gameObject.CompareTag("player castle"))
-        {
-            Health castleHealth = target.gameObject.GetComponent<Health>();
-            Debug.Log(gameObject.name + "Hit castle");
-
-            if (castleHealth != null)
-            {
-                Debug.Log(gameObject.name + "Enemy speed 0");
-                enemyMovement.StopMovement();
-                
-                StartCoroutine(AttackEnemy(castleHealth));
-            }
-        }
-        else if (target.gameObject.CompareTag("Human arrow"))
-        {
-            enemyMovement.speed = enemyMovement.speed / 2;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("Another hero left, resuming.");
-        isAnotherEnemyNearby = false;
-        enemyMovement.StartMovement(-30.0f);
-    }
-
-    private IEnumerator AttackEnemy(Health enemyHealth)
+    private IEnumerator AttackTarget(Health targetHealth)
     {
         isAttacking = true;
         animator.SetBool("Attacking", true);
 
-        while (enemyHealth.currentHealth > 0)
+        while (targetHealth.currentHealth > 0)
         {
-            enemyHealth.TakeDamage(attackDamage);
-            yield return new WaitForSeconds(1f); 
+            targetHealth.TakeDamage(attackDamage);
+            yield return new WaitForSeconds(1f);
         }
 
         animator.SetBool("Attacking", false);
-
         isAttacking = false;
-        enemyMovement.StartMovement(-30.0f); 
+        enemyMovement.StartMovement();
     }
-
-
-
-
-
-
-
 }

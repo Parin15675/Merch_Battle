@@ -6,9 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Hero
-  - player castle
   - enemy wall
   - Human arrow
+  - PlayerCastle
   layers:
   - Default
   - TransparentFX

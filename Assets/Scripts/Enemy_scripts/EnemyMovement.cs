@@ -1,75 +1,69 @@
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
-    public float speed = -30.0f; 
+    public float speed = -30.0f;
     private bool canMove = true;
-    private Transform targetEnemy;
-    private List<Transform> enemies;
+    private Transform currentTarget;
+    private List<Transform> targets;
 
     void Update()
     {
-        FindAllEnemies();
-        targetEnemy = GetClosestEnemy(enemies);
-
         if (canMove)
-        {   if (targetEnemy == null)
+        {
+            FindAllTargets();
+            currentTarget = GetClosestTarget();
+
+            if (currentTarget != null)
             {
-                WalkForward();
-            } 
+                MoveTowardsTarget();
+            }
             else
             {
-                MoveTowardsEnemy();
+                WalkForward();
             }
-            
-        }
-        else
-        {
-            transform.Translate(new Vector3(0, 0, 0));
         }
     }
 
-    Transform GetClosestEnemy(List<Transform> enemies)
+    private Transform GetClosestTarget()
     {
-        Transform bestTarget = null;
+        if (targets == null || targets.Count == 0) return null;
+
+        Transform closestTarget = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
-        foreach (Transform potentialTarget in enemies)
+
+        foreach (Transform potentialTarget in targets)
         {
-            Vector3 directionToTarget = potentialTarget.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
+            float distanceSqr = (potentialTarget.position - currentPosition).sqrMagnitude;
+            if (distanceSqr < closestDistanceSqr)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
+                closestDistanceSqr = distanceSqr;
+                closestTarget = potentialTarget;
             }
         }
 
-        return bestTarget;
+        return closestTarget;
     }
 
-    private void MoveTowardsEnemy()
+    private void MoveTowardsTarget()
     {
-        Vector3 direction = (targetEnemy.position - transform.position).normalized;
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
         transform.position -= direction * speed * Time.deltaTime;
     }
 
-    private void FindAllEnemies()
+    private void FindAllTargets()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Hero").Select(h => h.transform).ToList();
-        if (enemies.Count == 0)
-        {
-            Debug.LogWarning("No enemies found.");
-        }
+        targets = GameObject.FindGameObjectsWithTag("Hero")
+                            .Select(hero => hero.transform)
+                            .ToList();
     }
 
     private void WalkForward()
     {
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     public void StopMovement()
@@ -78,13 +72,9 @@ public class EnemyMovement : MonoBehaviour
         speed = 0;
     }
 
-    public void StartMovement(float newSpeed)
+    public void StartMovement()
     {
-        speed = newSpeed; // Set new speed if needed
         canMove = true;
-        Debug.Log("Movement restarted at speed: " + newSpeed);
+        speed = -30f; // Reset to default speed or set to a desired value
     }
-
 }
-
-
