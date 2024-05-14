@@ -5,27 +5,29 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    [Serializable]
-    public struct spawnSequences
-    {
-        public GameObject enemy;
-        public int amount;
-    }
-
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private RectTransform spawnArea; 
     [SerializeField] private Transform targetObject;
-    [SerializeField] private List<spawnSequences> spawnSequence;
-
+    
     private int offset;
     private int padding;
+    private bool isSpawnFinish = true;
 
-    public int count;
+    public int gameLevel;
     public float waitSpawn;
 
     private void Start()
     {
-        StartCoroutine(SpawnHeroRoutine());
+        gameLevel = gameManager.level;
+    }
+
+    private void Update()
+    {
+        
+        if (isSpawnFinish)
+        {
+            StartCoroutine(SpawnHeroRoutine());
+        }
     }
 
     private void adjustOffset(int amountOfEnemy)
@@ -49,23 +51,37 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnHeroRoutine()
     {
-
-        foreach (spawnSequences enemyToSpawn in spawnSequence)
+        JSONReader reader = this.GetComponent<JSONReader>();
+        foreach (var spawner in reader.enemySpawnerData.enemyspawner)
         {
-            offset = 100;
-            padding = 100;
-            adjustOffset(enemyToSpawn.amount);
-            for (int numberOfEnemy = 0; numberOfEnemy < enemyToSpawn.amount; numberOfEnemy++)
+            Debug.Log(spawner.level);
+            if (spawner.level == gameLevel)
             {
-                GameObject enemyOnField = Instantiate(enemyToSpawn.enemy, spawnArea, false);
-                Vector3 position = spawnArea.InverseTransformPoint(targetObject.position);
-                enemyOnField.transform.SetParent(GameObject.Find("EnemySpawner").transform);
-                enemyOnField.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.y - offset + padding * numberOfEnemy);
+                foreach (var sequence in spawner.spawnsequences)
+                {
+                    Debug.Log(sequence.name);
 
-                Debug.Log("Hero spawned at: " + enemyOnField.GetComponent<RectTransform>().anchoredPosition);
+                    offset = 100;
+                    padding = 100;
+                    adjustOffset(sequence.amount);
+
+                    for (int numberOfEnemy = 0; numberOfEnemy < sequence.amount; numberOfEnemy++)
+                    {
+                        GameObject enemyOnField = Instantiate(Resources.Load<GameObject>("Prefabs/Undead/" + sequence.name), spawnArea, false);
+                        //GameObject enemyOnField = Instantiate(enemyToSpawn.enemy, spawnArea, false);
+                        Vector3 position = spawnArea.InverseTransformPoint(targetObject.position);
+                        enemyOnField.transform.SetParent(GameObject.Find("EnemySpawner").transform);
+                        enemyOnField.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.y - offset + padding * numberOfEnemy);
+
+                        Debug.Log("Hero spawned at: " + enemyOnField.GetComponent<RectTransform>().anchoredPosition);
+                    }
+
+                    isSpawnFinish = false;
+                    yield return new WaitForSeconds(waitSpawn);
+                }
+                
             }
-            yield return new WaitForSeconds(waitSpawn);
         }
-    }
 
+    }
 }

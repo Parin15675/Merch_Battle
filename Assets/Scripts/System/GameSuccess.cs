@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using static EnemySpawner;
+
 public class GameSuccess : MonoBehaviour
 {
-    public int level;
-
     public void Start()
     {
         gameObject.SetActive(false);
@@ -20,7 +18,7 @@ public class GameSuccess : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene("2048");
     }
 
     public void ExitButton()

@@ -10,7 +10,7 @@ public class TileBoard : MonoBehaviour
 
     private bool waiting;
     public TileState[] tileStates;
-    public GameManeger gamemaneger;
+    public GameManager gamemanager;
 
     public int getTiles() { return tiles.Count; }
 
