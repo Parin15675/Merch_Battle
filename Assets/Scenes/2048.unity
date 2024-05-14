@@ -325,6 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132943551}
   - component: {fileID: 132943552}
+  - component: {fileID: 132943553}
   m_Layer: 5
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -363,19 +364,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25ab34d9d49ec5a45a19f6535d5f330d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameLevel: 2
   spawnArea: {fileID: 132943551}
   targetObject: {fileID: 1850458803}
-  spawnSequence:
-  - enemy: {fileID: 6918640803462701186, guid: db75d968cf1a0f24db141b325cbd3925, type: 3}
-    amount: 4
-  - enemy: {fileID: 7109262851727199193, guid: d730ddf6617506440a91cc3d9c38b591, type: 3}
-    amount: 3
-  - enemy: {fileID: 7702468757513483968, guid: cbd9c6e6708f2d240b37b931d6254af1, type: 3}
-    amount: 2
-  - enemy: {fileID: 1732641371693200835, guid: 5a738bdb0c3fe5042b19e7401993d78f, type: 3}
-    amount: 1
   count: 0
   waitSpawn: 5
+--- !u!114 &132943553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132943550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d21b7db36b02447b3f698164158418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textJSON: {fileID: 4900000, guid: 3f19dbb8ef810494cb0528b3640bfb71, type: 3}
+  enemySpawnerData:
+    enemyspawner: []
 --- !u!1 &161220537
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,7 +1793,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 521210143}
   m_FillRect: {fileID: 1489135921}
   m_HandleRect: {fileID: 0}
@@ -3672,7 +3680,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1098088639}
   m_FillRect: {fileID: 663025586}
   m_HandleRect: {fileID: 0}

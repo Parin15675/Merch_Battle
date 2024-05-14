@@ -1,0 +1,46 @@
+{
+    "enemyspawner": [
+        {
+            "level": 1,
+            "spawnsequences": [
+                {
+                    "name": "Undead1",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead2",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead3",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead4",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 2,
+            "spawnsequences": [
+                {
+                    "name": "Undead2",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead3",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead5",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead6",
+                    "amount": 1
+                }
+            ]
+        }
+    ]
+}
