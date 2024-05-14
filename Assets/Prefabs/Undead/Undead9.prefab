@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1a7fceb660f38841b31dfc7a30a2c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 140
   isAttacking: 0
   animator: {fileID: 3423061491044581274}
 --- !u!114 &9068648775494699789
@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98104055eb746cb41b05e679b9ad3830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
+  maxHealth: 600
+  currentHealth: 600
   healthBar: {fileID: 9028231851149229855}
   text: {fileID: 0}
   animator: {fileID: 3423061491044581274}

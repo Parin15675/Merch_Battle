@@ -201,7 +201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  heroMovement: {fileID: 0}
+  attackDamage: 70
   isAttacking: 0
   point: 1
   animator: {fileID: 4965032479005529313}
@@ -217,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7255a458556f484b857954a38d8cfe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  speed: 45
   tagged_hero: 0
   arrow: {fileID: 2551877154286363310}
   animator: {fileID: 4965032479005529313}
@@ -234,8 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866579415617dad45b1d576f158a6624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 450
+  currentHealth: 450
   point: 1
   healthBar: {fileID: 2871748377253406945}
   text: {fileID: 0}

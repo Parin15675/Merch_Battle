@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using static EnemySpawner;
 public class GameSuccess : MonoBehaviour
 {
+    public int level;
+
     public void Start()
     {
         gameObject.SetActive(false);

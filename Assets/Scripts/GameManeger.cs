@@ -10,6 +10,8 @@ public class GameManeger : MonoBehaviour
     public TileBoard board;
     public GameSuccess GameSuccess;
 
+    public int level = 1;       
+        
     private void Start()
     {
         NewGame();
@@ -44,6 +46,7 @@ public class GameManeger : MonoBehaviour
 
     public void Success()
     {
+        level += 1;
         GameSuccess.Setup(); 
         board.enabled = false;
     }
