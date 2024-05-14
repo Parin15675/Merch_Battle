@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class GameSuccess : MonoBehaviour
 {
     public void Start()
@@ -17,7 +18,7 @@ public class GameSuccess : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("Level 2");
+        SceneManager.LoadScene("2048");
     }
 
     public void ExitButton()

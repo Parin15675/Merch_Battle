@@ -5,19 +5,29 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private int gameLevel = 1;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private RectTransform spawnArea; 
     [SerializeField] private Transform targetObject;
     
     private int offset;
     private int padding;
+    private bool isSpawnFinish = true;
 
-    public int count;
+    public int gameLevel;
     public float waitSpawn;
 
     private void Start()
     {
-        StartCoroutine(SpawnHeroRoutine());
+        gameLevel = gameManager.level;
+    }
+
+    private void Update()
+    {
+        
+        if (isSpawnFinish)
+        {
+            StartCoroutine(SpawnHeroRoutine());
+        }
     }
 
     private void adjustOffset(int amountOfEnemy)
@@ -44,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
         JSONReader reader = this.GetComponent<JSONReader>();
         foreach (var spawner in reader.enemySpawnerData.enemyspawner)
         {
+            Debug.Log(spawner.level);
             if (spawner.level == gameLevel)
             {
                 foreach (var sequence in spawner.spawnsequences)
@@ -65,8 +76,10 @@ public class EnemySpawner : MonoBehaviour
                         Debug.Log("Hero spawned at: " + enemyOnField.GetComponent<RectTransform>().anchoredPosition);
                     }
 
+                    isSpawnFinish = false;
                     yield return new WaitForSeconds(waitSpawn);
                 }
+                
             }
         }
 
