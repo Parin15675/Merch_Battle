@@ -9,6 +9,7 @@ public class HealthEnemy : MonoBehaviour
 
     public HealthBar healthBar;
     public TextUpdater text;
+    public Animator animator;
 
     void Start()
     {
@@ -47,8 +48,16 @@ public class HealthEnemy : MonoBehaviour
         text.dieCount--;
         Debug.Log("die count");
         Debug.Log(gameObject.name + " died.1234");
-        // Optionally, destroy the game object if it's an enemy
-        Destroy(gameObject);
+        animator.SetBool("Die", true);
 
+        StartCoroutine(DelayedDestruction());
+
+    }
+
+    private IEnumerator DelayedDestruction()
+    {
+        yield return new WaitForSeconds(1);
+
+        Destroy(gameObject);
     }
 }

@@ -9,6 +9,7 @@ public class EnemyHit : MonoBehaviour
     private bool isAnotherEnemyNearby = false;
     public int attackDamage = 10;
     public bool isAttacking = false;
+    public Animator animator;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class EnemyHit : MonoBehaviour
             {
                 Debug.Log(gameObject.name + "Enemy speed 0");
                 enemyMovement.StopMovement();
+                
                 StartCoroutine(AttackEnemy(heroHealth));
             }
         }
@@ -43,6 +45,7 @@ public class EnemyHit : MonoBehaviour
             {
                 Debug.Log(gameObject.name + "Enemy speed 0");
                 enemyMovement.StopMovement();
+                
                 StartCoroutine(AttackEnemy(castleHealth));
             }
         }
@@ -58,12 +61,15 @@ public class EnemyHit : MonoBehaviour
     private IEnumerator AttackEnemy(Health enemyHealth)
     {
         isAttacking = true;
+        animator.SetBool("Attacking", true);
 
         while (enemyHealth.currentHealth > 0)
         {
             enemyHealth.TakeDamage(attackDamage);
             yield return new WaitForSeconds(1f); 
         }
+
+        animator.SetBool("Attacking", false);
 
         isAttacking = false;
         enemyMovement.StartMovement(-30.0f); 
