@@ -38,7 +38,9 @@ public class GameManager : MonoBehaviour
         if(enemyCastle == null)
         {
             this.Success();
-        }         
+        }
+
+        Level_variables.level = level;
     }
 
     public void NewGame()
@@ -57,6 +59,7 @@ public class GameManager : MonoBehaviour
 
     public void Success()
     {
+        Level_variables.level += 1;
         GameSuccess.Setup(); 
         board.enabled = false;
     }

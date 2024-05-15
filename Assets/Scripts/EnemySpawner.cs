@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         gameLevel = gameManager.level;
+        Debug.Log(gameLevel);
     }
 
     private void Update()
