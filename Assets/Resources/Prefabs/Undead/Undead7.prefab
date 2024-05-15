@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 4327817294684930115}
   - component: {fileID: 8752063031208037259}
   - component: {fileID: 2144952008200340319}
+  - component: {fileID: 8520465289815218126}
   m_Layer: 5
   m_Name: Undead7
   m_TagString: Enemy
@@ -370,6 +371,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 60.535107, y: 47.13966}
   m_EdgeRadius: 0
+--- !u!114 &8520465289815218126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415702286302618901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 30
+  health: 100
+  speed: -30
 --- !u!1 &8664088097809382695
 GameObject:
   m_ObjectHideFlags: 0

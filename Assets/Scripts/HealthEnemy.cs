@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class HealthEnemy : MonoBehaviour
 {
-    public int maxHealth = 100;
+    private BaseCharacter baseCharacter;
+
+    public int maxHealth;
     public int currentHealth;
 
     public HealthBar healthBar;
     public TextUpdater text;
     public Animator animator;
+
+    private void Awake()
+    {
+        baseCharacter = GetComponent<BaseCharacter>();
+        maxHealth = baseCharacter.health;
+    }
 
     void Start()
     {
@@ -17,8 +25,6 @@ public class HealthEnemy : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
-
-
 
     public void TakeDamage(int damage)
     {

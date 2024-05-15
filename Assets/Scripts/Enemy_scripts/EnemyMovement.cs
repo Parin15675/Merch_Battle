@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = -30.0f;
+    private BaseCharacter baseCharacter;
     private bool canMove = true;
     private Transform currentTarget;
     private List<Transform> targets;
+
+    public float speed = -30.0f;
+
+    private void Awake()
+    {
+        baseCharacter = GetComponent<BaseCharacter>();
+        speed = baseCharacter.speed;
+    }
 
     void Update()
     {

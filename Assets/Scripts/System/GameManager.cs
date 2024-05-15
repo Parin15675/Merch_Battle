@@ -24,7 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        textMesh.text = "Level " + level;
+        if (textMesh != null)
+            textMesh.text = textMesh.text + level;
         NewGame();
     }
 

@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8548984702716356319}
   - component: {fileID: 3339439843395103249}
   - component: {fileID: 8712708088972287684}
+  - component: {fileID: -503223360542700744}
   m_Layer: 0
   m_Name: Human9
   m_TagString: Hero
@@ -406,6 +407,21 @@ MonoBehaviour:
   healthBar: {fileID: 3647039594863917161}
   text: {fileID: 0}
   animator: {fileID: 3181457355702536386}
+--- !u!114 &-503223360542700744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4775917420521871132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  health: 0
+  speed: 0
 --- !u!1 &5271784450173770395
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,14 +3,18 @@ using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
 {
+    private BaseCharacter baseCharacter;
     private EnemyMovement enemyMovement;
-    public int attackDamage = 10;
+
+    public int attackDamage;
     public bool isAttacking = false;
     public Animator animator;
 
     private void Awake()
     {
+        baseCharacter = GetComponent<BaseCharacter>();
         enemyMovement = GetComponent<EnemyMovement>();
+        attackDamage = baseCharacter.attack;
     }
 
     private void OnTriggerEnter2D(Collider2D target)

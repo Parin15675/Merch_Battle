@@ -151,6 +151,7 @@ GameObject:
   - component: {fileID: 5422728810373667501}
   - component: {fileID: 6948159737243927684}
   - component: {fileID: 1558659607258203276}
+  - component: {fileID: 139617863823502044}
   m_Layer: 5
   m_Name: Undead8
   m_TagString: Enemy
@@ -278,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 500
-  currentHealth: 0
+  currentHealth: 500
   healthBar: {fileID: 1499701689063479671}
   text: {fileID: 0}
   animator: {fileID: 9132891094616816706}
@@ -354,6 +355,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &139617863823502044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806151318061061539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 30
+  health: 100
+  speed: -30
 --- !u!1 &3496321753944311323
 GameObject:
   m_ObjectHideFlags: 0

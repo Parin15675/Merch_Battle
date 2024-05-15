@@ -3,7 +3,9 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth = 100;
+    private BaseCharacter baseCharacter;
+
+    public int maxHealth;
     public int currentHealth;
     public int point = 1;
 
@@ -11,7 +13,13 @@ public class Health : MonoBehaviour
     public TextUpdater text;
     public Animator animator;
 
-    void Start()
+    private void Awake()
+    {
+        baseCharacter = GetComponent<BaseCharacter>();
+        maxHealth = baseCharacter.health;
+    }
+
+    private void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
