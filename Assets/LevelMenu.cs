@@ -13,33 +13,36 @@ public class LevelMenu : MonoBehaviour
         switch (GameManager.GetCurrentGamelevel()) 
         {
             case 0:
-                SetLevel(1);
+                SetLevel(0);
                 break;
             case 1:
-                SetLevel(2); 
+                SetLevel(1);
                 break;
             case 2:
-                SetLevel(3);
+                SetLevel(2); 
                 break;
             case 3:
-                SetLevel(4);
+                SetLevel(3);
                 break;
             case 4:
-                SetLevel(5);
+                SetLevel(4);
                 break;
             case 5:
-                SetLevel(6);
+                SetLevel(5);
                 break;
             case 6:
+                SetLevel(6);
+                break;
+            case 7:
                 SetLevel(7);
                 break;
-            case 7: 
+            case 8: 
                 SetLevel(8);
                 break;
-            case 8: 
+            case 9: 
                 SetLevel(9);
                 break;
-            case 9: 
+            case 10: 
                 SetLevel(10);
                 break;
             default:
