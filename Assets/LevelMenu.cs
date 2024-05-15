@@ -8,18 +8,18 @@ public class LevelMenu : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(Level_variables.level);
+        Debug.Log(GameManager.GetCurrentGamelevel());
 
-        switch (Level_variables.level) 
+        switch (GameManager.GetCurrentGamelevel()) 
         {
             case 0:
                 SetLevel(0);
                 break;
             case 1:
-                SetLevel(1); 
+                SetLevel(1);
                 break;
             case 2:
-                SetLevel(2);
+                SetLevel(2); 
                 break;
             case 3:
                 SetLevel(3);
@@ -33,7 +33,7 @@ public class LevelMenu : MonoBehaviour
             case 6:
                 SetLevel(6);
                 break;
-            case 7: 
+            case 7:
                 SetLevel(7);
                 break;
             case 8: 
@@ -42,7 +42,8 @@ public class LevelMenu : MonoBehaviour
             case 9: 
                 SetLevel(9);
                 break;
-            case 10: SetLevel(10);
+            case 10: 
+                SetLevel(10);
                 break;
             default:
                 Debug.LogError("Invalid game level: " + Level_variables.level);

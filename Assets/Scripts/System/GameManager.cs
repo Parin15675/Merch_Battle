@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public TileBoard board;
     public GameSuccess GameSuccess;
 
+    public bool hasGameEnded = false;
+
     private void Awake()
     {
         currentGamelevel += 1;
@@ -29,19 +31,20 @@ public class GameManager : MonoBehaviour
         NewGame();
     }
 
-    public void Update()
+    private void Update()
     {
-        if (playerCastle == null)
-        {
-            this.GameOver();
-        }
-            
-        if(enemyCastle == null)
-        {
-            this.Success();
-        }
 
-        Level_variables.level = level;
+            if (playerCastle == null)
+            {
+                GameOver();
+            }
+
+            if (enemyCastle == null)
+            {
+                Debug.Log("Success");
+                Success();
+            }
+
     }
 
     public void NewGame()
@@ -50,19 +53,26 @@ public class GameManager : MonoBehaviour
         board.CreateTile();
         board.CreateTile();
         board.enabled = true;
+        hasGameEnded = false;
     }
 
     public void GameOver()
     {
         GameOverScreen.Setup();
         board.enabled = false;
+        hasGameEnded = true;
     }
 
     public void Success()
     {
-        Level_variables.level += 1;
-        GameSuccess.Setup(); 
-        board.enabled = false;
-    }
+        if (!hasGameEnded)
+        {
+            CoinsManeger.coins += 5;
+            Debug.Log(CoinsManeger.coins);
+        }
 
+        GameSuccess.Setup();
+        board.enabled = false;
+        hasGameEnded = true;
+    }
 }

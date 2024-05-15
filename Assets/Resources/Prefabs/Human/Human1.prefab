@@ -436,7 +436,7 @@ MonoBehaviour:
   tagged_hero: 0
   arrow: {fileID: 3037036836488083598}
   animator: {fileID: 2243693570282851783}
-  point: 6
+  point: 1
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4

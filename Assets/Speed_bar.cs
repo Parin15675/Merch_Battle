@@ -16,16 +16,16 @@ public class Speed_bar : MonoBehaviour
 
     public void update_spd()
     {
-        if (hero_movement.point < 10)
-        {
-            hero_movement.speed += 2.0f;
-            hero_movement.point += 1;
-            slider.value = hero_movement.point;
-        }
-        else
-        {
-            Debug.Log("level max");
-        }
 
+        if (CoinsManeger.coins > 0)
+        {
+            if (hero_movement.point < 10)
+            {
+                hero_movement.speed += 2.0f;
+                hero_movement.point += 1;
+                CoinsManeger.coins -= 1;
+                slider.value = hero_movement.point;
+            }
+        }
     }
 }

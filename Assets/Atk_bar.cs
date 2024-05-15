@@ -15,15 +15,16 @@ public class Atk_bar : MonoBehaviour
 
     public void update_atk()
     {
-        if (hero_hit.point < 10)
+
+        if (CoinsManeger.coins > 0)
         {
-            hero_hit.attackDamage += 10;
-            hero_hit.point += 1;
-            slider.value = hero_hit.point;
-        }
-        else
-        {
-            Debug.Log("level max");
+            if (hero_hit.point < 10)
+            {
+                hero_hit.attackDamage += 10;
+                hero_hit.point += 1;
+                CoinsManeger.coins -= 1;
+                slider.value = hero_hit.point;
+            }
         }
 
     }
