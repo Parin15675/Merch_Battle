@@ -15,6 +15,11 @@ public class EnemyHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
+        if (isAttacking)
+        {
+            return; 
+        }
+
         if (target.CompareTag("Hero") || target.CompareTag("PlayerCastle"))
         {
             Health targetHealth = target.GetComponent<Health>();
