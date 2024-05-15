@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,9 +12,7 @@ public class HeroMovement : MonoBehaviour
     private bool canMove = true;
     public bool tagged_hero = false;
     public arrow arrow;
-
     public Animator animator;
-
     public int point = 1;
 
     void Start()
@@ -25,17 +22,31 @@ public class HeroMovement : MonoBehaviour
 
     void Update()
     {
-        // Check if this instance is the active hero
-        if (this == activeHero)
+        if (canMove)
         {
-
-            if (Input.GetMouseButtonDown(0))
+            if (this == activeHero)
             {
-                SelectTargetEnemyWithMouse();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    SelectTargetEnemyWithMouse();
+                }
 
+                if (targetEnemy == null)
+                {
+                    FindAllEnemies();
+                    targetEnemy = GetClosestEnemy();
+                }
+            }
+            else
+            {
+                if (targetEnemy == null)
+                {
+                    FindAllEnemies();
+                    targetEnemy = GetClosestEnemy();
+                }
             }
 
-            if (canMove && targetEnemy != null)
+            if (targetEnemy != null)
             {
                 MoveTowardsEnemy();
             }
@@ -44,21 +55,10 @@ public class HeroMovement : MonoBehaviour
                 WalkForward();
             }
         }
-        else if (targetEnemy != null)
-        {
-            arrow.gameObject.SetActive(false);
-            MoveTowardsEnemy();
-        }
-        else
-        {
-            arrow.gameObject.SetActive(false);
-            WalkForward();
-        }
     }
 
     void OnMouseDown()  // This function is called when this GameObject is clicked
     {
-
         if (activeHero != this)
         {
             Debug.Log($"Control switched to hero: {gameObject.name}");
@@ -73,7 +73,6 @@ public class HeroMovement : MonoBehaviour
         }
     }
 
-    // Find all enemies in the scene
     private void FindAllEnemies()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy").Select(h => h.transform).ToList();
@@ -83,6 +82,27 @@ public class HeroMovement : MonoBehaviour
         }
     }
 
+    private Transform GetClosestEnemy()
+    {
+        if (enemies == null || enemies.Count == 0) return null;
+
+        Transform closestEnemy = null;
+        float closestDistanceSqr = Mathf.Infinity;
+        Vector3 currentPosition = transform.position;
+
+        foreach (Transform potentialEnemy in enemies)
+        {
+            float distanceSqr = (potentialEnemy.position - currentPosition).sqrMagnitude;
+            if (distanceSqr < closestDistanceSqr)
+            {
+                closestDistanceSqr = distanceSqr;
+                closestEnemy = potentialEnemy;
+            }
+        }
+
+        return closestEnemy;
+    }
+
     private void SelectTargetEnemyWithMouse()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -90,7 +110,6 @@ public class HeroMovement : MonoBehaviour
 
         if (hit.collider != null && (hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("enemy wall")))
         {
-
             activeHero.tagged_hero = false;
             arrow.gameObject.SetActive(false);
             targetEnemy = hit.transform;
@@ -112,7 +131,7 @@ public class HeroMovement : MonoBehaviour
 
     private void WalkForward()
     {
-        transform.Translate(new Vector3(speed * Time.deltaTime, 0, 0));
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
     public void StartMovement(float newSpeed)
