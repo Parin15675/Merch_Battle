@@ -5,4 +5,5 @@ using UnityEngine;
 public class Level_variables: MonoBehaviour
 {
     public static int level;
+    public static int coins;
 }

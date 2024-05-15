@@ -2728,6 +2728,7 @@ MonoBehaviour:
   GameOverScreen: {fileID: 1685870396}
   board: {fileID: 1353347643}
   GameSuccess: {fileID: 298854612}
+  hasGameEnded: 0
 --- !u!4 &689640928
 Transform:
   m_ObjectHideFlags: 0
@@ -2809,7 +2810,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280468000
   m_fontColor: {r: 0.12683429, g: 0.7610062, b: 0.13347174, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
