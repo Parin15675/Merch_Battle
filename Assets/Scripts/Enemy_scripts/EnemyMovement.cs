@@ -9,12 +9,12 @@ public class EnemyMovement : MonoBehaviour
     private Transform currentTarget;
     private List<Transform> targets;
 
-    public float speed = -30.0f;
+    public float speed = 30.0f;
 
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
-        speed = baseCharacter.speed;
+        speed = -baseCharacter.speed;
     }
 
     void Update()
@@ -84,6 +84,6 @@ public class EnemyMovement : MonoBehaviour
     public void StartMovement()
     {
         canMove = true;
-        speed = -30f; // Reset to default speed or set to a desired value
+        speed = -baseCharacter.speed; // Reset to default speed or set to a desired value
     }
 }

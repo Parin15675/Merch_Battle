@@ -9,7 +9,6 @@ public class EnemySpawnerForEndless : MonoBehaviour
     [SerializeField] private Transform targetObject;
     [SerializeField] private TextMeshProUGUI waveNumber;
 
-    private bool isSpawning = false;
     private float spawnTimer;
     private int currentWave = 1;
 

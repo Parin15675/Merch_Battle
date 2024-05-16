@@ -17,7 +17,7 @@ public class speed_adjust : MonoBehaviour
 
     public void speedx2()
     {
-        baseCharacter.SetSpeed(speed_default);
+        //baseCharacter.SetSpeed(speed_default);
     }
 
 

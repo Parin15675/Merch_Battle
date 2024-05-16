@@ -6,7 +6,6 @@ public class HeroHit : MonoBehaviour
     private BaseCharacter baseCharacter;
     private HeroMovement heroMovement;
 
-    private bool isAnotherHeroNearby = false;
     public int attackDamage;
     public bool isAttacking = false;
     public int point = 1;
@@ -48,7 +47,6 @@ public class HeroHit : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " Another hero left, resuming.");
-        isAnotherHeroNearby = false;
         heroMovement.WalkForward();
     }
 

@@ -328,6 +328,7 @@ MonoBehaviour:
   healthBar: {fileID: 7395811537153547646}
   text: {fileID: 0}
   animator: {fileID: 4379412665783999574}
+  text_popup: {fileID: 0}
 --- !u!50 &4722010959438944679
 Rigidbody2D:
   serializedVersion: 4
@@ -412,9 +413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 30
-  health: 100
-  speed: -30
+  attack: 15
+  health: 200
+  speed: 10
 --- !u!114 &3109322401219572677
 MonoBehaviour:
   m_ObjectHideFlags: 0
