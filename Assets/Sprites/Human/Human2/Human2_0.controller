@@ -112,19 +112,19 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5691128742452367899}
-    m_Position: {x: 200, y: 0, z: 0}
+    m_Position: {x: 240, y: -60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 205076738847458001}
-    m_Position: {x: 240, y: 70, z: 0}
+    m_Position: {x: 240, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5009815558309088515}
-    m_Position: {x: 270, y: 130, z: 0}
+    m_Position: {x: 370, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6284030339133055418}
-    m_Position: {x: 80, y: 220, z: 0}
+    m_Position: {x: 480, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5783949816037717366}
-    m_Position: {x: 270, y: 270, z: 0}
+    m_Position: {x: 240, y: 280, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -152,6 +152,12 @@ AnimatorController:
     m_Controller: {fileID: 9100000}
   - m_Name: Die
     m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: spd
+    m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -231,7 +237,7 @@ AnimatorState:
   m_PrefabAsset: {fileID: 0}
   m_Name: atk
   m_Speed: 1
-  m_CycleOffset: 0
+  m_CycleOffset: 1
   m_Transitions:
   - {fileID: -6958555651513781758}
   - {fileID: -8506616547364246300}
@@ -247,9 +253,9 @@ AnimatorState:
   m_Motion: {fileID: 7400000, guid: e24d87cb872eb674ca0dd29beaa33886, type: 2}
   m_Tag: 
   m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_MirrorParameter: Attacking
+  m_CycleOffsetParameter: spd
+  m_TimeParameter: spd
 --- !u!1102 &5783949816037717366
 AnimatorState:
   serializedVersion: 6

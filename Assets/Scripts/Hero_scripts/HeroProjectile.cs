@@ -1,45 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class HeroMovement : MonoBehaviour
+public class HeroProjectile : MonoBehaviour
 {
-    private BaseCharacter baseCharacter;
+    public int attackDamage = 10;
+    public int speed = 100;
+    public Animator animator;
+
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
-    private bool canMove = true;
 
-    public float speed = 30.0f;
-    public Animator animator;
-    public int point = 1;
-
-    private void Awake()
+    private void Update()
     {
-        baseCharacter = GetComponent<BaseCharacter>();
-        speed = baseCharacter.speed;
-    }
-
-    void Start()
-    {
-        FindAllEnemies();
-    }
-
-    void Update()
-    {
-        if (canMove)
+        if (targetEnemy == null)
         {
-            if (targetEnemy == null)
+            FindAllEnemies();
+            targetEnemy = GetClosestEnemy();
+        }
+        else if (targetEnemy != null)
+        {
+            MoveTowardsEnemy();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D target)
+    {
+        if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
+        {
+            speed = 0;
+            HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
+            if (enemyHealth != null)
             {
-                FindAllEnemies();
-                targetEnemy = GetClosestEnemy();
-            } 
-            else if (targetEnemy != null)
-            {
-                MoveTowardsEnemy();
-            }
-            else
-            {
-                WalkForward();
+                enemyHealth.TakeDamage(attackDamage);
+                Debug.Log("enemy hit by arrow");
+                Destroy(gameObject);
             }
         }
     }
@@ -78,19 +74,10 @@ public class HeroMovement : MonoBehaviour
     {
         Vector3 direction = (targetEnemy.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
-    }
 
-    public void StopMovement()
-    {
-        canMove = false;
-        speed = 0;
+        // Calculate the angle in radians
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Apply rotation to the arrow
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
-
-    public void WalkForward()
-    {
-        speed = baseCharacter.speed;
-        canMove = true;
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-    }
-
 }

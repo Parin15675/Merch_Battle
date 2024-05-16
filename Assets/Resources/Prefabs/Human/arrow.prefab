@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3433162026747403432}
   - component: {fileID: 1809106560595015738}
   m_Layer: 0
-  m_Name: arrow_atk
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,17 +29,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2384047052233853547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.84, y: -0.78}
-  m_SizeDelta: {x: 11.63985, y: 11.63985}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.9698, y: 5.5512}
+  m_SizeDelta: {x: 6.3982, y: 2.9161}
+  m_Pivot: {x: 0.16615884, y: 0.3713597}
 --- !u!95 &2488062181660503414
 Animator:
   serializedVersion: 5
@@ -172,7 +172,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.9081106, y: 1.6836249}
+  m_Offset: {x: 1.3704927, y: 0.40025693}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -183,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.4237785, y: 6.8727503}
+  m_Size: {x: 4.2708116, y: 1.6987184}
   m_EdgeRadius: 0
 --- !u!114 &1809106560595015738
 MonoBehaviour:
@@ -197,4 +197,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8448f46194b97ab4481eb1f3e4a1a105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 10
+  speed: 500
   animator: {fileID: 2488062181660503414}

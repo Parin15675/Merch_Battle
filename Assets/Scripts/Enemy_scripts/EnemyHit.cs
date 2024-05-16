@@ -24,13 +24,16 @@ public class EnemyHit : MonoBehaviour
             return; 
         }
 
-        if (target.CompareTag("Hero") || target.CompareTag("PlayerCastle"))
+        if (target.GetType() == typeof(BoxCollider2D))
         {
-            Health targetHealth = target.GetComponent<Health>();
-            if (targetHealth != null)
+            if (target.CompareTag("Hero"))
             {
-                enemyMovement.StopMovement();
-                StartCoroutine(AttackTarget(targetHealth));
+                Health targetHealth = target.GetComponent<Health>();
+                if (targetHealth != null)
+                {
+                    enemyMovement.StopMovement();
+                    StartCoroutine(AttackTarget(targetHealth));
+                }
             }
         }
     }

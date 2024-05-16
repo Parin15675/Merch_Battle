@@ -3,44 +3,53 @@ using UnityEngine;
 
 public class HeroHit : MonoBehaviour
 {
-    public HeroMovement heroMovement;
+    private BaseCharacter baseCharacter;
+    private HeroMovement heroMovement;
+
     private bool isAnotherHeroNearby = false;
-    public int attackDamage = 10;
+    public int attackDamage;
     public bool isAttacking = false;
     public int point = 1;
     public Animator animator;
 
     private void Awake()
     {
+        baseCharacter = GetComponent<BaseCharacter>();
         heroMovement = GetComponent<HeroMovement>();
+        attackDamage = baseCharacter.attack;
     }
 
     private void OnTriggerEnter2D(Collider2D target)
     {
+
         if (isAttacking)
         {
             return;
         }
 
-        if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
+        if (target.GetType() == typeof(BoxCollider2D))
         {
-            Debug.Log(gameObject.name + " Hit Enemy");
-            animator.SetBool("Attacking", true);
-            HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
-            if (enemyHealth != null)
+            if (target.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log(gameObject.name + " Speed  hero 0");
-                heroMovement.StopMovement();
-                StartCoroutine(AttackEnemy(enemyHealth));
+                Debug.Log(gameObject.name + " Hit Enemy");
+                animator.SetBool("Attacking", true);
+                HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
+                if (enemyHealth != null)
+                {
+                    Debug.Log(gameObject.name + " Speed  hero 0");
+                    heroMovement.StopMovement();
+                    StartCoroutine(AttackEnemy(enemyHealth));
+                }
             }
         }
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " Another hero left, resuming.");
         isAnotherHeroNearby = false;
-        heroMovement.StartMovement(30.0f);
+        heroMovement.WalkForward();
     }
 
     private IEnumerator AttackEnemy(HealthEnemy enemyHealth)
@@ -55,6 +64,6 @@ public class HeroHit : MonoBehaviour
 
         isAttacking = false;
         animator.SetBool("Attacking", false);
-        heroMovement.StartMovement(30.0f);
+        heroMovement.WalkForward();
     }
 }

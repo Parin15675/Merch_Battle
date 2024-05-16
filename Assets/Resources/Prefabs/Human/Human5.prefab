@@ -284,6 +284,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &7352783166053579023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7092520614613129854}
+  m_Layer: 0
+  m_Name: launchOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7092520614613129854
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7352783166053579023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0013841, y: 1.0013841, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3788531207914425932}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.662, y: -0.97}
+  m_SizeDelta: {x: 0.68522, y: 0.47765}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &8782687362973166208
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +332,11 @@ GameObject:
   - component: {fileID: 4890127421685601314}
   - component: {fileID: 361265522333707155}
   - component: {fileID: 3673550267069159032}
-  - component: {fileID: 3704141509981352863}
   - component: {fileID: 2176039623452023850}
   - component: {fileID: 2948290685050592008}
+  - component: {fileID: 2482978913137518171}
   - component: {fileID: 4852655031084981137}
+  - component: {fileID: -8620814406336642945}
   m_Layer: 0
   m_Name: Human5
   m_TagString: Hero
@@ -320,6 +356,7 @@ RectTransform:
   m_LocalScale: {x: 31.95577, y: 31.95577, z: 0.9986178}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7092520614613129854}
   - {fileID: 7405554359320400185}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -460,7 +497,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.27474958, y: -0.8013535}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -471,25 +508,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 1.8812019, y: 1.5972933}
   m_EdgeRadius: 0
---- !u!114 &3704141509981352863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782687362973166208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  heroMovement: {fileID: 0}
-  attackDamage: 60
-  isAttacking: 0
-  point: 1
-  animator: {fileID: 4890127421685601314}
 --- !u!114 &2176039623452023850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +543,25 @@ MonoBehaviour:
   healthBar: {fileID: 4056828340578065224}
   text: {fileID: 0}
   animator: {fileID: 4890127421685601314}
+--- !u!114 &2482978913137518171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782687362973166208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8651ade45acd60c45b0610a652a24ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 2384047052233853547, guid: eb7d19b15fb03dd4a84aa3e6150e5737, type: 3}
+  launchOffset: {fileID: 7092520614613129854}
+  attackDamage: 10
+  isAttacking: 0
+  point: 1
+  animator: {fileID: 4890127421685601314}
+  attackInterval: 1
 --- !u!114 &4852655031084981137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +574,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attack: 20
-  health: 100
-  speed: 30
+  attack: 60
+  health: 150
+  speed: 55
+--- !u!58 &-8620814406336642945
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8782687362973166208}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10

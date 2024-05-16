@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0040283203, y: 0}
+  m_AnchoredPosition: {x: 0.0078125, y: 0}
   m_SizeDelta: {x: -1, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6619238703654509663
@@ -186,7 +186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.024999976, y: -1.78}
+  m_AnchoredPosition: {x: 0.0234375, y: -1.7800293}
   m_SizeDelta: {x: 150.6272, y: 29.52539}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2884437475916170833
@@ -325,7 +325,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -864.8, y: -650.2}
+  m_AnchoredPosition: {x: -860.3, y: -656.2}
   m_SizeDelta: {x: 3.2, y: 3.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4645011476343080921
@@ -518,7 +518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroMovement: {fileID: 0}
   attackDamage: 20
   isAttacking: 0
   point: 1
@@ -537,4 +536,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 20
   health: 100
-  speed: 30
+  speed: 35
