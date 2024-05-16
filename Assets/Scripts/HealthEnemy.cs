@@ -15,6 +15,9 @@ public class HealthEnemy : MonoBehaviour
     public Animator animator;
     public GameObject text_popup;
 
+    [SerializeField] private GameObject damagePopupPrefab;
+    [SerializeField] private Transform spawner; // Reference to the spawner GameObject
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
@@ -23,24 +26,18 @@ public class HealthEnemy : MonoBehaviour
 
     void Start()
     {
-        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>(); 
+        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
-
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.F10)) 
-    //    {
-    //        CreatePopUp(Vector3.one, Random.Range(0,1000).ToString());
-    //    }
-    //}
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         Debug.Log(gameObject.name + " takes " + damage + " damage.");
         healthBar.SetHealth(currentHealth);
+
+        ShowDamagePopup(damage); // Show damage popup on every hit
 
         if (currentHealth <= 0)
         {
@@ -63,28 +60,42 @@ public class HealthEnemy : MonoBehaviour
         text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
         text.dieCount--;
         Debug.Log("die count");
-        Debug.Log(gameObject.name + " died.1234");
+        Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
 
         StartCoroutine(DelayedDestruction());
-
     }
 
     private IEnumerator DelayedDestruction()
     {
         yield return new WaitForSeconds(1);
-
         Destroy(gameObject);
     }
 
-    //public void CreatePopUp(Vector3 position, string text)
-    //{
-    //    var popup = Instantiate(text_popup, position , Quaternion.identity);
-    //    popup.transform.SetParent(transform);
-    //    var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-    //    temp.text = text;
+    private void ShowDamagePopup(int damage)
+    {
+        // Instantiate the damage popup prefab as a child of the spawner
+        GameObject popup = Instantiate(damagePopupPrefab, spawner);
 
-    //    Destroy(popup,1f);
+        // Set the local position relative to the spawner
+        popup.transform.localPosition = new Vector3(0, 1, 0);
 
-    //}
+        TextMeshProUGUI tmp = popup.GetComponentInChildren<TextMeshProUGUI>();
+        if (tmp != null)
+        {
+            tmp.text = damage.ToString();
+        }
+
+        Animator popupAnimator = popup.GetComponent<Animator>();
+        if (popupAnimator != null)
+        {
+            // Optionally, you can control the animation state or duration here
+            Destroy(popup, popupAnimator.GetCurrentAnimatorStateInfo(0).length);
+        }
+        else
+        {
+            // Destroy the popup after a default duration if no animator is present
+            Destroy(popup, 1.0f);
+        }
+    }
 }

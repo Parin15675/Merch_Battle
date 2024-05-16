@@ -5,20 +5,20 @@ public class speed_adjust : MonoBehaviour
 {
 
 
-    private BaseCharacter baseCharacter;
+    //private BaseCharacter baseCharacter;
 
-    public int speed_default;
+    //public int speed_default;
 
-    private void Start()
-    {
-        speed_default = baseCharacter.speed;
-    }
+    //private void Start()
+    //{
+    //    speed_default = baseCharacter.speed;
+    //}
 
 
-    public void speedx2()
-    {
-        baseCharacter.SetSpeed(speed_default);
-    }
+    //public void speedx2()
+    //{
+    //    baseCharacter.SetSpeed(speed_default);
+    //}
 
 
 
