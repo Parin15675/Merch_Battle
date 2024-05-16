@@ -434,6 +434,9 @@ MonoBehaviour:
   speed: 30
   animator: {fileID: 2243693570282851783}
   point: 1
+  collisionLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4
@@ -459,7 +462,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &3307100165335497086
 BoxCollider2D:
