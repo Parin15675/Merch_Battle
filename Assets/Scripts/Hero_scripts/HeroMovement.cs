@@ -10,8 +10,6 @@ public class HeroMovement : MonoBehaviour
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
     private bool canMove = true;
-    public bool tagged_hero = false;
-    public arrow arrow;
     public Animator animator;
     public int point = 1;
 
@@ -24,29 +22,13 @@ public class HeroMovement : MonoBehaviour
     {
         if (canMove)
         {
-            if (this == activeHero)
-            {
-                if (Input.GetMouseButtonDown(0))
-                {
-                    SelectTargetEnemyWithMouse();
-                }
 
-                if (targetEnemy == null)
-                {
-                    FindAllEnemies();
-                    targetEnemy = GetClosestEnemy();
-                }
-            }
-            else
+            if (targetEnemy == null)
             {
-                if (targetEnemy == null)
-                {
-                    FindAllEnemies();
-                    targetEnemy = GetClosestEnemy();
-                }
-            }
-
-            if (targetEnemy != null)
+                FindAllEnemies();
+                targetEnemy = GetClosestEnemy();
+            } 
+            else if (targetEnemy != null)
             {
                 MoveTowardsEnemy();
             }
@@ -54,22 +36,6 @@ public class HeroMovement : MonoBehaviour
             {
                 WalkForward();
             }
-        }
-    }
-
-    void OnMouseDown()  // This function is called when this GameObject is clicked
-    {
-        if (activeHero != this)
-        {
-            Debug.Log($"Control switched to hero: {gameObject.name}");
-            activeHero = this;
-            activeHero.tagged_hero = true;
-            arrow.gameObject.SetActive(true);
-        }
-        else
-        {
-            activeHero.tagged_hero = true;
-            arrow.gameObject.SetActive(true);
         }
     }
 
@@ -101,20 +67,6 @@ public class HeroMovement : MonoBehaviour
         }
 
         return closestEnemy;
-    }
-
-    private void SelectTargetEnemyWithMouse()
-    {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(mousePos.x, mousePos.y), Vector2.zero);
-
-        if (hit.collider != null && (hit.collider.CompareTag("Enemy") || hit.collider.CompareTag("enemy wall")))
-        {
-            activeHero.tagged_hero = false;
-            arrow.gameObject.SetActive(false);
-            targetEnemy = hit.transform;
-            Debug.Log($"Player selected enemy: {targetEnemy.name}");
-        }
     }
 
     private void MoveTowardsEnemy()
