@@ -305,7 +305,7 @@ MonoBehaviour:
   healthBar: {fileID: 1392916337980293620}
   text: {fileID: 0}
   animator: {fileID: 791033007900257270}
-  text_popup: {fileID: 0}
+  popUpDamagePrefab: {fileID: 2879809905544905640, guid: 5c38567f00fa81c4c9c64a40132128ab, type: 3}
   damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
   spawner: {fileID: 1472280889418401875}
 --- !u!50 &8480624050672396831
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 10
   health: 100
-  speed: 1
+  speed: 15
 --- !u!114 &1391829815943577699
 MonoBehaviour:
   m_ObjectHideFlags: 0
