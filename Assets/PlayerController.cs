@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private CanvasGroup shopCanvasGroup;
     private CanvasGroup DemonCanvasGroup;
+    private CanvasGroup LevelCanvasGroup;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         shopCanvasGroup = shop_popup.GetComponent<CanvasGroup>();
         DemonCanvasGroup = DemonBook_popup.GetComponent<CanvasGroup>();
+        LevelCanvasGroup = Level_menu.GetComponent<CanvasGroup>();
+
         if (shopCanvasGroup == null)
         {
             Debug.LogError("CanvasGroup component missing from shop_popup");
@@ -62,11 +66,17 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(FadeIn(DemonCanvasGroup, fadeDuration, DemonBook_popup));
         }
-        else if (target.CompareTag("Enter Level"))
+        else if (target.CompareTag("Enter Endless"))
         {
-            Level_menu.SetActive(true);
+            //Level_menu.SetActive(true);
+            SceneManager.LoadScene("EndlessMode");
             this.transform.position = new Vector3(1834.882f, 600.2556f, this.transform.position.z);
             Debug.Log("Enter Level");
+        }
+        else if(target.CompareTag("Enter Level"))
+        {
+            
+            StartCoroutine(FadeIn(LevelCanvasGroup, fadeDuration, Level_menu));
         }
     }
 
@@ -79,6 +89,9 @@ public class PlayerController : MonoBehaviour
         }else if(target.CompareTag("Demon book"))
         {
             StartCoroutine(FadeOut(DemonCanvasGroup, fadeDuration, DemonBook_popup));
+        }else if(target.CompareTag("Enter Level"))
+        {
+            StartCoroutine(FadeOut(LevelCanvasGroup, fadeDuration, Level_menu));
         }
     }
 

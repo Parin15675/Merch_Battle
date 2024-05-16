@@ -7,22 +7,22 @@ public class MainMenu : MonoBehaviour
     public void Play()
     {
         Debug.Log("Play");
-        SceneManager.LoadScene("2048");
+        SceneManager.LoadScene("Town");
         
     }
 
-    public void Options()
+    public void Endless_mode()
     {
         Debug.Log("Play");
-        SceneManager.LoadScene("2048");
+        SceneManager.LoadScene("EndlessMode");
 
     }
-
-
 
     public void Quit()
     {
         Application.Quit();
         Debug.Log("quit");
     }
+
+
 }

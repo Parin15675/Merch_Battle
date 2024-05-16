@@ -12,6 +12,7 @@ TagManager:
   - Shop
   - Demon book
   - Enter Level
+  - Enter Endless
   layers:
   - Default
   - TransparentFX
