@@ -24,11 +24,14 @@ public class RangeEnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Hero"))
+        if (target.GetType() == typeof(BoxCollider2D))
         {
-            if (!isAttacking)
+            if (target.gameObject.CompareTag("Hero"))
             {
-                StartCoroutine(AttackRoutine(target));
+                if (!isAttacking)
+                {
+                    StartCoroutine(AttackRoutine(target));
+                }
             }
         }
     }

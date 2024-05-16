@@ -27,15 +27,18 @@ public class HeroProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
+        if (target.GetType() == typeof(BoxCollider2D))
         {
-            speed = 0;
-            HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
-            if (enemyHealth != null)
+            if (target.gameObject.CompareTag("Enemy"))
             {
-                enemyHealth.TakeDamage(attackDamage);
-                Debug.Log("enemy hit by arrow");
-                Destroy(gameObject);
+                speed = 0;
+                HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
+                if (enemyHealth != null)
+                {
+                    enemyHealth.TakeDamage(attackDamage);
+                    Debug.Log("enemy hit by arrow");
+                    Destroy(gameObject);
+                }
             }
         }
     }
