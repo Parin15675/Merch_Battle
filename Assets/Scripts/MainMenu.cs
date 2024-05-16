@@ -11,12 +11,6 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void Level_play()
-    {
-        SceneManager.LoadScene("2048");
-
-    }
-
     public void Endless_mode()
     {
         Debug.Log("Play");
