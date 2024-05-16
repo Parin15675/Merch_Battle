@@ -12,11 +12,16 @@ public class HeroMovement : MonoBehaviour
     public float speed = 30.0f;
     public Animator animator;
     public int point = 1;
+    public float avoidanceDistance = 1.0f; // Distance to move away to avoid overlap
+
+    private CapsuleCollider2D capsuleCollider;
+    private Vector3 avoidanceDirection;
 
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         speed = baseCharacter.speed;
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     void Start()
@@ -32,7 +37,7 @@ public class HeroMovement : MonoBehaviour
             {
                 FindAllEnemies();
                 targetEnemy = GetClosestEnemy();
-            } 
+            }
             else if (targetEnemy != null)
             {
                 MoveTowardsEnemy();
@@ -40,6 +45,13 @@ public class HeroMovement : MonoBehaviour
             else
             {
                 WalkForward();
+            }
+
+            // Apply avoidance direction if necessary
+            if (avoidanceDirection != Vector3.zero)
+            {
+                transform.position += avoidanceDirection * speed * Time.deltaTime;
+                avoidanceDirection = Vector3.zero; // Reset avoidance direction after applying it
             }
         }
     }
@@ -93,4 +105,22 @@ public class HeroMovement : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Hero"))
+        {
+            // Calculate the direction to move away from the overlapping object
+            Vector3 direction = (transform.position - other.transform.position).normalized;
+            avoidanceDirection = direction * avoidanceDistance;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Hero"))
+        {
+            // Reset the avoidance direction when no longer overlapping
+            avoidanceDirection = Vector3.zero;
+        }
+    }
 }
