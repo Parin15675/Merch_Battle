@@ -13,7 +13,6 @@ public class HealthEnemy : MonoBehaviour
     public HealthBar healthBar;
     public TextUpdater text;
     public Animator animator;
-    public GameObject text_popup;
 
     [SerializeField] private GameObject damagePopupPrefab;
     [SerializeField] private Transform spawner; // Reference to the spawner GameObject
