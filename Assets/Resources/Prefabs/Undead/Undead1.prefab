@@ -306,6 +306,7 @@ MonoBehaviour:
   text: {fileID: 0}
   animator: {fileID: 791033007900257270}
   popUpDamagePrefab: {fileID: 2879809905544905640, guid: 5c38567f00fa81c4c9c64a40132128ab, type: 3}
+  popUpText: {fileID: 8063514024982743080, guid: 5c38567f00fa81c4c9c64a40132128ab, type: 3}
   damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
   spawner: {fileID: 1472280889418401875}
 --- !u!50 &8480624050672396831
