@@ -15,7 +15,7 @@ public class MoveScreen : MonoBehaviour
         } 
         else
         {
-            StartCoroutine(Animate(new Vector3(-731, 0, 1)));
+            StartCoroutine(Animate(new Vector3(-731.34f, 0, 1)));
         }
     }
 

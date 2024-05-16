@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHit : MonoBehaviour
@@ -9,6 +10,9 @@ public class EnemyHit : MonoBehaviour
     public int attackDamage;
     public bool isAttacking = false;
     public Animator animator;
+
+    // Dictionary to track the number of enemies attacking each target
+    private static Dictionary<Health, int> targetAttackers = new Dictionary<Health, int>();
 
     private void Awake()
     {
@@ -21,7 +25,7 @@ public class EnemyHit : MonoBehaviour
     {
         if (isAttacking)
         {
-            return; 
+            return;
         }
 
         if (target.GetType() == typeof(BoxCollider2D))
@@ -31,8 +35,19 @@ public class EnemyHit : MonoBehaviour
                 Health targetHealth = target.GetComponent<Health>();
                 if (targetHealth != null)
                 {
-                    enemyMovement.StopMovement();
-                    StartCoroutine(AttackTarget(targetHealth));
+                    // Check if the target already has two attackers
+                    if (!targetAttackers.ContainsKey(targetHealth) || targetAttackers[targetHealth] < 2)
+                    {
+                        // Increment the number of attackers for this target
+                        if (!targetAttackers.ContainsKey(targetHealth))
+                        {
+                            targetAttackers[targetHealth] = 0;
+                        }
+                        targetAttackers[targetHealth]++;
+
+                        enemyMovement.StopMovement();
+                        StartCoroutine(AttackTarget(targetHealth));
+                    }
                 }
             }
         }
@@ -52,5 +67,15 @@ public class EnemyHit : MonoBehaviour
         animator.SetBool("Attacking", false);
         isAttacking = false;
         enemyMovement.StartMovement();
+
+        // Decrement the number of attackers for this target
+        if (targetAttackers.ContainsKey(targetHealth))
+        {
+            targetAttackers[targetHealth]--;
+            if (targetAttackers[targetHealth] <= 0)
+            {
+                targetAttackers.Remove(targetHealth);
+            }
+        }
     }
 }
