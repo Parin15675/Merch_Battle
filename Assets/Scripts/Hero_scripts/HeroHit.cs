@@ -17,6 +17,7 @@ public class HeroHit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
+
         if (isAttacking)
         {
             return;

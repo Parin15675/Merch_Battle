@@ -2321,7 +2321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -731.25, y: 0}
+  m_AnchoredPosition: {x: -731, y: 0}
   m_SizeDelta: {x: 1919.49, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787080487
@@ -5378,6 +5378,7 @@ GameObject:
   - component: {fileID: 1850458810}
   - component: {fileID: 1850458809}
   - component: {fileID: 1850458811}
+  - component: {fileID: 1850458812}
   m_Layer: 5
   m_Name: enemy wall
   m_TagString: enemy wall
@@ -5547,6 +5548,21 @@ MonoBehaviour:
   healthBar: {fileID: 1098088641}
   text: {fileID: 1285884403}
   animator: {fileID: 1850458809}
+--- !u!114 &1850458812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850458802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  health: 1000
+  speed: 0
 --- !u!1 &1894085936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5560,6 +5576,7 @@ GameObject:
   - component: {fileID: 1894085940}
   - component: {fileID: 1894085939}
   - component: {fileID: 1894085938}
+  - component: {fileID: 1894085942}
   m_Layer: 5
   m_Name: player wall
   m_TagString: PlayerCastle
@@ -5688,6 +5705,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894085936}
   m_CullTransparentMesh: 1
+--- !u!114 &1894085942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894085936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  health: 300
+  speed: 0
 --- !u!1 &1952176225
 GameObject:
   m_ObjectHideFlags: 0
