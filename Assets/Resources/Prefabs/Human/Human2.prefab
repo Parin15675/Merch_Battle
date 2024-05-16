@@ -335,8 +335,8 @@ GameObject:
   - component: {fileID: 4228573907022315153}
   - component: {fileID: 4711735673964171599}
   - component: {fileID: 2759087940766394104}
-  - component: {fileID: -3112849547301827506}
   - component: {fileID: 2232439850070745199}
+  - component: {fileID: -3112849547301827506}
   m_Layer: 0
   m_Name: Human2
   m_TagString: Hero
@@ -578,21 +578,6 @@ MonoBehaviour:
   healthBar: {fileID: 1106034820937150276}
   text: {fileID: 0}
   animator: {fileID: 5878673254689812751}
---- !u!114 &-3112849547301827506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098851240883789147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 20
-  health: 100
-  speed: 30
 --- !u!114 &2232439850070745199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -612,3 +597,18 @@ MonoBehaviour:
   point: 1
   animator: {fileID: 5878673254689812751}
   attackInterval: 1
+--- !u!114 &-3112849547301827506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9098851240883789147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 40
+  health: 100
+  speed: 45

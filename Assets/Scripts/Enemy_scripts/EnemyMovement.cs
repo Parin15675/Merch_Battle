@@ -69,8 +69,9 @@ public class EnemyMovement : MonoBehaviour
                             .ToList();
     }
 
-    private void WalkForward()
+    public void WalkForward()
     {
+        canMove = true;
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 

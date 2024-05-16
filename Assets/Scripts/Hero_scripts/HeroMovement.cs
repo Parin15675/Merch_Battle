@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class HeroMovement : MonoBehaviour
 {
-    public float speed = 30.0f;
-    public static HeroMovement activeHero;  // Static reference to the currently active hero
-
+    private BaseCharacter baseCharacter;
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
     private bool canMove = true;
+
+    public float speed = 30.0f;
     public Animator animator;
     public int point = 1;
+
+    private void Awake()
+    {
+        baseCharacter = GetComponent<BaseCharacter>();
+        speed = baseCharacter.speed;
+    }
 
     void Start()
     {
@@ -22,7 +28,6 @@ public class HeroMovement : MonoBehaviour
     {
         if (canMove)
         {
-
             if (targetEnemy == null)
             {
                 FindAllEnemies();
@@ -81,15 +86,11 @@ public class HeroMovement : MonoBehaviour
         speed = 0;
     }
 
-    private void WalkForward()
+    public void WalkForward()
     {
+        speed = baseCharacter.speed;
+        canMove = true;
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    public void StartMovement(float newSpeed)
-    {
-        speed = newSpeed;  // Set new speed
-        canMove = true;
-        Debug.Log("Movement restarted at speed: " + newSpeed);
-    }
 }

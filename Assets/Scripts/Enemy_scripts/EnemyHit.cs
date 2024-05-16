@@ -26,7 +26,7 @@ public class EnemyHit : MonoBehaviour
 
         if (target.GetType() == typeof(BoxCollider2D))
         {
-            if (target.CompareTag("Hero") || target.CompareTag("PlayerCastle"))
+            if (target.CompareTag("Hero"))
             {
                 Health targetHealth = target.GetComponent<Health>();
                 if (targetHealth != null)

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Arrow : MonoBehaviour
+public class HeroProjectile : MonoBehaviour
 {
     public int attackDamage = 10;
     public int speed = 100;
@@ -11,7 +11,6 @@ public class Arrow : MonoBehaviour
 
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
-
 
     private void Update()
     {
@@ -30,14 +29,12 @@ public class Arrow : MonoBehaviour
     {
         if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
         {
-            animator.SetBool("Found Enemy", true);
             speed = 0;
             HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(attackDamage);
                 Debug.Log("enemy hit by arrow");
-                animator.SetBool("Found Enemy", false);
                 Destroy(gameObject);
             }
         }
@@ -77,6 +74,10 @@ public class Arrow : MonoBehaviour
     {
         Vector3 direction = (targetEnemy.position - transform.position).normalized;
         transform.position += direction * speed * Time.deltaTime;
-    }
 
+        // Calculate the angle in radians
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Apply rotation to the arrow
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
 }

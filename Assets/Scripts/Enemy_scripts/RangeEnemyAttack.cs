@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class RangeHeroAttack : MonoBehaviour
+public class RangeEnemyAttack : MonoBehaviour
 {
     private BaseCharacter baseCharacter;
-    private HeroMovement heroMovement;
+    private EnemyMovement enemyMovement;
     private GameObject arrow;
 
     public GameObject arrowPrefab;
@@ -18,13 +18,13 @@ public class RangeHeroAttack : MonoBehaviour
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
-        heroMovement = GetComponent<HeroMovement>();
+        enemyMovement = GetComponent<EnemyMovement>();
         attackDamage = baseCharacter.attack;
     }
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Enemy") || target.gameObject.CompareTag("enemy wall"))
+        if (target.gameObject.CompareTag("Hero"))
         {
             if (!isAttacking)
             {
@@ -36,13 +36,13 @@ public class RangeHeroAttack : MonoBehaviour
     private IEnumerator AttackRoutine(Collider2D target)
     {
         isAttacking = true;
-        while (target != null && target.gameObject.CompareTag("Enemy"))
+        while (target != null && target.gameObject.CompareTag("Hero"))
         {
             animator.SetBool("Attacking", true);
             arrow = Instantiate(arrowPrefab, launchOffset.position, Quaternion.identity);
             arrow.GetComponent<RectTransform>().transform.localPosition = new Vector3(arrow.GetComponent<RectTransform>().localPosition.x, arrow.GetComponent<RectTransform>().localPosition.y, 1f);
             arrow.transform.SetParent(transform);
-            heroMovement.StopMovement();
+            enemyMovement.StopMovement();
 
             // Wait for the attack interval before the next attack
             yield return new WaitForSeconds(attackInterval);
@@ -56,12 +56,12 @@ public class RangeHeroAttack : MonoBehaviour
         }
 
         isAttacking = false;
-        heroMovement.WalkForward();
+        enemyMovement.WalkForward();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log(gameObject.name + " Another hero left, resuming.");
-        heroMovement.WalkForward();
+        enemyMovement.WalkForward();
     }
 }
