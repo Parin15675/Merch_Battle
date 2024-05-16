@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HealthEnemy : MonoBehaviour
@@ -12,6 +13,7 @@ public class HealthEnemy : MonoBehaviour
     public HealthBar healthBar;
     public TextUpdater text;
     public Animator animator;
+    public GameObject text_popup;
 
     private void Awake()
     {
@@ -25,6 +27,14 @@ public class HealthEnemy : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
+
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.F10)) 
+    //    {
+    //        CreatePopUp(Vector3.one, Random.Range(0,1000).ToString());
+    //    }
+    //}
 
     public void TakeDamage(int damage)
     {
@@ -66,4 +76,15 @@ public class HealthEnemy : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    //public void CreatePopUp(Vector3 position, string text)
+    //{
+    //    var popup = Instantiate(text_popup, position , Quaternion.identity);
+    //    popup.transform.SetParent(transform);
+    //    var temp = popup.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+    //    temp.text = text;
+
+    //    Destroy(popup,1f);
+
+    //}
 }

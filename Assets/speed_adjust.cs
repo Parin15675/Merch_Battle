@@ -5,66 +5,69 @@ public class speed_adjust : MonoBehaviour
 {
 
 
-    public GameObject[] heroes = new GameObject[3]; 
-    public GameObject[] enemies = new GameObject[3];
-    public float newSpeed_hero = 60f; 
-    public float newSpeed_enemy = -60f;
+    private BaseCharacter baseCharacter;
 
-    public void allAdjustSpeed()
+    public int speed_default;
+
+    private void Start()
     {
-        AdjustSpeed_hero();
-        AdjustSpeed_enemy();
+        speed_default = baseCharacter.speed;
+    }
 
+
+    public void speedx2()
+    {
+        baseCharacter.SetSpeed(speed_default);
     }
 
 
 
 
-    public void AdjustSpeed_hero()
-    {
-        // Adjust speed for all heroes
-        foreach (GameObject hero in heroes)
-        {
-            HeroMovement heroMovement = hero.GetComponent<HeroMovement>();
-            if (heroMovement != null)
-            {
-                heroMovement.speed = newSpeed_hero;
-            }
-            else
-            {
-                Debug.LogWarning("HeroMovement component not found on a hero!");
-            }
-            // Adjust speed for all enemies
+    //public void AdjustSpeed_hero()
+    //{
+    //    // Adjust speed for all heroes
+    //    foreach (GameObject hero in heroes)
+    //    {
+    //        HeroMovement heroMovement = hero.GetComponent<HeroMovement>();
+    //        if (heroMovement != null)
+    //        {
+    //            heroMovement.speed = newSpeed_hero;
+    //        }
+    //        else
+    //        {
+    //            Debug.LogWarning("HeroMovement component not found on a hero!");
+    //        }
+    //        // Adjust speed for all enemies
 
-        }
-
-
-
-        Debug.Log("Speed adjusted to ");
-    }
-
-    public void AdjustSpeed_enemy()
-    {
-        Debug.Log("AdjustSpeed_enemy");
-
-        foreach (GameObject enemy in enemies)
-        {
-            EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
-            if (enemyMovement != null)
-            {
-                Debug.Log("-60");
-                enemyMovement.speed = newSpeed_enemy;
-            }
-            else
-            {
-                Debug.LogWarning("EnemyMovement component not found on an enemy!");
-            }
-        }
+    //    }
 
 
 
-        Debug.Log("Speed adjusted to ");
-    }
+    //    Debug.Log("Speed adjusted to ");
+    //}
+
+    //public void AdjustSpeed_enemy()
+    //{
+    //    Debug.Log("AdjustSpeed_enemy");
+
+    //    foreach (GameObject enemy in enemies)
+    //    {
+    //        EnemyMovement enemyMovement = enemy.GetComponent<EnemyMovement>();
+    //        if (enemyMovement != null)
+    //        {
+    //            Debug.Log("-60");
+    //            enemyMovement.speed = newSpeed_enemy;
+    //        }
+    //        else
+    //        {
+    //            Debug.LogWarning("EnemyMovement component not found on an enemy!");
+    //        }
+    //    }
+
+
+
+    //    Debug.Log("Speed adjusted to ");
+    //}
 
     //// Example method to add new enemies dynamically
     //public void AddEnemy(GameObject enemyPrefab)

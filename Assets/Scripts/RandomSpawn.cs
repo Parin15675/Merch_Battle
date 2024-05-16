@@ -9,7 +9,6 @@ public class RandomSpawn : MonoBehaviour
     [SerializeField] private Transform targetObject; // Target object to base the spawn position on
     public int count;
     public float waitSpawn;
-    public speed_adjust speed_Adjust;
 
     private void Start()
     {
