@@ -3079,7 +3079,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1338257437}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: Start_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3913,8 +3913,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4207,8 +4207,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5586,7 +5586,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3a3a5f0f19abc224392e56232607b61f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5870,7 +5870,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.196
+  m_Volume: 0.157
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7401,6 +7401,7 @@ MonoBehaviour:
   fireball: {fileID: 8300000, guid: 54ccfb01367c0cb4bb471a9a44e9eb73, type: 3}
   heal: {fileID: 8300000, guid: 64a63792b65b1f54b83bf0431142984f, type: 3}
   merge: {fileID: 8300000, guid: a28b14ca8b812424f853e6259cb6f46f, type: 3}
+  ice_spell: {fileID: 8300000, guid: b27c48a5f8c95ff43b6743661831a7c9, type: 3}
 --- !u!4 &2020301932
 Transform:
   m_ObjectHideFlags: 0
