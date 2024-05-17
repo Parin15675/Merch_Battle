@@ -44098,7 +44098,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 694264210}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Play
+        m_MethodName: Start_button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -55685,6 +55685,7 @@ GameObject:
   - component: {fileID: 905816215}
   - component: {fileID: 905816214}
   - component: {fileID: 905816217}
+  - component: {fileID: 905816218}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -55811,6 +55812,18 @@ MonoBehaviour:
   - {fileID: 565506101}
   - {fileID: 316979686}
   - {fileID: 1217894815}
+--- !u!114 &905816218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905816212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3d7c3cec99bff344861726dcd910fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &906237801
 GameObject:
   m_ObjectHideFlags: 0
@@ -103737,7 +103750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1679711279
 AudioSource:
   m_ObjectHideFlags: 0
@@ -103748,9 +103761,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fa736c55632db7749aa3f6e8fb9e31be, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c135323c0b6a1b74e8cccee396f8eeee, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.654
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -103758,7 +103771,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 30
   MaxDistance: 1378.3489
   Pan2D: 0
   rolloffMode: 0
@@ -120355,7 +120368,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 26030827}
+      - m_Target: {fileID: 905816218}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1

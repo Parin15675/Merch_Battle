@@ -12,12 +12,17 @@ public class TileBoard : MonoBehaviour
     public TileState[] tileStates;
     public GameManager gamemanager;
 
+    AudioManeger audioManeger;
+
+
+
     public int getTiles() { return tiles.Count; }
 
     private void Awake()
     {
         grid = GetComponentInChildren<TileGrid>();
         tiles = new List<Tile>(16);
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     public void ClearBoard()
@@ -89,6 +94,7 @@ public class TileBoard : MonoBehaviour
 
         if (changed)
         {
+            audioManeger.PlaySFX(audioManeger.merge);
             StartCoroutine(WaitForChanges());
         }
     }

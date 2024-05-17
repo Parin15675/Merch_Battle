@@ -6,14 +6,21 @@ public class MainMenu : MonoBehaviour
 {
     public void Play()
     {
-        Debug.Log("Play");
-        SceneManager.LoadScene("Town");
+
+        SceneManager.LoadScene("2048");
         
+    }
+
+    public void Start_button()
+    {
+
+        SceneManager.LoadScene("Town");
+
     }
 
     public void Endless_mode()
     {
-        Debug.Log("Play");
+
         SceneManager.LoadScene("EndlessMode");
 
     }
