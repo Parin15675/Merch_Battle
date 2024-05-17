@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 8908617844648906053}
   - component: {fileID: 6740123130422925257}
   - component: {fileID: 2205582212556004227}
+  - component: {fileID: -4157970029078184607}
   m_Layer: 5
   m_Name: Undead5
   m_TagString: Enemy
@@ -469,7 +470,6 @@ MonoBehaviour:
   healthBar: {fileID: 5756185548602844593}
   text: {fileID: 0}
   animator: {fileID: 6936494723916411787}
-  text_popup: {fileID: 0}
   damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
   spawner: {fileID: 6068580704310986717}
 --- !u!50 &8908617844648906053
@@ -498,7 +498,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6740123130422925257
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -11.240253, y: -20.794436}
+  m_Offset: {x: -6.7009277, y: -23.820724}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -542,7 +542,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 62.821373, y: 56.639072}
+  m_Size: {x: 44.361084, y: 47.560272}
   m_EdgeRadius: 0
 --- !u!114 &2205582212556004227
 MonoBehaviour:
@@ -559,3 +559,38 @@ MonoBehaviour:
   attack: 85
   health: 300
   speed: 35
+--- !u!70 &-4157970029078184607
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843952415723924877}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.4375, y: -25.571991}
+  m_Size: {x: 27.887695, y: 43.67035}
+  m_Direction: 0
