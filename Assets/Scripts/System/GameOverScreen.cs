@@ -21,8 +21,13 @@ public class GameOverScreen : MonoBehaviour
         SceneManager.LoadScene("2048");
     }
 
+    public void RestartButton_endless()
+    {
+        SceneManager.LoadScene("EndlessMode");
+    }
+
     public void ExitButton()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Town");
     }
 }
