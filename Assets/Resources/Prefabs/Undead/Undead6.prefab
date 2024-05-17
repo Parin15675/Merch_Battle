@@ -236,8 +236,9 @@ GameObject:
   - component: {fileID: 2638613906956037028}
   - component: {fileID: 2880316581779324586}
   - component: {fileID: 8988641743020809778}
-  - component: {fileID: 6196351768102492016}
   - component: {fileID: -1655182725878044612}
+  - component: {fileID: -2585484664135782902}
+  - component: {fileID: 6196351768102492016}
   - component: {fileID: 7058520742550084108}
   m_Layer: 5
   m_Name: Undead6
@@ -357,7 +358,6 @@ MonoBehaviour:
   healthBar: {fileID: 3698010746889665763}
   text: {fileID: 0}
   animator: {fileID: 1936432020304870958}
-  text_popup: {fileID: 0}
   damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
   spawner: {fileID: 6810360040885900168}
 --- !u!50 &2880316581779324586
@@ -386,7 +386,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &8988641743020809778
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -419,7 +419,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -9.975649, y: -20.091948}
+  m_Offset: {x: -6.7613926, y: -26.399124}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -430,23 +430,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 55.234097, y: 56.35815}
+  m_Size: {x: 48.805584, y: 40.832794}
   m_EdgeRadius: 0
---- !u!114 &6196351768102492016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8575805316141788131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 45
-  health: 250
-  speed: 30
 --- !u!58 &-1655182725878044612
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -482,6 +467,56 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 480
+--- !u!70 &-2585484664135782902
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575805316141788131}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.5767822, y: -26.381058}
+  m_Size: {x: 27.669434, y: 40.662506}
+  m_Direction: 0
+--- !u!114 &6196351768102492016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575805316141788131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 45
+  health: 250
+  speed: 30
 --- !u!114 &7058520742550084108
 MonoBehaviour:
   m_ObjectHideFlags: 0
