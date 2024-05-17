@@ -49,7 +49,7 @@ public class FrostAbility : Ability
 
     public void OnTriggerExit2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Enemy"))
+        if (target.gameObject.CompareTag("Enemy") || target.GetType() == typeof(CircleCollider2D))
         {
             EnemyMovement enemyMovement = target.gameObject.GetComponent<EnemyMovement>();
             if (enemyMovement != null && affectedEnemies.Contains(enemyMovement))

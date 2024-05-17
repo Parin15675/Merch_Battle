@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1777200187206598613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: launchOffset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3491953478626668911}
   - component: {fileID: 5807915268524825785}
   - component: {fileID: 6799874544879018866}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 2419919628703154861}
   - component: {fileID: 3086529249156723384}
   - component: {fileID: 3965657923329108280}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 6156082103560199388}
   - component: {fileID: 190784782357285859}
   - component: {fileID: 1106034820937150276}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar_sup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 2759087940766394104}
   - component: {fileID: 2232439850070745199}
   - component: {fileID: -3112849547301827506}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Human2
   m_TagString: Hero
   m_Icon: {fileID: 0}
@@ -598,10 +598,6 @@ MonoBehaviour:
   point: 1
   avoidanceForce: 5
   avoidanceDamping: 0.9
-  checkDistance: 2
-  heroLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &2759087940766394104
 MonoBehaviour:
   m_ObjectHideFlags: 0

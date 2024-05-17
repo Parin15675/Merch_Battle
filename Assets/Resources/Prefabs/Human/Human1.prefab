@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6471436445204678078}
   - component: {fileID: 8276884863054524322}
   - component: {fileID: 4434571489911041468}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6709547120914614940}
   - component: {fileID: 6619238703654509663}
   - component: {fileID: 7763290290678370338}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 2598725843951594496}
   - component: {fileID: 2884437475916170833}
   - component: {fileID: 4090809690012904969}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar_sup (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: -2088777993040138588}
   - component: {fileID: 8279410010578217690}
   - component: {fileID: 8602841090555204634}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Human1
   m_TagString: Hero
   m_Icon: {fileID: 0}
@@ -319,14 +319,14 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 32, y: 32, z: 0.9986178}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2598725843951594496}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -860.3, y: -656.2}
+  m_AnchoredPosition: {x: -860, y: -645.8}
   m_SizeDelta: {x: 3.2, y: 3.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &4645011476343080921
@@ -437,10 +437,6 @@ MonoBehaviour:
   point: 1
   avoidanceForce: 5
   avoidanceDamping: 0.9
-  checkDistance: 2
-  heroLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4

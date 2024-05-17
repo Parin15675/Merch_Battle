@@ -197,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c503ea68625844bbfa97f2e96c5df0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 40
   speed: 600
   animator: {fileID: 2488062181660503414}
   curveHeight: 20

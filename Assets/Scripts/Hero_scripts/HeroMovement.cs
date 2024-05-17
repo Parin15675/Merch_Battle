@@ -14,8 +14,6 @@ public class HeroMovement : MonoBehaviour
     public int point = 1;
     public float avoidanceForce = 5.0f; // Force to move away to avoid overlap
     public float avoidanceDamping = 0.9f; // Damping factor to smooth out the avoidance movement
-    public float checkDistance = 2.0f; // Distance to check for heroes in front
-    public LayerMask heroLayer; // Layer to detect other heroes
 
     private CapsuleCollider2D capsuleCollider;
     private Vector3 avoidanceDirection;
@@ -52,18 +50,18 @@ public class HeroMovement : MonoBehaviour
             {
                 WalkForward();
             }
+        }
 
-            // Apply avoidance direction if necessary
-            if (avoidanceDirection != Vector3.zero)
+        // Apply avoidance direction if necessary
+        if (avoidanceDirection != Vector3.zero)
+        {
+            transform.position += avoidanceDirection * Time.deltaTime;
+            avoidanceDirection *= avoidanceDamping; // Apply damping to the avoidance direction
+
+            // If the avoidance direction is almost negligible, reset it
+            if (avoidanceDirection.magnitude < 0.01f)
             {
-                transform.position += avoidanceDirection * Time.deltaTime;
-                avoidanceDirection *= avoidanceDamping; // Apply damping to the avoidance direction
-
-                // If the avoidance direction is almost negligible, reset it
-                if (avoidanceDirection.magnitude < 0.01f)
-                {
-                    avoidanceDirection = Vector3.zero;
-                }
+                avoidanceDirection = Vector3.zero;
             }
         }
     }
@@ -100,21 +98,10 @@ public class HeroMovement : MonoBehaviour
 
     private void MoveTowardsEnemy()
     {
-        if (Speed_adjust.speedx2)
-        {
-            Vector3 direction = (targetEnemy.position - transform.position).normalized;
-            directionToMove = direction * (speed*2) * Time.deltaTime;
-            transform.position += directionToMove;
-        }
-        else
-        {
-            Vector3 direction = (targetEnemy.position - transform.position).normalized;
-            directionToMove = direction * speed * Time.deltaTime;
-            transform.position += directionToMove;
-        }
-
-
-
+        Vector3 direction = (targetEnemy.position - transform.position).normalized;
+        directionToMove = direction * (Speed_adjust.speedx2 ? speed * 2 : speed) * Time.deltaTime;
+        transform.position += directionToMove;
+        FlipSprite(direction.x);
     }
 
     public void StopMovement()
@@ -128,6 +115,46 @@ public class HeroMovement : MonoBehaviour
         speed = baseCharacter.speed;
         canMove = true;
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+        FlipSprite(1); // Always facing right when walking forward
     }
 
+    private void FlipSprite(float directionX)
+    {
+        if (directionX > 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (directionX < 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Hero") && collision.GetType() == typeof(BoxCollider2D) && GetComponent<RangeHeroAttack>() == null)
+        {
+            HeroHit heroHit = collision.GetComponent<HeroHit>();
+            if (heroHit != null && heroHit.isAttacking)
+            {
+                MoveUpOrDown();
+            }
+        }
+    }
+
+    private void MoveUpOrDown()
+    {
+        Vector3 moveDirection = Vector3.up; // Default to move up
+
+        // Check if moving up is clear
+        RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, 1.0f, LayerMask.GetMask("Hero"));
+        if (hitUp.collider != null)
+        {
+            // If there's a hero above, move down instead
+            moveDirection = Vector3.down;
+        }
+
+        transform.Translate(moveDirection * speed * Time.deltaTime);
+        Debug.Log("Moving " + moveDirection);
+    }
 }

@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     private bool canMove = true;
     private Transform currentTarget;
     private List<Transform> targets;
+    private Vector3 directionToMove;
 
     public float speed = 30.0f;
 
@@ -61,20 +62,10 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsTarget()
     {
-        if (Speed_adjust.speedx2)
-        {
-            Vector3 direction = (currentTarget.position - transform.position).normalized;
-            transform.position -= direction * (speed*2) * Time.deltaTime;
-        }
-        else
-        {
-            Vector3 direction = (currentTarget.position - transform.position).normalized;
-            transform.position -= direction * speed * Time.deltaTime;
-        }
-
-
-
-
+        Vector3 direction = (currentTarget.position - transform.position).normalized;
+        directionToMove = direction * (Speed_adjust.speedx2 ? speed * 2 : speed) * Time.deltaTime;
+        transform.position -= directionToMove;
+        FlipSprite();
     }
 
     private void FindAllTargets()
@@ -88,6 +79,7 @@ public class EnemyMovement : MonoBehaviour
     {
         canMove = true;
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
     }
 
     public void StopMovement()
@@ -100,5 +92,17 @@ public class EnemyMovement : MonoBehaviour
     {
         canMove = true;
         speed = -baseCharacter.speed; // Reset to default speed or set to a desired value
+    }
+
+    private void FlipSprite()
+    {
+        if (speed < 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
+        else if (speed > 0)
+        {
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
     }
 }

@@ -25,28 +25,6 @@ public class RangeHeroAttack : MonoBehaviour
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
-    private void OnCollisionEnter2D(Collider2D collision)
-    {
-        if (collision.GetType() == typeof(CircleCollider2D))
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                Debug.Log("shoot enemy");
-            }
-        }
-    }
-
-    //private void OnCollisionExit2D(Collider2D collision)
-    //{
-    //    if (collision.GetType() == typeof(CircleCollider2D))
-    //    {
-    //        if (collision.gameObject.CompareTag("Enemy"))
-    //        {
-    //            heroMovement.WalkForward();
-    //        }
-    //    }
-    //}
-
     private void OnTriggerEnter2D(Collider2D target)
     {
         if (target.GetType() == typeof(BoxCollider2D))
@@ -88,8 +66,4 @@ public class RangeHeroAttack : MonoBehaviour
         heroMovement.WalkForward();
     }
 
-    private void OnTriggerExit2D(Collision2D collision)
-    {
-        
-    }
 }

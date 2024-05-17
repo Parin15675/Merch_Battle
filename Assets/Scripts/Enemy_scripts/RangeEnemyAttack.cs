@@ -13,7 +13,7 @@ public class RangeEnemyAttack : MonoBehaviour
     public bool isAttacking = false;
     public int point = 1;
     public Animator animator;
-    public float attackInterval = 0.01f; // Time between attacks
+    public float attackInterval = 0.1f; // Time between attacks
 
     private void Awake()
     {
@@ -63,9 +63,4 @@ public class RangeEnemyAttack : MonoBehaviour
         enemyMovement.WalkForward();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log(gameObject.name + " Another hero left, resuming.");
-        enemyMovement.WalkForward();
-    }
 }

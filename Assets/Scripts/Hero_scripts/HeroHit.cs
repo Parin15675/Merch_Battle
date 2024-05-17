@@ -47,12 +47,6 @@ public class HeroHit : MonoBehaviour
 
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log(gameObject.name + " Another hero left, resuming.");
-        heroMovement.WalkForward();
-    }
-
     private IEnumerator AttackEnemy(HealthEnemy enemyHealth)
     {
         isAttacking = true;

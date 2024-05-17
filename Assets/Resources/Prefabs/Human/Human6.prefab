@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 964516277540742816}
   - component: {fileID: 869386480785619363}
   - component: {fileID: 9190045858320659379}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar_sup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8203355329011668045}
   - component: {fileID: 8462222125602068836}
   - component: {fileID: 1080691336842305701}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6673676108139266709}
   - component: {fileID: 1501996859800323653}
   - component: {fileID: 6139954321303499674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Human6
   m_TagString: Hero
   m_Icon: {fileID: 0}
@@ -432,10 +432,6 @@ MonoBehaviour:
   point: 1
   avoidanceForce: 5
   avoidanceDamping: 0.9
-  checkDistance: 2
-  heroLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6673676108139266709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,7 +511,7 @@ GameObject:
   - component: {fileID: 4336202735290624116}
   - component: {fileID: 7084398627392362162}
   - component: {fileID: 454014489211843568}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
