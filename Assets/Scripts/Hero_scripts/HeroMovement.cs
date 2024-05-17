@@ -14,21 +14,17 @@ public class HeroMovement : MonoBehaviour
     public int point = 1;
     public float avoidanceForce = 5.0f; // Force to move away to avoid overlap
     public float avoidanceDamping = 0.9f; // Damping factor to smooth out the avoidance movement
+    public float checkDistance = 2.0f; // Distance to check for heroes in front
+    public LayerMask heroLayer; // Layer to detect other heroes
 
     private CapsuleCollider2D capsuleCollider;
     private Vector3 avoidanceDirection;
+    private Vector3 directionToMove;
 
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         speed = baseCharacter.speed;
-        capsuleCollider = GetComponent<CapsuleCollider2D>();
-
-        if (capsuleCollider == null)
-        {
-            capsuleCollider = gameObject.AddComponent<CapsuleCollider2D>();
-            capsuleCollider.isTrigger = true; // Make the capsule collider a trigger
-        }
     }
 
     void Start()
@@ -102,7 +98,8 @@ public class HeroMovement : MonoBehaviour
     private void MoveTowardsEnemy()
     {
         Vector3 direction = (targetEnemy.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        directionToMove = direction * speed * Time.deltaTime;
+        transform.position += directionToMove;
     }
 
     public void StopMovement()
@@ -118,32 +115,4 @@ public class HeroMovement : MonoBehaviour
         transform.Translate(Vector3.right * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Hero"))
-        {
-            // Calculate the direction to move away from the overlapping object
-            Vector3 direction = (transform.position - other.transform.position).normalized;
-            avoidanceDirection = direction * avoidanceForce;
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Hero"))
-        {
-            // Continue to push away while still overlapping
-            Vector3 direction = (transform.position - other.transform.position).normalized;
-            avoidanceDirection = direction * avoidanceForce;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Hero"))
-        {
-            // Reset the avoidance direction when no longer overlapping
-            avoidanceDirection = Vector3.zero;
-        }
-    }
 }

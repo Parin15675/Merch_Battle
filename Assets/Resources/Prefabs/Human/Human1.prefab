@@ -435,6 +435,12 @@ MonoBehaviour:
   speed: 30
   animator: {fileID: 2243693570282851783}
   point: 1
+  avoidanceForce: 5
+  avoidanceDamping: 0.9
+  checkDistance: 2
+  heroLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4

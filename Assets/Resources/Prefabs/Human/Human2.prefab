@@ -598,6 +598,10 @@ MonoBehaviour:
   point: 1
   avoidanceForce: 5
   avoidanceDamping: 0.9
+  checkDistance: 2
+  heroLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &2759087940766394104
 MonoBehaviour:
   m_ObjectHideFlags: 0
