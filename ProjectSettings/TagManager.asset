@@ -11,6 +11,7 @@ TagManager:
   - Enter Level
   - Enter Endless
   - Audio
+  - speed
   layers:
   - Default
   - TransparentFX
