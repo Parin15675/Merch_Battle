@@ -299,9 +299,9 @@ GameObject:
   - component: {fileID: 5993121710040252518}
   - component: {fileID: 6712064398397051445}
   - component: {fileID: 3307100165335497086}
+  - component: {fileID: -2088777993040138588}
   - component: {fileID: 8279410010578217690}
   - component: {fileID: 8602841090555204634}
-  - component: {fileID: -2088777993040138588}
   m_Layer: 0
   m_Name: Human1
   m_TagString: Hero
@@ -435,7 +435,6 @@ MonoBehaviour:
   speed: 30
   animator: {fileID: 2243693570282851783}
   point: 1
-  avoidanceSpeed: 5
 --- !u!50 &6712064398397051445
 Rigidbody2D:
   serializedVersion: 4
@@ -495,7 +494,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.38264847, y: -0.71979403}
+  m_Offset: {x: 0.14983606, y: -0.82326627}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -506,39 +505,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0815964, y: 1.602118}
+  m_Size: {x: 1.6159716, y: 1.3951735}
   m_EdgeRadius: 0
---- !u!114 &8279410010578217690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6375947747883966403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 20
-  isAttacking: 0
-  point: 1
-  animator: {fileID: 2243693570282851783}
---- !u!114 &8602841090555204634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6375947747883966403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 20
-  health: 100
-  speed: 35
 --- !u!70 &-2088777993040138588
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -571,6 +539,37 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017853022, y: -0.8628931}
-  m_Size: {x: 1.402802, y: 1.4742141}
+  m_Offset: {x: 0.017853022, y: -0.82718706}
+  m_Size: {x: 1.402802, y: 1.402802}
   m_Direction: 0
+--- !u!114 &8279410010578217690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375947747883966403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191c86d6cbd881847b36bb0457157c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 20
+  isAttacking: 0
+  point: 1
+  animator: {fileID: 2243693570282851783}
+--- !u!114 &8602841090555204634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6375947747883966403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c037d153d28a3fe4b9f1679a58f64478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 20
+  health: 100
+  speed: 35

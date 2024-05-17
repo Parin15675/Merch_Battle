@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 9002938173475512056}
   - component: {fileID: 8411353581016463431}
   - component: {fileID: 8399157251193574450}
+  - component: {fileID: 8039258766756106923}
   m_Layer: 0
   m_Name: Human10
   m_TagString: Hero
@@ -218,7 +219,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &6754492541336785421
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -251,7 +252,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.36083305, y: -0.87630874}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -262,7 +263,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.2, y: 3.2}
+  m_Size: {x: 2.18623, y: 1.4473823}
   m_EdgeRadius: 0
 --- !u!114 &2944541861077774058
 MonoBehaviour:
@@ -328,6 +329,41 @@ MonoBehaviour:
   attack: 150
   health: 600
   speed: 40
+--- !u!70 &8039258766756106923
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502313949766168140}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.025772432, y: -0.86771995}
+  m_Size: {x: 1.3614724, y: 1.4645706}
+  m_Direction: 0
 --- !u!1 &1790363470609712923
 GameObject:
   m_ObjectHideFlags: 0
