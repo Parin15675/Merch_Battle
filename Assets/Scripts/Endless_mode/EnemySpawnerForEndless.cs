@@ -43,8 +43,8 @@ public class EnemySpawnerForEndless : MonoBehaviour
                     // Calculate the grid position
                     int row = i % 5;
                     int column = i % 5;
-                    float xOffset = column * 50; // Adjust spacing between columns
-                    float yOffset = row * 50 * Random.Range(-1, 5); // Adjust spacing between rows
+                    float xOffset = column * 50 + Random.Range(-25, 25); // Adjust spacing between columns
+                    float yOffset = row * 50 + Random.Range(-25, 25); // Adjust spacing between rows
 
                     // Spawn an enemy
                     GameObject enemy = Instantiate(enemiesToSpawn[0], spawnArea, false);
