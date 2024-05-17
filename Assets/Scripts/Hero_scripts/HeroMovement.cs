@@ -21,10 +21,13 @@ public class HeroMovement : MonoBehaviour
     private Vector3 avoidanceDirection;
     private Vector3 directionToMove;
 
+    speed_adjust Speed_adjust;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         speed = baseCharacter.speed;
+        Speed_adjust = GameObject.FindGameObjectWithTag("speed").GetComponent<speed_adjust>();
     }
 
     void Start()
@@ -97,9 +100,21 @@ public class HeroMovement : MonoBehaviour
 
     private void MoveTowardsEnemy()
     {
-        Vector3 direction = (targetEnemy.position - transform.position).normalized;
-        directionToMove = direction * speed * Time.deltaTime;
-        transform.position += directionToMove;
+        if (Speed_adjust.speedx2)
+        {
+            Vector3 direction = (targetEnemy.position - transform.position).normalized;
+            directionToMove = direction * (speed*2) * Time.deltaTime;
+            transform.position += directionToMove;
+        }
+        else
+        {
+            Vector3 direction = (targetEnemy.position - transform.position).normalized;
+            directionToMove = direction * speed * Time.deltaTime;
+            transform.position += directionToMove;
+        }
+
+
+
     }
 
     public void StopMovement()
