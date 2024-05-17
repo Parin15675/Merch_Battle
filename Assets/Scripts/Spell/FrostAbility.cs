@@ -9,6 +9,13 @@ public class FrostAbility : Ability
     private List<EnemyMovement> affectedEnemies = new List<EnemyMovement>();
     private Dictionary<EnemyMovement, GameObject> enemyIceInstances = new Dictionary<EnemyMovement, GameObject>();
 
+    AudioManeger audioManeger;
+
+    private void Awake()
+    {
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
+    }
+
     private void modifyStartPosition(Vector3 parentPos)
     {
         gameObject.transform.position = parentPos;
@@ -34,6 +41,7 @@ public class FrostAbility : Ability
             if (enemyMovement != null && !affectedEnemies.Contains(enemyMovement))
             {
                 affectedEnemies.Add(enemyMovement);
+                audioManeger.PlaySFX(audioManeger.ice_spell);
                 StartCoroutine(Frosting(enemyMovement));
             }
         }

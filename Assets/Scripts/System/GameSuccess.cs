@@ -23,6 +23,6 @@ public class GameSuccess : MonoBehaviour
 
     public void ExitButton()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Town");
     }
 }
