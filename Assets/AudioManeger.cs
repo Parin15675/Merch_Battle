@@ -17,6 +17,8 @@ public class AudioManeger : MonoBehaviour
     public AudioClip arrow;
     public AudioClip fireball;
     public AudioClip heal;
+    public AudioClip merge;
+    public AudioClip ice_spell;
 
     private void Start()
     {
