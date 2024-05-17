@@ -11,10 +11,13 @@ public class EnemyMovement : MonoBehaviour
 
     public float speed = 30.0f;
 
+    speed_adjust Speed_adjust;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         speed = -baseCharacter.speed;
+        Speed_adjust = GameObject.FindGameObjectWithTag("speed").GetComponent<speed_adjust>();
     }
 
     void Update()
@@ -58,8 +61,20 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsTarget()
     {
-        Vector3 direction = (currentTarget.position - transform.position).normalized;
-        transform.position -= direction * speed * Time.deltaTime;
+        if (Speed_adjust.speedx2)
+        {
+            Vector3 direction = (currentTarget.position - transform.position).normalized;
+            transform.position -= direction * (speed*2) * Time.deltaTime;
+        }
+        else
+        {
+            Vector3 direction = (currentTarget.position - transform.position).normalized;
+            transform.position -= direction * speed * Time.deltaTime;
+        }
+
+
+
+
     }
 
     private void FindAllTargets()
