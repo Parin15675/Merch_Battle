@@ -8,6 +8,13 @@ public class FireballAbility : Ability
     private float lastYPos;
     public int damage = 10;
 
+    AudioManeger audioManeger;
+
+    private void Awake()
+    {
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
+    }
+
     private void modifyStartPosition(Vector3 parentPos)
     {
         lastYPos = parentPos.y;
@@ -48,6 +55,7 @@ public class FireballAbility : Ability
         {
             Debug.Log(gameObject.name + "Hit Enemy");
             HealthEnemy enemyHealth = target.gameObject.GetComponent<HealthEnemy>();
+            audioManeger.PlaySFX(audioManeger.fireball);
             StartCoroutine(AttackEnemy(enemyHealth));
         }
     }
