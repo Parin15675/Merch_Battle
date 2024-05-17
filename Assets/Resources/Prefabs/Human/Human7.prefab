@@ -296,6 +296,8 @@ MonoBehaviour:
   speed: 50
   animator: {fileID: 9075796710613361158}
   point: 1
+  avoidanceForce: 5
+  avoidanceDamping: 0.9
 --- !u!114 &9158160536041798664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,8 +363,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.025569616, y: -0.63927144}
-  m_Size: {x: 1.5805315, y: 1.9214693}
+  m_Offset: {x: -0.025569616, y: -0.8097408}
+  m_Size: {x: 1.5805335, y: 1.5805335}
   m_Direction: 0
 --- !u!1 &4140544538757374936
 GameObject:

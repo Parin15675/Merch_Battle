@@ -12,7 +12,7 @@ public class HeroMovement : MonoBehaviour
     public float speed = 30.0f;
     public Animator animator;
     public int point = 1;
-    public float avoidanceDistance = 10f; // Distance to move away to avoid overlap
+    public float avoidanceForce = 5.0f; // Force to move away to avoid overlap
     public float avoidanceDamping = 0.9f; // Damping factor to smooth out the avoidance movement
 
     private CapsuleCollider2D capsuleCollider;
@@ -57,7 +57,7 @@ public class HeroMovement : MonoBehaviour
             // Apply avoidance direction if necessary
             if (avoidanceDirection != Vector3.zero)
             {
-                transform.position += avoidanceDirection * speed * Time.deltaTime;
+                transform.position += avoidanceDirection * Time.deltaTime;
                 avoidanceDirection *= avoidanceDamping; // Apply damping to the avoidance direction
 
                 // If the avoidance direction is almost negligible, reset it
@@ -124,7 +124,17 @@ public class HeroMovement : MonoBehaviour
         {
             // Calculate the direction to move away from the overlapping object
             Vector3 direction = (transform.position - other.transform.position).normalized;
-            avoidanceDirection = direction * avoidanceDistance;
+            avoidanceDirection = direction * avoidanceForce;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Hero"))
+        {
+            // Continue to push away while still overlapping
+            Vector3 direction = (transform.position - other.transform.position).normalized;
+            avoidanceDirection = direction * avoidanceForce;
         }
     }
 

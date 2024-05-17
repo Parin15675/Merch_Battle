@@ -6571,8 +6571,8 @@ MonoBehaviour:
   healthBar: {fileID: 1098088641}
   text: {fileID: 1285884403}
   animator: {fileID: 1850458809}
-  damagePopupPrefab: {fileID: 0}
-  spawner: {fileID: 0}
+  damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
+  spawner: {fileID: 1850458803}
 --- !u!114 &1850458812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7401,6 +7401,7 @@ MonoBehaviour:
   fireball: {fileID: 8300000, guid: 54ccfb01367c0cb4bb471a9a44e9eb73, type: 3}
   heal: {fileID: 8300000, guid: 64a63792b65b1f54b83bf0431142984f, type: 3}
   merge: {fileID: 8300000, guid: a28b14ca8b812424f853e6259cb6f46f, type: 3}
+  ice_spell: {fileID: 0}
 --- !u!4 &2020301932
 Transform:
   m_ObjectHideFlags: 0
