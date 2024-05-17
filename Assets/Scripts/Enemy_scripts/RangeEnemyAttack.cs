@@ -30,6 +30,7 @@ public class RangeEnemyAttack : MonoBehaviour
             {
                 if (!isAttacking)
                 {
+                    enemyMovement.StopMovement();
                     StartCoroutine(AttackRoutine(target));
                 }
             }

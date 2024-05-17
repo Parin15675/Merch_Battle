@@ -13,7 +13,7 @@ public class RangeHeroAttack : MonoBehaviour
     public bool isAttacking = false;
     public int point = 1;
     public Animator animator;
-    public float attackInterval = 0.01f; // Time between attacks
+    public float attackInterval = 0.1f; // Time between attacks
 
     AudioManeger audioManeger;
 
@@ -25,6 +25,28 @@ public class RangeHeroAttack : MonoBehaviour
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        if (collision.GetType() == typeof(CircleCollider2D))
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                Debug.Log("shoot enemy");
+            }
+        }
+    }
+
+    //private void OnCollisionExit2D(Collider2D collision)
+    //{
+    //    if (collision.GetType() == typeof(CircleCollider2D))
+    //    {
+    //        if (collision.gameObject.CompareTag("Enemy"))
+    //        {
+    //            heroMovement.WalkForward();
+    //        }
+    //    }
+    //}
+
     private void OnTriggerEnter2D(Collider2D target)
     {
         if (target.GetType() == typeof(BoxCollider2D))
@@ -33,6 +55,7 @@ public class RangeHeroAttack : MonoBehaviour
             {
                 if (!isAttacking)
                 {
+                    heroMovement.StopMovement();
                     StartCoroutine(AttackRoutine(target));
                 }
             }
@@ -48,7 +71,6 @@ public class RangeHeroAttack : MonoBehaviour
             arrow = Instantiate(arrowPrefab, launchOffset.position, Quaternion.identity);
             arrow.GetComponent<RectTransform>().transform.localPosition = new Vector3(arrow.GetComponent<RectTransform>().localPosition.x, arrow.GetComponent<RectTransform>().localPosition.y, 1f);
             arrow.transform.SetParent(transform);
-            heroMovement.StopMovement();
             audioManeger.PlaySFX(audioManeger.arrow);
 
             // Wait for the attack interval before the next attack
@@ -66,9 +88,8 @@ public class RangeHeroAttack : MonoBehaviour
         heroMovement.WalkForward();
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collision2D collision)
     {
-        Debug.Log(gameObject.name + " Another hero left, resuming.");
-        heroMovement.WalkForward();
+        
     }
 }
