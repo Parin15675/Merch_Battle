@@ -13,10 +13,13 @@ public class Health : MonoBehaviour
     public TextUpdater text;
     public Animator animator;
 
+    AudioManeger audioManeger;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         maxHealth = baseCharacter.health;
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     private void Start()
@@ -52,6 +55,7 @@ public class Health : MonoBehaviour
     {
         Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
+        audioManeger.PlaySFX(audioManeger.Human_dead);
 
         StartCoroutine(DelayedDestruction());
     }

@@ -6,6 +6,12 @@ using UnityEngine.UI;
 public class HealAbility : Ability
 {
     public int HealingAmount = 1;
+    AudioManeger audioManeger;
+
+    private void Awake()
+    {
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
+    }
 
     private void modifyStartPosition(Vector3 parentPos)
     {
@@ -31,6 +37,7 @@ public class HealAbility : Ability
         {
             Debug.Log(gameObject.name + "Heal");
             Health heroHealth = target.gameObject.GetComponent<Health>();
+            audioManeger.PlaySFX(audioManeger.heal);
             StartCoroutine(Healing(heroHealth));
         }
     }

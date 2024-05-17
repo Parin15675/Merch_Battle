@@ -17,10 +17,13 @@ public class HealthEnemy : MonoBehaviour
     [SerializeField] private GameObject damagePopupPrefab;
     [SerializeField] private Transform spawner; // Reference to the spawner GameObject
 
+    AudioManeger audioManeger;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         maxHealth = baseCharacter.health;
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     void Start()
@@ -61,6 +64,7 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log("die count");
         Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
+        audioManeger.PlaySFX(audioManeger.Undead_dead);
 
         StartCoroutine(DelayedDestruction());
     }

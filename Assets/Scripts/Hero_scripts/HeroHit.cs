@@ -11,11 +11,14 @@ public class HeroHit : MonoBehaviour
     public int point = 1;
     public Animator animator;
 
+    AudioManeger audioManeger;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         heroMovement = GetComponent<HeroMovement>();
         attackDamage = baseCharacter.attack;
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     private void OnTriggerEnter2D(Collider2D target)
@@ -57,6 +60,7 @@ public class HeroHit : MonoBehaviour
         while (enemyHealth.currentHealth > 0)
         {
             enemyHealth.TakeDamage(attackDamage);
+            audioManeger.PlaySFX(audioManeger.Human_atk);
             yield return new WaitForSeconds(1f);
         }
 

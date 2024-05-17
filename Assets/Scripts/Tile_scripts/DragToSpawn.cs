@@ -17,6 +17,14 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public Tile tile;
     public List<GameObject> HeroPrefab;
 
+    AudioManeger audioManeger;
+
+
+    private void Awake()
+    {
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
+    }
+
     private bool CheckMoreThanOneTile()
     {
         if (tileBoard.tiles.Count > 1) return true;
@@ -73,6 +81,7 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
                     heroInstance.GetComponent<RectTransform>().anchoredPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                     heroInstance.GetComponent<RectTransform>().transform.localPosition = new Vector3(heroInstance.GetComponent<RectTransform>().localPosition.x, heroInstance.GetComponent<RectTransform>().localPosition.y, 1f);
                     heroInstance.transform.SetParent(transform.parent);
+                    audioManeger.PlaySFX(audioManeger.spawn);
 
                     resourceBar.ChangeResourceByAmount((int)Mathf.Log(tile.number, 2) * -1);
                 }

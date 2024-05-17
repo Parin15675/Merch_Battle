@@ -14,11 +14,14 @@ public class EnemyHit : MonoBehaviour
     // Dictionary to track the number of enemies attacking each target
     private static Dictionary<Health, int> targetAttackers = new Dictionary<Health, int>();
 
+    AudioManeger audioManeger;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         enemyMovement = GetComponent<EnemyMovement>();
         attackDamage = baseCharacter.attack;
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     private void OnTriggerEnter2D(Collider2D target)
@@ -61,6 +64,7 @@ public class EnemyHit : MonoBehaviour
         while (targetHealth.currentHealth > 0)
         {
             targetHealth.TakeDamage(attackDamage);
+            audioManeger.PlaySFX(audioManeger.Undead_atk);
             yield return new WaitForSeconds(1f);
         }
 

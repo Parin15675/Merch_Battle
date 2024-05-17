@@ -15,11 +15,14 @@ public class RangeHeroAttack : MonoBehaviour
     public Animator animator;
     public float attackInterval = 0.01f; // Time between attacks
 
+    AudioManeger audioManeger;
+
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
         heroMovement = GetComponent<HeroMovement>();
         attackDamage = baseCharacter.attack;
+        audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
     private void OnTriggerEnter2D(Collider2D target)
@@ -46,6 +49,7 @@ public class RangeHeroAttack : MonoBehaviour
             arrow.GetComponent<RectTransform>().transform.localPosition = new Vector3(arrow.GetComponent<RectTransform>().localPosition.x, arrow.GetComponent<RectTransform>().localPosition.y, 1f);
             arrow.transform.SetParent(transform);
             heroMovement.StopMovement();
+            audioManeger.PlaySFX(audioManeger.arrow);
 
             // Wait for the attack interval before the next attack
             yield return new WaitForSeconds(attackInterval);
