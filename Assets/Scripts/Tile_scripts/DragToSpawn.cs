@@ -65,7 +65,7 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             resourceBar.renderManaNeed(0);
             placableArea.enabled = false;
             spawnArea = GameObject.Find("HeroSpawnArea").GetComponent<Transform>();
-            float topX = spawnArea.transform.localPosition.x;
+            float topX = spawnArea.transform.localPosition.x - 100;
             float topY = spawnArea.transform.localPosition.y;
             float w = spawnArea.transform.lossyScale.x / 2;
             float h = spawnArea.transform.lossyScale.y / 2;
