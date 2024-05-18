@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameSuccess : MonoBehaviour
+public class Continued_script : MonoBehaviour
 {
 
-
+    public EnemySpawnerForEndless spawner;
+    public GameObject screen;
+    
     public void Start()
     {
         gameObject.SetActive(false);
@@ -20,13 +21,11 @@ public class GameSuccess : MonoBehaviour
 
     public void NextLevel()
     {
-        SceneManager.LoadScene("2048");
+        spawner.check_con = true;
     }
 
     public void ExitButton()
     {
         SceneManager.LoadScene("Town");
     }
-
-
 }

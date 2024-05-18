@@ -23,6 +23,10 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     private int enemiesPerGroup = 1; // Number of enemies to spawn per group
 
+    public bool check_con = false;
+
+    public GameObject Con_screen;
+
     private void Start()
     {
         reader = GetComponent<JSONReaderForEndless>();
@@ -64,6 +68,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
             else
             {
                 waveTimer = 0; // End wave if no enemies remain
+                
             }
         }
         else
@@ -74,8 +79,15 @@ public class EnemySpawnerForEndless : MonoBehaviour
         // Handle wave timer
         if (waveTimer <= 0 && spawnedEnemies.Count == 0)
         {
-            currentWave++;
-            GenerateWave();
+            Con_screen.SetActive(true);
+
+            if (check_con)
+            {
+                Con_screen.SetActive(false);
+                currentWave++;
+                GenerateWave();
+                check_con = false;
+            }
         }
         else
         {
@@ -85,6 +97,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
         // Clean up defeated enemies
         spawnedEnemies.RemoveAll(enemy => enemy == null);
     }
+
 
     private void GenerateWave()
     {
