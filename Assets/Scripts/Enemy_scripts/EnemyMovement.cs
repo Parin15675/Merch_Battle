@@ -5,12 +5,19 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private BaseCharacter baseCharacter;
+    private List<Transform> heroes = new List<Transform>();
+    private Transform targetHero;
     private bool canMove = true;
-    private Transform currentTarget;
-    private List<Transform> targets;
-    private Vector3 directionToMove;
 
     public float speed = 30.0f;
+    public Animator animator;
+    public int point = 1;
+    public float avoidanceForce = 5.0f; // Force to move away to avoid overlap
+    public float avoidanceDamping = 0.9f; // Damping factor to smooth out the avoidance movement
+
+    private CapsuleCollider2D capsuleCollider;
+    private Vector3 avoidanceDirection;
+    private Vector3 directionToMove;
 
     speed_adjust Speed_adjust;
 
@@ -21,65 +28,80 @@ public class EnemyMovement : MonoBehaviour
         Speed_adjust = GameObject.FindGameObjectWithTag("speed").GetComponent<speed_adjust>();
     }
 
+    void Start()
+    {
+        FindAllHeroes();
+    }
+
     void Update()
     {
         if (canMove)
         {
-            FindAllTargets();
-            currentTarget = GetClosestTarget();
-
-            if (currentTarget != null)
+            if (targetHero == null)
             {
-                MoveTowardsTarget();
+                FindAllHeroes();
+                targetHero = GetClosestHero();
+            }
+            else if (targetHero != null)
+            {
+                MoveTowardsHero();
             }
             else
             {
                 WalkForward();
             }
         }
+
+        // Apply avoidance direction if necessary
+        if (avoidanceDirection != Vector3.zero)
+        {
+            transform.position += avoidanceDirection * Time.deltaTime;
+            avoidanceDirection *= avoidanceDamping; // Apply damping to the avoidance direction
+
+            // If the avoidance direction is almost negligible, reset it
+            if (avoidanceDirection.magnitude < 0.01f)
+            {
+                avoidanceDirection = Vector3.zero;
+            }
+        }
     }
 
-    private Transform GetClosestTarget()
+    private void FindAllHeroes()
     {
-        if (targets == null || targets.Count == 0) return null;
+        heroes = GameObject.FindGameObjectsWithTag("Hero").Select(h => h.transform).ToList();
+        if (heroes.Count == 0)
+        {
+            Debug.LogWarning("No heroes found.");
+        }
+    }
 
-        Transform closestTarget = null;
+    private Transform GetClosestHero()
+    {
+        if (heroes == null || heroes.Count == 0) return null;
+
+        Transform closestHero = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        foreach (Transform potentialTarget in targets)
+        foreach (Transform potentialHero in heroes)
         {
-            float distanceSqr = (potentialTarget.position - currentPosition).sqrMagnitude;
+            float distanceSqr = (potentialHero.position - currentPosition).sqrMagnitude;
             if (distanceSqr < closestDistanceSqr)
             {
                 closestDistanceSqr = distanceSqr;
-                closestTarget = potentialTarget;
+                closestHero = potentialHero;
             }
         }
 
-        return closestTarget;
+        return closestHero;
     }
 
-    private void MoveTowardsTarget()
+    private void MoveTowardsHero()
     {
-        Vector3 direction = (currentTarget.position - transform.position).normalized;
+        Vector3 direction = (targetHero.position - transform.position).normalized;
         directionToMove = direction * (Speed_adjust.speedx2 ? speed * 2 : speed) * Time.deltaTime;
         transform.position -= directionToMove;
-        FlipSprite();
-    }
-
-    private void FindAllTargets()
-    {
-        targets = GameObject.FindGameObjectsWithTag("Hero")
-                            .Select(hero => hero.transform)
-                            .ToList();
-    }
-
-    public void WalkForward()
-    {
-        canMove = true;
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
-        transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        FlipSprite(direction.x);
     }
 
     public void StopMovement()
@@ -88,21 +110,51 @@ public class EnemyMovement : MonoBehaviour
         speed = 0;
     }
 
-    public void StartMovement()
+    public void WalkForward()
     {
+        speed = -baseCharacter.speed;
         canMove = true;
-        speed = -baseCharacter.speed; // Reset to default speed or set to a desired value
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        FlipSprite(1); // Always facing right when walking forward
     }
 
-    private void FlipSprite()
+    private void FlipSprite(float directionX)
     {
-        if (speed < 0)
+        if (directionX < 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
-        else if (speed > 0)
+        else if (directionX > 0)
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy") && collision.GetType() == typeof(BoxCollider2D) && GetComponent<RangeEnemyAttack>() == null)
+        {
+            EnemyHit enemyHit = collision.GetComponent<EnemyHit>();
+            if (enemyHit != null && enemyHit.isAttacking)
+            {
+                MoveUpOrDown();
+            }
+        }
+    }
+
+    private void MoveUpOrDown()
+    {
+        Vector3 moveDirection = Vector3.up; // Default to move up
+
+        // Check if moving up is clear
+        RaycastHit2D hitUp = Physics2D.Raycast(transform.position, Vector2.up, 1.0f, LayerMask.GetMask("Enemy"));
+        if (hitUp.collider != null)
+        {
+            // If there's an enemy above, move down instead
+            moveDirection = Vector3.down;
+        }
+
+        transform.Translate(moveDirection * speed * Time.deltaTime);
+        Debug.Log("Moving " + moveDirection);
     }
 }

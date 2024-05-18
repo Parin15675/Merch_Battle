@@ -70,7 +70,7 @@ public class EnemyHit : MonoBehaviour
 
         animator.SetBool("Attacking", false);
         isAttacking = false;
-        enemyMovement.StartMovement();
+        enemyMovement.WalkForward();
 
         // Decrement the number of attackers for this target
         if (targetAttackers.ContainsKey(targetHealth))
