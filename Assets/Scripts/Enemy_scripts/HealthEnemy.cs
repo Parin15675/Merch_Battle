@@ -28,7 +28,6 @@ public class HealthEnemy : MonoBehaviour
 
     void Start()
     {
-        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -59,9 +58,6 @@ public class HealthEnemy : MonoBehaviour
 
     void Die_enemy()
     {
-        text = GameObject.Find("dieCount").gameObject.GetComponent<TextUpdater>();
-        text.dieCount--;
-        Debug.Log("die count");
         Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
         audioManeger.PlaySFX(audioManeger.Undead_dead);
