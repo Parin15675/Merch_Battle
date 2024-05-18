@@ -38,6 +38,9 @@ public class HeroProjectile : MonoBehaviour
                     enemyHealth.TakeDamage(attackDamage);
                     Debug.Log("enemy hit by arrow");
                     Destroy(gameObject);
+                } else
+                {
+                    Destroy(gameObject);
                 }
             }
         }
@@ -84,3 +87,4 @@ public class HeroProjectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
+  

@@ -25,7 +25,7 @@ public class RangeHeroAttack : MonoBehaviour
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
 
-    private void OnTriggerEnter2D(Collider2D target)
+    private void OnTriggerStay2D(Collider2D target)
     {
         if (target.GetType() == typeof(BoxCollider2D))
         {
