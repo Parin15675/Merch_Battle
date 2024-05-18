@@ -8,9 +8,14 @@ public class HeroProjectile : MonoBehaviour
     public int attackDamage = 10;
     public int speed = 100;
     public Animator animator;
+    public float curveHeight = 20.0f; // Adjust the height of the curve
+    public float curveDuration = 1.0f; // Adjust the duration of the curve
 
     private List<Transform> enemies = new List<Transform>();
     private Transform targetEnemy;
+    private Vector3 previousTarget = new Vector3(0f,0f,0f);
+    private Vector3 startPosition;
+    private float elapsedTime = 0f;
 
     private void Update()
     {
@@ -18,8 +23,22 @@ public class HeroProjectile : MonoBehaviour
         {
             FindAllEnemies();
             targetEnemy = GetClosestEnemy();
+
+            if (targetEnemy != null)
+            {
+
+                if (previousTarget != new Vector3(0f, 0f, 0f) && targetEnemy.transform.position != previousTarget)
+                {
+                    Destroy(gameObject);
+                    return;
+                }
+
+                previousTarget = targetEnemy.position;
+                startPosition = transform.position;
+                elapsedTime = 0f;
+            }
         }
-        else if (targetEnemy != null)
+        else
         {
             MoveTowardsEnemy();
         }
@@ -37,11 +56,8 @@ public class HeroProjectile : MonoBehaviour
                 {
                     enemyHealth.TakeDamage(attackDamage);
                     Debug.Log("enemy hit by arrow");
-                    Destroy(gameObject);
-                } else
-                {
-                    Destroy(gameObject);
                 }
+                Destroy(gameObject);
             }
         }
     }
@@ -78,13 +94,32 @@ public class HeroProjectile : MonoBehaviour
 
     private void MoveTowardsEnemy()
     {
-        Vector3 direction = (targetEnemy.position - transform.position).normalized;
-        transform.position += direction * speed * Time.deltaTime;
+        if (targetEnemy == null)
+        {
+            Destroy(gameObject); // Destroy the projectile if the target is null
+            return;
+        }
+
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime > curveDuration)
+        {
+            // Move directly towards the target if the curve duration has elapsed
+            Vector3 direction = (targetEnemy.position - transform.position).normalized;
+            transform.position += direction * speed * Time.deltaTime;
+        }
+        else
+        {
+            float t = elapsedTime / curveDuration;
+            Vector3 midPoint = Vector3.Lerp(startPosition, targetEnemy.position, t);
+            midPoint.y += Mathf.Sin(t * Mathf.PI) * curveHeight;
+            transform.position = Vector3.Lerp(transform.position, midPoint, speed * Time.deltaTime);
+        }
 
         // Calculate the angle in radians
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector3 directionToTarget = (targetEnemy.position - transform.position).normalized;
+        float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
         // Apply rotation to the arrow
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 }
-  
