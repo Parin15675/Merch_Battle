@@ -33,12 +33,159 @@
                     "amount": 3
                 },
                 {
+                    "name": "Undead4",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead5",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 3,
+            "spawnsequences": [
+                {
+                    "name": "Undead3",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead4",
+                    "amount": 3
+                },
+                {
                     "name": "Undead5",
                     "amount": 2
                 },
                 {
                     "name": "Undead6",
                     "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 4,
+            "spawnsequences": [
+                {
+                    "name": "Undead4",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead5",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead6",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead7",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 5,
+            "spawnsequences": [
+                {
+                    "name": "Undead5",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead6",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead7",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead8",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 6,
+            "spawnsequences": [
+                {
+                    "name": "Undead6",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead7",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead8",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead9",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 7,
+            "spawnsequences": [
+                {
+                    "name": "Undead7",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead8",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead9",
+                    "amount": 2
+                },
+                {
+                    "name": "Undead10",
+                    "amount": 1
+                }
+            ]
+        },
+        {
+            "level": 8,
+            "spawnsequences": [
+                {
+                    "name": "Undead7",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead8",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead9",
+                    "amount": 3
+                },
+                {
+                    "name": "Undead10",
+                    "amount": 2
+                }
+            ]
+        },
+        {
+            "level": 9,
+            "spawnsequences": [
+                {
+                    "name": "Undead7",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead8",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead9",
+                    "amount": 4
+                },
+                {
+                    "name": "Undead10",
+                    "amount": 3
                 }
             ]
         }
