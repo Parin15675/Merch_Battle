@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
-
         level = currentGamelevel;
     }
 
