@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameSuccess : MonoBehaviour
+public class WaveEndScreen: MonoBehaviour
 {
-
 
     public void Start()
     {
@@ -18,9 +17,9 @@ public class GameSuccess : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void NextLevel()
+    public void LoadWave()
     {
-        SceneManager.LoadScene("2048");
+        SceneManager.LoadScene("EndlessMode");
     }
 
     public void ExitButton()
