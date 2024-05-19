@@ -7,7 +7,7 @@ public class Continued_script : MonoBehaviour
 {
 
     public EnemySpawnerForEndless spawner;
-    public GameObject screen;
+    public int currentWave  = 0;
     
     public void Start()
     {
@@ -21,7 +21,11 @@ public class Continued_script : MonoBehaviour
 
     public void NextLevel()
     {
-        spawner.check_con = true;
+        
+        currentWave++;
+        SceneManager.LoadScene("EndlessMode");
+
+
     }
 
     public void ExitButton()

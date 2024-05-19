@@ -9,8 +9,11 @@ public class EnemySpawnerForEndless : MonoBehaviour
     [SerializeField] private Transform targetObject;
     [SerializeField] private TextMeshProUGUI waveNumber;
 
+    public Continued_script continued_Script;
+
     private float spawnTimer;
-    private int currentWave = 1;
+    private int wave;
+    //public int currentWave = 1;
 
     private JSONReaderForEndless reader;
 
@@ -26,9 +29,15 @@ public class EnemySpawnerForEndless : MonoBehaviour
     public bool check_con = false;
 
     public GameObject Con_screen;
+    public GameManager GameManager;
+    //[SerializeField] private GameObject enemyWallPrefab;
+    //[SerializeField] private Transform wallSpawnLocation;
+    
+
 
     private void Start()
     {
+        continued_Script.currentWave++;
         reader = GetComponent<JSONReaderForEndless>();
         GenerateWave();
     }
@@ -77,17 +86,17 @@ public class EnemySpawnerForEndless : MonoBehaviour
         }
 
         // Handle wave timer
-        if (waveTimer <= 0 && spawnedEnemies.Count == 0)
+        if (waveTimer <= 0 && spawnedEnemies.Count == 0 && GameManager.enemyCastle == null)
         {
             Con_screen.SetActive(true);
-
-            if (check_con)
-            {
-                Con_screen.SetActive(false);
-                currentWave++;
-                GenerateWave();
-                check_con = false;
-            }
+            //if (check_con)
+            //{
+            //    Con_screen.SetActive(false);
+            //    currentWave++;
+            //    GenerateWave();
+            //    check_con = false;
+            //    //SpawnEnemyWall(wallSpawnLocation);
+            //}
         }
         else
         {
@@ -101,8 +110,8 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     private void GenerateWave()
     {
-        waveNumber.text = "Wave " + currentWave;
-        int waveValue = currentWave * 10;
+        waveNumber.text = "Wave " + continued_Script.currentWave;
+        int waveValue = continued_Script.currentWave * 10;
         GenerateEnemies(waveValue);
 
         spawnInterval = waveDuration / (float)enemiesToSpawn.Count; // Fixed time between each enemy group
@@ -110,8 +119,12 @@ public class EnemySpawnerForEndless : MonoBehaviour
         spawnTimer = 0; // Start spawning immediately
 
         // Increase the number of enemies per group every few waves
-        enemiesPerGroup = Mathf.Min(5, currentWave / 5 + 3);
+        enemiesPerGroup = Mathf.Min(5, continued_Script.currentWave / 5 + 3);
+
+        // Spawn an enemy wall at the specified location at the start of each wave
+        
     }
+
 
     private void GenerateEnemies(int waveValue)
     {
@@ -136,4 +149,16 @@ public class EnemySpawnerForEndless : MonoBehaviour
         enemiesToSpawn.Clear();
         enemiesToSpawn = generatedEnemies;
     }
+
+    //private void SpawnEnemyWall(Transform spawnLocation)
+    //{
+    //    // Instantiate the enemy wall at the specified location
+    //    GameObject enemyWall = Instantiate(enemyWallPrefab, spawnLocation.position, Quaternion.identity);
+
+    //    // Set the enemy wall as a child of the specified transform
+    //    enemyWall.transform.SetParent(spawnLocation, false);
+
+    //    Debug.Log("Enemy wall spawned at: " + enemyWall.transform.position);
+    //}
+
 }
