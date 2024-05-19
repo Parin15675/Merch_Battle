@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        
-
         level = currentGamelevel;
     }
 
@@ -82,8 +80,12 @@ public class GameManager : MonoBehaviour
     {
         if (!hasGameEnded)
         {
-            CoinsManeger.coins += 5;
-            Debug.Log(CoinsManeger.coins);
+            if (!LevelMenu.check_level)
+            {
+                CoinsManeger.coins += 5;
+                Debug.Log(CoinsManeger.coins);
+            }
+
         }
 
         GameSuccess.Setup();
@@ -95,6 +97,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("currentGamelevel += 1");
                 currentGamelevel += 1;
+                //level = currentGamelevel;
                 hasGameEnded = true;
             }
             else
