@@ -5,10 +5,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private static int currentGamelevel = 0;
+    private static int currentGamelevel = 1;
     public static int GetCurrentGamelevel() { return currentGamelevel; }
 
-    public int level = 0;
+    public int level = 1;
     public TextMeshProUGUI textMesh;
     public GameObject playerCastle;
     public GameObject enemyCastle;
@@ -20,14 +20,30 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        currentGamelevel += 1;
+        
+
         level = currentGamelevel;
     }
 
     private void Start()
     {
-        if (textMesh != null)
-            textMesh.text = textMesh.text + level;
+        hasGameEnded = false;
+
+        if (LevelMenu.check_level)
+        {
+            Debug.Log("GM " + EnemySpawner.gameLevel);
+            Debug.Log("Gm " + LevelMenu.level_menu);
+            if (textMesh != null)
+                textMesh.text = textMesh.text + LevelMenu.level_menu;
+            hasGameEnded = true;
+        }
+        else
+        {
+            if (textMesh != null)
+                textMesh.text = textMesh.text + level;
+
+        }
+
         NewGame();
     }
 
@@ -54,7 +70,7 @@ public class GameManager : MonoBehaviour
         board.CreateTile();
         board.CreateTile();
         board.enabled = true;
-        hasGameEnded = false;
+        
     }
 
     public void GameOver()
@@ -74,6 +90,21 @@ public class GameManager : MonoBehaviour
 
         GameSuccess.Setup();
         board.enabled = false;
-        hasGameEnded = true;
+        
+        if (!LevelMenu.check_level)
+        {
+            if (!hasGameEnded)
+            {
+                Debug.Log("currentGamelevel += 1");
+                currentGamelevel += 1;
+                hasGameEnded = true;
+            }
+            else
+            {
+                Debug.Log("hasGameEnded false");
+            }
+            
+        }
+        
     }
 }

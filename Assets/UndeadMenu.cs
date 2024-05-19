@@ -9,11 +9,14 @@ public class UndeadMenu : MonoBehaviour
     public GameObject[] Undeads;
     public GameObject[] Undeads_black;
 
+    public int currentGameLevel;
+
     
     private void Update()
     {
+        currentGameLevel = GameManager.GetCurrentGamelevel();
 
-        if (Level_variables.level == 1)
+        if (currentGameLevel == 1)
         {
             for (int i = 0; i <= 3; i++)
             {
@@ -23,7 +26,7 @@ public class UndeadMenu : MonoBehaviour
 
             }
         }
-        else if (Level_variables.level == 2)
+        else if (currentGameLevel == 2)
         {
             for (int i = 0; i <= 4; i++)
             {
@@ -31,7 +34,7 @@ public class UndeadMenu : MonoBehaviour
                 Undeads[i].SetActive(true);
             }
         }
-        else if (Level_variables.level == 3)
+        else if (currentGameLevel == 3)
         {
             for (int i = 0; i <= 5; i++)
             {

@@ -13,13 +13,24 @@ public class EnemySpawner : MonoBehaviour
     private int padding;
     private bool isSpawnFinish = true;
 
-    public int gameLevel;
+    public static int gameLevel;
     public float waitSpawn;
 
     private void Start()
     {
-        gameLevel = gameManager.level;
-        Debug.Log(gameLevel);
+        if (LevelMenu.check_level)
+        {
+            gameLevel = LevelMenu.level_menu;
+            Debug.Log("check_level" + gameLevel);
+            Debug.Log("check_level" + LevelMenu.level_menu);
+            LevelMenu.check_level = false;
+        }
+        else
+        {
+            gameLevel = gameManager.level;
+            Debug.Log("defualt "+gameLevel);
+        }
+
     }
 
     private void Update()

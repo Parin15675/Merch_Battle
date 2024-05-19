@@ -6555,7 +6555,7 @@ MonoBehaviour:
   text: {fileID: 1285884403}
   animator: {fileID: 1850458809}
   damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
-  spawner: {fileID: 0}
+  spawner: {fileID: 1850458803}
 --- !u!114 &1850458812
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -932,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 6445929695312967474}
-  screen: {fileID: 117732237}
+  currentWave: 1
 --- !u!114 &117732240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9949,9 +9949,11 @@ MonoBehaviour:
   spawnArea: {fileID: 6445929695312967473}
   targetObject: {fileID: 6445929695312967473}
   waveNumber: {fileID: 1447892091}
+  continued_Script: {fileID: 117732239}
   waveDuration: 30
   check_con: 0
   Con_screen: {fileID: 117732237}
+  GameManager: {fileID: 689640927}
 --- !u!114 &6445929695312967475
 MonoBehaviour:
   m_ObjectHideFlags: 0
