@@ -33,19 +33,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (playerCastle == null)
+        {
+            Debug.Log("Game over");
+            GameOver();
+        }
 
-            if (playerCastle == null)
-            {
-                Debug.Log("Game over");
-                GameOver();
-            }
-
-            if (enemyCastle == null)
-            {
-                Debug.Log("Success");
-                Success();
-            }
-
+        if (enemyCastle == null)
+        {
+            Debug.Log("Success");
+            Success();
+        }
     }
 
     public void NewGame()

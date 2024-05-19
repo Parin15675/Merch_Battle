@@ -12,8 +12,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
     public Continued_script continued_Script;
 
     private float spawnTimer;
-    private int wave;
-    //public int currentWave = 1;
+    private int currentWave;
 
     private JSONReaderForEndless reader;
 
@@ -30,14 +29,10 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     public GameObject Con_screen;
     public GameManager GameManager;
-    //[SerializeField] private GameObject enemyWallPrefab;
-    //[SerializeField] private Transform wallSpawnLocation;
     
-
-
     private void Start()
     {
-        continued_Script.currentWave++;
+        currentWave = continued_Script.currentWave;
         reader = GetComponent<JSONReaderForEndless>();
         GenerateWave();
     }
@@ -91,14 +86,13 @@ public class EnemySpawnerForEndless : MonoBehaviour
         if (waveTimer <= 0 && spawnedEnemies.Count == 0 && GameManager.enemyCastle == null)
         {
             Con_screen.SetActive(true);
-            //if (check_con)
-            //{
-            //    Con_screen.SetActive(false);
-            //    currentWave++;
-            //    GenerateWave();
-            //    check_con = false;
-            //    //SpawnEnemyWall(wallSpawnLocation);
-            //}
+            if (check_con)
+            {
+                Con_screen.SetActive(false);
+                currentWave++;
+                GenerateWave();
+                check_con = false;
+            }
         }
         else
         {
@@ -152,18 +146,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
         enemiesToSpawn = generatedEnemies;
     }
 
-<<<<<<< Updated upstream
-    //private void SpawnEnemyWall(Transform spawnLocation)
-    //{
-    //    // Instantiate the enemy wall at the specified location
-    //    GameObject enemyWall = Instantiate(enemyWallPrefab, spawnLocation.position, Quaternion.identity);
 
-    //    // Set the enemy wall as a child of the specified transform
-    //    enemyWall.transform.SetParent(spawnLocation, false);
-
-    //    Debug.Log("Enemy wall spawned at: " + enemyWall.transform.position);
-    //}
-=======
     private void statsMultiplier(GameObject enemy)
     {
         BaseCharacter baseStat = enemy.GetComponent<BaseCharacter>();
@@ -172,6 +155,5 @@ public class EnemySpawnerForEndless : MonoBehaviour
         baseStat.health *= (int) multiplier;
         baseStat.speed *= (int) multiplier;
     }
->>>>>>> Stashed changes
 
 }
