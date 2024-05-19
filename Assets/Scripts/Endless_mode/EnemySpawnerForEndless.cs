@@ -12,8 +12,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
     public Continued_script continued_Script;
 
     private float spawnTimer;
-    private int wave;
-    public int currentWave = 1;
+    private int currentWave;
 
     private JSONReaderForEndless reader;
 
@@ -30,13 +29,10 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     public GameObject Con_screen;
     public GameManager GameManager;
-
     
-
-
     private void Start()
     {
-        continued_Script.currentWave++;
+        currentWave = continued_Script.currentWave;
         reader = GetComponent<JSONReaderForEndless>();
         GenerateWave();
     }
@@ -96,7 +92,6 @@ public class EnemySpawnerForEndless : MonoBehaviour
                 currentWave++;
                 GenerateWave();
                 check_con = false;
-                //SpawnEnemyWall(wallSpawnLocation);
             }
         }
         else

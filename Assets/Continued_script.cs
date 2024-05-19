@@ -6,9 +6,17 @@ using UnityEngine.SceneManagement;
 public class Continued_script : MonoBehaviour
 {
 
-    public EnemySpawnerForEndless spawner;
-    public int currentWave  = 0;
-    
+    private static int staticWave = 0;
+    public static int GetCurrentWave() { return staticWave; }
+    public int currentWave = 1;
+
+    private void Awake()
+    {
+        staticWave++;
+        Debug.Log(staticWave);
+        currentWave = staticWave;
+    }
+
     public void Start()
     {
         gameObject.SetActive(false);
@@ -21,11 +29,7 @@ public class Continued_script : MonoBehaviour
 
     public void NextLevel()
     {
-        
-        currentWave++;
         SceneManager.LoadScene("EndlessMode");
-
-
     }
 
     public void ExitButton()
