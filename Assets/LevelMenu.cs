@@ -6,7 +6,7 @@ public class LevelMenu : MonoBehaviour
 {
     public GameObject[] Level; 
     GameManager gameManager;
-    public static bool check_level = false;
+    public static bool isPlayedLevel = false;
     public static int level_menu;
 
     public void Update()
@@ -54,22 +54,14 @@ public class LevelMenu : MonoBehaviour
         }
     }
 
-    private void SetLevel(int index)
+    public void SetLevel(int index)
     {
-
-        //foreach (GameObject level in Level)
-        //{
-        //    level.SetActive(false);
-        //}
-
-
         if (index >= 0 && index < Level.Length)
         {
             for (int i = 0; i <= index; i++)
             {
                 Level[i].SetActive(true);
             }
-            
         }
         else
         {
@@ -77,66 +69,15 @@ public class LevelMenu : MonoBehaviour
         }
     }
 
-    public void Level1()
+    public void selectLevel(int level)
     {
-        Debug.Log("Game level1");
-        check_level = true;
-        level_menu = 1;
-    }
-
-    public void Level2()
-    {
-        Debug.Log("Game level2");
-        check_level = true;
-        level_menu = 2;
-    }
-
-    public void Level3()
-    {
-        Debug.Log("Game level3");
-        check_level = true;
-        level_menu = 3;
-    }
-    public void Level4()
-    {
-        Debug.Log("Game level4");
-        check_level = true;
-        level_menu = 4;
-    }
-
-    public void Level5()
-    {
-        Debug.Log("Game level5");
-        check_level = true;
-        level_menu = 5;
-    }
-
-    public void Level6()
-    {
-        Debug.Log("Game level6");
-        check_level = true;
-        level_menu = 6;
-    }
-
-    public void Level7()
-    {
-        Debug.Log("Game level7");
-        check_level = true;
-        level_menu = 7;
-    }
-
-    public void Level8()
-    {
-        Debug.Log("Game level8");
-        check_level = true;
-        level_menu = 8;
-    }
-
-    public void Level9()
-    {
-        Debug.Log("Game level9");
-        check_level = true;
-        level_menu = 9;
+        Debug.Log("Game level" + level);
+        if(GameManager.GetCurrentGamelevel() > level)
+        {
+            isPlayedLevel = true;
+        }
+        level_menu = level;
+        GameManager.setCurrentGamelevel(level);
     }
 
 }

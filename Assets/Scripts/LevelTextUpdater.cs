@@ -12,7 +12,7 @@ public class LevelTextUpdater : MonoBehaviour
 
     void Awake()
     {
-        number = gameManager.level;
+        number = GameManager.GetCurrentGamelevel();
     }
 
     void Update()

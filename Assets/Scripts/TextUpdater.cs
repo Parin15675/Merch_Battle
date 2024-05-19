@@ -28,11 +28,11 @@ public class TextUpdater : MonoBehaviour
 
     public void checkLevel()
     {
-        if (manager.level == 1)
+        if (GameManager.GetCurrentGamelevel() == 1)
         {
             dieCount = 10;
         }
-        else if (manager.level == 2)
+        else if (GameManager.GetCurrentGamelevel() == 2)
         {
             dieCount = 10;
         }

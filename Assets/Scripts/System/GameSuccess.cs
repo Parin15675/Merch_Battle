@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class GameSuccess : MonoBehaviour
 {
 
-
     public void Start()
     {
         gameObject.SetActive(false);
