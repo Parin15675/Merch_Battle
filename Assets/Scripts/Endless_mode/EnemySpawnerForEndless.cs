@@ -61,6 +61,8 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
                     // Spawn an enemy
                     GameObject enemy = Instantiate(enemiesToSpawn[0], spawnArea, false);
+                    statsMultiplier(enemy);
+
                     enemiesToSpawn.RemoveAt(0); // Remove it from the list
                     spawnedEnemies.Add(enemy);
 
@@ -150,6 +152,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
         enemiesToSpawn = generatedEnemies;
     }
 
+<<<<<<< Updated upstream
     //private void SpawnEnemyWall(Transform spawnLocation)
     //{
     //    // Instantiate the enemy wall at the specified location
@@ -160,5 +163,15 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     //    Debug.Log("Enemy wall spawned at: " + enemyWall.transform.position);
     //}
+=======
+    private void statsMultiplier(GameObject enemy)
+    {
+        BaseCharacter baseStat = enemy.GetComponent<BaseCharacter>();
+        float multiplier = 1 + (currentWave / 5) * 0.1f;
+        baseStat.attack *= (int) multiplier;
+        baseStat.health *= (int) multiplier;
+        baseStat.speed *= (int) multiplier;
+    }
+>>>>>>> Stashed changes
 
 }

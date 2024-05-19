@@ -7,4 +7,5 @@ public class BaseCharacter : MonoBehaviour
     public int attack = 10;
     public int health = 100;
     public int speed = 30;
+
 }
