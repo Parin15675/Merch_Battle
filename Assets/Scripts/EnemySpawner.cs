@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+
     [SerializeField] private RectTransform spawnArea; 
     [SerializeField] private Transform targetObject;
     
@@ -18,16 +18,16 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        if (LevelMenu.check_level)
+        if (LevelMenu.isPlayedLevel)
         {
             gameLevel = LevelMenu.level_menu;
             Debug.Log("check_level" + gameLevel);
             Debug.Log("check_level" + LevelMenu.level_menu);
-            LevelMenu.check_level = false;
+            LevelMenu.isPlayedLevel = false;
         }
         else
         {
-            gameLevel = gameManager.level;
+            gameLevel = GameManager.GetCurrentGamelevel();
             Debug.Log("defualt "+gameLevel);
         }
 

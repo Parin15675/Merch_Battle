@@ -6,9 +6,10 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     private static int currentGamelevel = 1;
-    public static int GetCurrentGamelevel() { return currentGamelevel; }
+    private static int levelPlayed = 0;
+    public static int GetCurrentGamelevel() { return currentGamelevel;}
+    public static void setCurrentGamelevel(int level) { currentGamelevel = level; }
 
-    public int level = 1;
     public TextMeshProUGUI textMesh;
     public GameObject playerCastle;
     public GameObject enemyCastle;
@@ -16,36 +17,24 @@ public class GameManager : MonoBehaviour
     public TileBoard board;
     public GameSuccess GameSuccess;
 
+    public bool isAdd = false;
     public bool hasGameEnded = false;
 
     private void Awake()
     {
-        level = currentGamelevel;
+
     }
 
     private void Start()
     {
-        hasGameEnded = false;
 
-        if (LevelMenu.check_level)
-        {
-            Debug.Log("GM " + EnemySpawner.gameLevel);
-            Debug.Log("Gm " + LevelMenu.level_menu);
-            if (textMesh != null)
-                textMesh.text = textMesh.text + LevelMenu.level_menu;
-            hasGameEnded = true;
-        }
-        else
-        {
-            if (textMesh != null)
-                textMesh.text = textMesh.text + level;
-
-        }
+        if (textMesh != null)
+            textMesh.text = "Level" + currentGamelevel;
 
         NewGame();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (playerCastle == null)
         {
@@ -78,29 +67,23 @@ public class GameManager : MonoBehaviour
 
     public void Success()
     {
-        if (!hasGameEnded)
+        
+        if (levelPlayed < currentGamelevel)
         {
+            levelPlayed = currentGamelevel;
             CoinsManeger.coins += 5;
             Debug.Log(CoinsManeger.coins);
         }
 
         GameSuccess.Setup();
         board.enabled = false;
-        
-        if (!LevelMenu.check_level)
+
+        if (!isAdd)
         {
-            if (!hasGameEnded)
-            {
-                Debug.Log("currentGamelevel += 1");
-                currentGamelevel += 1;
-                hasGameEnded = true;
-            }
-            else
-            {
-                Debug.Log("hasGameEnded false");
-            }
-            
+            Debug.Log("currentGamelevel += 1");
+            currentGamelevel += 1;
+            isAdd = true;
         }
-        
+
     }
 }
