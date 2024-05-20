@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public static int GetCurrentGamelevel() { return currentGamelevel;}
     public static void setCurrentGamelevel(int level) { currentGamelevel = level; }
 
+    private bool isAdd = false;
+
     public TextMeshProUGUI textMesh;
     public GameObject playerCastle;
     public GameObject enemyCastle;
@@ -17,19 +19,11 @@ public class GameManager : MonoBehaviour
     public TileBoard board;
     public GameSuccess GameSuccess;
 
-    public bool isAdd = false;
-    public bool hasGameEnded = false;
-
-    private void Awake()
-    {
-
-    }
-
     private void Start()
     {
 
         if (textMesh != null)
-            textMesh.text = "Level" + currentGamelevel;
+            textMesh.text = "Level " + currentGamelevel;
 
         NewGame();
     }
@@ -62,7 +56,6 @@ public class GameManager : MonoBehaviour
     {
         GameOverScreen.Setup();
         board.enabled = false;
-        hasGameEnded = true;
     }
 
     public void Success()

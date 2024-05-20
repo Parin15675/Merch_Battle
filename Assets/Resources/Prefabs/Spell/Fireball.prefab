@@ -186,4 +186,4 @@ MonoBehaviour:
   name: Fireball
   cooldownTime: 10
   activeTime: 2
-  damage: 10
+  damage: 50
