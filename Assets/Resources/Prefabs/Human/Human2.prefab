@@ -648,5 +648,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 40
-  health: 100
+  health: 120
   speed: 45
