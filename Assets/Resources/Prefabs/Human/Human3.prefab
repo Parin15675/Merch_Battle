@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 35
-  health: 180
+  health: 200
   speed: 40
 --- !u!1 &2991271561882234805
 GameObject:

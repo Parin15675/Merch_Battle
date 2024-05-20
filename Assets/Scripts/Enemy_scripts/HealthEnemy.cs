@@ -74,7 +74,7 @@ public class HealthEnemy : MonoBehaviour
     private void ShowDamagePopup(int damage)
     {
         // Instantiate the damage popup prefab as a child of the spawner
-        GameObject popup = Instantiate(damagePopupPrefab, spawner.position, Quaternion.identity);
+        GameObject popup = Instantiate(damagePopupPrefab, transform);
 
         // Set the local position relative to the spawner
         popup.transform.localPosition = new Vector3(0, 1, 0);

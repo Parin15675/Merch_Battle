@@ -254,7 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 70
-  health: 450
+  health: 470
   speed: 70
 --- !u!70 &6190321697703977295
 CapsuleCollider2D:
