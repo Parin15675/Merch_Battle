@@ -39,12 +39,6 @@ public class EndlessGameManager : MonoBehaviour
             GameOver();
         }
 
-        if (enemyCastle == null)
-        {
-            Debug.Log("Success");
-            Success();
-        }
-
     }
 
     public void NewGame()

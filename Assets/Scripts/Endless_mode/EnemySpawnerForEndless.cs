@@ -20,9 +20,10 @@ public class EnemySpawnerForEndless : MonoBehaviour
     private List<GameObject> spawnedEnemies = new List<GameObject>();
 
     private int enemiesPerGroup = 1; // Number of enemies to spawn per group
+    private int enemiesDefeated = 0;
 
     public EndlessGameManager EndlessGameManager;
-    
+
     private void Start()
     {
         currentWave = EndlessGameManager.GetCurrentWave();
@@ -72,8 +73,14 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
         // Clean up defeated enemies
         spawnedEnemies.RemoveAll(enemy => enemy == null);
-    }
 
+        // Check if all enemies in the current wave are defeated
+        if (enemiesToSpawn.Count == 0 && spawnedEnemies.Count == 0)
+        {
+            currentWave++;
+            GenerateWave();
+        }
+    }
 
     private void GenerateWave()
     {
@@ -86,10 +93,12 @@ public class EnemySpawnerForEndless : MonoBehaviour
         // Increase the number of enemies per group every few waves
         enemiesPerGroup = Mathf.Min(5, currentWave / 5 + 3);
 
-        // Spawn an enemy wall at the specified location at the start of each wave
-        
-    }
+        // Reset enemies defeated count for the new wave
+        enemiesDefeated = 0;
 
+        // Spawn an enemy wall at the specified location at the start of each wave
+
+    }
 
     private void GenerateEnemies(int waveValue)
     {
@@ -115,14 +124,12 @@ public class EnemySpawnerForEndless : MonoBehaviour
         enemiesToSpawn = generatedEnemies;
     }
 
-
     private void statsMultiplier(GameObject enemy)
     {
         BaseCharacter baseStat = enemy.GetComponent<BaseCharacter>();
         float multiplier = 1 + (currentWave / 5) * 0.1f;
-        baseStat.attack *= (int) multiplier;
-        baseStat.health *= (int) multiplier;
-        baseStat.speed *= (int) multiplier;
+        baseStat.attack *= (int)multiplier;
+        baseStat.health *= (int)multiplier;
+        baseStat.speed *= (int)multiplier;
     }
-
 }
