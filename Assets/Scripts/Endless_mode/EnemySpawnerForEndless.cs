@@ -22,6 +22,7 @@ public class EnemySpawnerForEndless : MonoBehaviour
     private int enemiesPerGroup = 1; // Number of enemies to spawn per group
     private int enemiesDefeated = 0;
 
+    public TextMeshProUGUI textMesh;
     public EndlessGameManager EndlessGameManager;
 
     private void Start()
@@ -84,6 +85,8 @@ public class EnemySpawnerForEndless : MonoBehaviour
 
     private void GenerateWave()
     {
+        if (textMesh != null)
+            textMesh.text = "Wave " + currentWave;
         int waveValue = currentWave * 10;
         GenerateEnemies(waveValue);
 

@@ -35,7 +35,7 @@ public class FrostAbility : Ability
 
     public void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.gameObject.CompareTag("Enemy"))
+        if (target.gameObject.CompareTag("Enemy") && target.GetType() == typeof(BoxCollider2D))
         {
             EnemyMovement enemyMovement = target.gameObject.GetComponent<EnemyMovement>();
             if (enemyMovement != null && !affectedEnemies.Contains(enemyMovement))

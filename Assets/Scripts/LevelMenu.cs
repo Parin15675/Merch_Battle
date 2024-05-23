@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelMenu : MonoBehaviour
 {
@@ -11,9 +12,9 @@ public class LevelMenu : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(GameManager.GetCurrentGamelevel());
+        Debug.Log(GameManager.GetCurrentLevelPlayed());
 
-        switch (GameManager.GetCurrentGamelevel()) 
+        switch (GameManager.GetCurrentLevelPlayed()) 
         {
             case 1:
                 SetLevel(0);
@@ -49,7 +50,7 @@ public class LevelMenu : MonoBehaviour
                 SetLevel(10);
                 break;
             default:
-                Debug.LogError("Invalid game level: " + Level_variables.level);
+                SetLevel(0);
                 break;
         }
     }
@@ -78,6 +79,7 @@ public class LevelMenu : MonoBehaviour
         }
         level_menu = level;
         GameManager.setCurrentGamelevel(level);
+        SceneManager.LoadScene("2048");
     }
 
 }

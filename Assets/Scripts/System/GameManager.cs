@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private static int currentGamelevel = 1;
     private static int levelPlayed = 0;
     public static int GetCurrentGamelevel() { return currentGamelevel;}
+    public static int GetCurrentLevelPlayed() { return levelPlayed; }
     public static void setCurrentGamelevel(int level) { currentGamelevel = level; }
 
     private bool isAdd = false;

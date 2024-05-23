@@ -68,10 +68,9 @@ public class UnitSelection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         float height = currentMousePos.y - mouseStartPos.y;
 
         selectionBox.GetComponent<RectTransform>().sizeDelta = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-
         selectionBox.GetComponent<SpriteRenderer>().size = new Vector2(Mathf.Abs(width), Mathf.Abs(height));
-
         selectionBox.GetComponent<RectTransform>().anchoredPosition = mouseStartPos + new Vector2(width / 2, height / 2);
+
         if (moveScreen.isOpen)
         {
             selectionBox.GetComponent<RectTransform>().anchoredPosition = mouseStartPos + new Vector2(width / 2 - 731.34f, height / 2);
@@ -87,6 +86,12 @@ public class UnitSelection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
         Vector2 min = selectionBox.GetComponent<RectTransform>().anchoredPosition - (selectionBox.GetComponent<RectTransform>().sizeDelta / 2);
         Vector2 max = selectionBox.GetComponent<RectTransform>().anchoredPosition + (selectionBox.GetComponent<RectTransform>().sizeDelta / 2);
+
+        if (moveScreen.isOpen)
+        {
+            min.x += 731.34f;
+            max.x += 731.34f;
+        }
 
         GameObject[] selectableObjects = GameObject.FindGameObjectsWithTag("Hero");
 

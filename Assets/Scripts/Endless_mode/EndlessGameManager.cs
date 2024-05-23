@@ -24,9 +24,7 @@ public class EndlessGameManager : MonoBehaviour
     }
 
     private void Start()
-    {
-        if (textMesh != null)
-            textMesh.text = "Wave " + currentWave;  
+    { 
 
         NewGame();
     }
