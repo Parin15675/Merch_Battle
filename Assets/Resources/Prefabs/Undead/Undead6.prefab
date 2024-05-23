@@ -341,6 +341,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: -30
+  animator: {fileID: 0}
+  point: 1
+  avoidanceForce: 5
+  avoidanceDamping: 0.9
 --- !u!114 &2638613906956037028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +362,7 @@ MonoBehaviour:
   healthBar: {fileID: 3698010746889665763}
   text: {fileID: 0}
   animator: {fileID: 1936432020304870958}
-  damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
-  spawner: {fileID: 6810360040885900168}
+  damagePopupPrefab: {fileID: 2879809905544905640, guid: 5c38567f00fa81c4c9c64a40132128ab, type: 3}
 --- !u!50 &2880316581779324586
 Rigidbody2D:
   serializedVersion: 4

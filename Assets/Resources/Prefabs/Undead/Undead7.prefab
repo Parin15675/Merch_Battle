@@ -305,8 +305,7 @@ MonoBehaviour:
   healthBar: {fileID: 6660718609407046852}
   text: {fileID: 0}
   animator: {fileID: 2685226196276847437}
-  damagePopupPrefab: {fileID: 1467469106239930136, guid: f48c6a6065e5b234b8930299ac578fd3, type: 3}
-  spawner: {fileID: 609987148637711663}
+  damagePopupPrefab: {fileID: 2879809905544905640, guid: 5c38567f00fa81c4c9c64a40132128ab, type: 3}
 --- !u!50 &8752063031208037259
 Rigidbody2D:
   serializedVersion: 4

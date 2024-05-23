@@ -19,7 +19,6 @@ public class DragToSpawn : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     AudioManeger audioManeger;
 
-
     private void Awake()
     {
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();

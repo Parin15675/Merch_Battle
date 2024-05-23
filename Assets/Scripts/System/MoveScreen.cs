@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveScreen : MonoBehaviour
 {
-    bool isOpen;
+    public bool isOpen;
 
     public void toggleScreen()
     {

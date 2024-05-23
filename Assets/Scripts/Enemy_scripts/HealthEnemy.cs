@@ -15,7 +15,6 @@ public class HealthEnemy : MonoBehaviour
     public Animator animator;
 
     [SerializeField] private GameObject damagePopupPrefab;
-    [SerializeField] private Transform spawner; // Reference to the spawner GameObject
 
     AudioManeger audioManeger;
 
@@ -38,7 +37,7 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(gameObject.name + " takes " + damage + " damage.");
         healthBar.SetHealth(currentHealth);
 
-        ShowDamagePopup(damage); // Show damage popup on every hit
+        InstantiateDamagePopup(damage);
 
         if (currentHealth <= 0)
         {
@@ -71,30 +70,14 @@ public class HealthEnemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void ShowDamagePopup(int damage)
+    private void InstantiateDamagePopup(int damage)
     {
-        // Instantiate the damage popup prefab as a child of the spawner
-        GameObject popup = Instantiate(damagePopupPrefab, transform);
+        GameObject damagePopup = Instantiate(damagePopupPrefab, transform.position, Quaternion.identity);
+        damagePopup.transform.SetParent(transform); // Set the parent without changing the world position
+        TextMeshProUGUI textMeshPro = damagePopup.GetComponentInChildren<Canvas>().GetComponentInChildren<TextMeshProUGUI>();
+        textMeshPro.text = damage.ToString();
 
-        // Set the local position relative to the spawner
-        popup.transform.localPosition = new Vector3(0, 1, 0);
-
-        TextMeshProUGUI tmp = popup.GetComponentInChildren<TextMeshProUGUI>();
-        if (tmp != null)
-        {
-            tmp.text = damage.ToString();
-        }
-
-        Animator popupAnimator = popup.GetComponent<Animator>();
-        if (popupAnimator != null)
-        {
-            // Optionally, you can control the animation state or duration here
-            Destroy(popup, popupAnimator.GetCurrentAnimatorStateInfo(0).length);
-        }
-        else
-        {
-            // Destroy the popup after a default duration if no animator is present
-            Destroy(popup, 1.0f);
-        }
+        Destroy(damagePopup, 0.5f);
     }
+
 }
