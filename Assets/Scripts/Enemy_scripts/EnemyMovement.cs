@@ -15,7 +15,6 @@ public class EnemyMovement : MonoBehaviour
     public float avoidanceForce = 5.0f; // Force to move away to avoid overlap
     public float avoidanceDamping = 0.9f; // Damping factor to smooth out the avoidance movement
 
-    private CapsuleCollider2D capsuleCollider;
     private Vector3 avoidanceDirection;
     private Vector3 directionToMove;
 

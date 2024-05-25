@@ -6,6 +6,8 @@ using UnityEngine;
 public class HealthEnemy : MonoBehaviour
 {
     private BaseCharacter baseCharacter;
+    private EnemyMovement enemyMovement;
+    private EnemyHit enemyHit;
 
     public int maxHealth;
     public int currentHealth;
@@ -21,6 +23,8 @@ public class HealthEnemy : MonoBehaviour
     private void Awake()
     {
         baseCharacter = GetComponent<BaseCharacter>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        enemyHit = GetComponent<EnemyHit>();
         maxHealth = baseCharacter.health;
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
@@ -57,6 +61,9 @@ public class HealthEnemy : MonoBehaviour
 
     void Die_enemy()
     {
+        enemyMovement.enabled = false; 
+        enemyHit.enabled = false;
+        CoinsManager.Instance.AddCoins(10);
         Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
         audioManeger.PlaySFX(audioManeger.Undead_dead);

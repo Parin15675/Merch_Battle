@@ -65,8 +65,8 @@ public class GameManager : MonoBehaviour
         if (levelPlayed < currentGamelevel)
         {
             levelPlayed = currentGamelevel;
-            CoinsManeger.coins += 5;
-            Debug.Log(CoinsManeger.coins);
+            CoinsManager.coins += 5;
+            Debug.Log(CoinsManager.coins);
         }
 
         GameSuccess.Setup();
