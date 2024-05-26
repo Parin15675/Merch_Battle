@@ -1,0 +1,30 @@
+{
+    "heroes": [
+        {
+            "heroName": "Archer",
+            "attack": 10,
+            "health": 100,
+            "speed": 30
+        },
+        {
+            "heroName": "Warrior",
+            "attack": 15,
+            "health": 150,
+            "speed": 25
+        }
+    ],
+    "enemies": [
+        {
+            "enemyName": "Goblin",
+            "attack": 8,
+            "health": 80,
+            "speed": 25
+        },
+        {
+            "enemyName": "Orc",
+            "attack": 12,
+            "health": 120,
+            "speed": 20
+        }
+    ]
+}

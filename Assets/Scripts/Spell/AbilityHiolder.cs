@@ -11,7 +11,6 @@ public class AbilityHiolder : MonoBehaviour
     public GameObject spellCastCirclePrefab;
     public GameObject cooldownCounterPrefab;
 
-    private ResourceBarTracker resourceBar;
     private GameObject spellCastCircle;
     private GameObject cooldownCounter;
     private GameObject abilityObj;
@@ -31,7 +30,7 @@ public class AbilityHiolder : MonoBehaviour
 
     private void Start()
     {
-        resourceBar = GameObject.Find("Track Bar").GetComponent<ResourceBarTracker>();
+
     }
 
     void Update()
@@ -45,19 +44,17 @@ public class AbilityHiolder : MonoBehaviour
                 spellCastCircle.transform.position = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
                 spellCastCircle.transform.SetParent(GameObject.Find("Panel").transform);
                 spellCastCircle.transform.SetAsLastSibling();
-                resourceBar.renderManaNeed(10);
 
                 if (Input.GetKeyDown(key))
                 {
                     abilityObj = Instantiate(abilityPrefab);
+
                     ability = abilityObj.GetComponent<Ability>();
                     ability.Activate(spellCastCircle);
+
                     activeTime = ability.activeTime;
                     state = AbilityState.active;
                     spellCastCircle.GetComponent<Image>().enabled = false;
-
-                    resourceBar.ChangeResourceByAmount(-10);
-                    resourceBar.renderManaNeed(0);
 
                     Debug.Log("Abilty active");
                 }
