@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 52f6b2598dc1f5d44ad44db516375c42
+guid: 1ef7fcac051b0b742aa4c818d6f961d5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - 8-bit Arcade Out
+  - DungeonFont
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

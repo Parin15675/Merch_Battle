@@ -6,34 +6,13 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 3.0f;
-    [SerializeField] private GameObject shop_popup;
-    [SerializeField] private GameObject DemonBook_popup;
-    [SerializeField] private GameObject Level_menu;
-    [SerializeField] private float fadeDuration = 0.5f;
-
     private Vector2 movement;
     private Animator animator;
-    private CanvasGroup shopCanvasGroup;
-    private CanvasGroup DemonCanvasGroup;
-    private CanvasGroup LevelCanvasGroup;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
-        shopCanvasGroup = shop_popup.GetComponent<CanvasGroup>();
-        DemonCanvasGroup = DemonBook_popup.GetComponent<CanvasGroup>();
-        LevelCanvasGroup = Level_menu.GetComponent<CanvasGroup>();
-
-        if (shopCanvasGroup == null)
-        {
-            Debug.LogError("CanvasGroup component missing from shop_popup");
-        }
-        else
-        {
-            shopCanvasGroup.alpha = 0;
-            shop_popup.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -58,66 +37,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D target)
     {
-        if (target.CompareTag("Shop"))
+        if (target.CompareTag("Enter Endless"))
         {
-            StartCoroutine(FadeIn(shopCanvasGroup, fadeDuration, shop_popup));
-            Debug.Log("Shop");
-        }else if (target.CompareTag("Demon book"))
-        {
-            StartCoroutine(FadeIn(DemonCanvasGroup, fadeDuration, DemonBook_popup));
-        }
-        else if (target.CompareTag("Enter Endless"))
-        {
-            //Level_menu.SetActive(true);
             SceneManager.LoadScene("EndlessMode");
             this.transform.position = new Vector3(1834.882f, 600.2556f, this.transform.position.z);
             Debug.Log("Enter Level");
         }
-        else if(target.CompareTag("Enter Level"))
-        {
-            
-            StartCoroutine(FadeIn(LevelCanvasGroup, fadeDuration, Level_menu));
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D target)
-    {
-        if (target.CompareTag("Shop"))
-        {
-            StartCoroutine(FadeOut(shopCanvasGroup, fadeDuration, shop_popup));
-            Debug.Log("Exit Shop");
-        }else if(target.CompareTag("Demon book"))
-        {
-            StartCoroutine(FadeOut(DemonCanvasGroup, fadeDuration, DemonBook_popup));
-        }else if(target.CompareTag("Enter Level"))
-        {
-            StartCoroutine(FadeOut(LevelCanvasGroup, fadeDuration, Level_menu));
-        }
-    }
-
-    private IEnumerator FadeIn(CanvasGroup canvasGroup, float duration, GameObject popUp)
-    {
-        popUp.SetActive(true); // Ensure it's active
-        float elapsedTime = 0f;
-        while (elapsedTime < duration)
-        {
-            canvasGroup.alpha = Mathf.Lerp(0, 1, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        canvasGroup.alpha = 1;
-    }
-
-    private IEnumerator FadeOut(CanvasGroup canvasGroup, float duration, GameObject popUp)
-    {
-        float elapsedTime = 0f;
-        while (elapsedTime < duration)
-        {
-            canvasGroup.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        canvasGroup.alpha = 0;
-        popUp.SetActive(false); // Ensure it's inactive
     }
 }

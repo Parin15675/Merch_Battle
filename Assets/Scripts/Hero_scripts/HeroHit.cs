@@ -5,13 +5,12 @@ public class HeroHit : MonoBehaviour
 {
     private BaseCharacter baseCharacter;
     private HeroMovement heroMovement;
+    private AudioManeger audioManeger;
 
     public int attackDamage;
     public bool isAttacking = false;
     public int point = 1;
     public Animator animator;
-
-    AudioManeger audioManeger;
 
     private void Awake()
     {

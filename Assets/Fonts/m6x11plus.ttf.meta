@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b93e11d1d5eadd0469c8cffcaaf1c2c4
+guid: 436d5f3aec5fc5846a6e26bdf4701623
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Fipps
+  - m6x11plus
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
