@@ -11,7 +11,6 @@ public class EnemyHit : MonoBehaviour
     public bool isAttacking = false;
     public Animator animator;
 
-    // Dictionary to track the number of enemies attacking each target
     private static Dictionary<Health, int> targetAttackers = new Dictionary<Health, int>();
 
     AudioManeger audioManeger;
