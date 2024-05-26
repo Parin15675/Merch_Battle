@@ -8,6 +8,7 @@ public class HealthEnemy : MonoBehaviour
     private BaseCharacter baseCharacter;
     private EnemyMovement enemyMovement;
     private EnemyHit enemyHit;
+    private RangeEnemyAttack rangeEnemyAttack;
 
     public int maxHealth;
     public int currentHealth;
@@ -25,6 +26,7 @@ public class HealthEnemy : MonoBehaviour
         baseCharacter = GetComponent<BaseCharacter>();
         enemyMovement = GetComponent<EnemyMovement>();
         enemyHit = GetComponent<EnemyHit>();
+        rangeEnemyAttack = GetComponent<RangeEnemyAttack>();
         maxHealth = baseCharacter.health;
         audioManeger = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManeger>();
     }
@@ -41,12 +43,16 @@ public class HealthEnemy : MonoBehaviour
         Debug.Log(gameObject.name + " takes " + damage + " damage.");
         healthBar.SetHealth(currentHealth);
 
-        InstantiateDamagePopup(damage);
+        
 
         if (currentHealth <= 0)
         {
             Die_enemy();
+        } else
+        {
+            InstantiateDamagePopup(damage);
         }
+
     }
 
     public void Heal(int amount)
@@ -62,8 +68,15 @@ public class HealthEnemy : MonoBehaviour
     void Die_enemy()
     {
         enemyMovement.enabled = false; 
-        enemyHit.enabled = false;
-        CoinsManager.Instance.AddCoins(10);
+        if (enemyHit != null)
+        {
+            enemyHit.enabled = false;
+        } else
+        {
+            rangeEnemyAttack.enabled = false;
+        }
+        
+        CoinsManager.Instance.AddCoins(3);
         Debug.Log(gameObject.name + " died.");
         animator.SetBool("Die", true);
         audioManeger.PlaySFX(audioManeger.Undead_dead);
