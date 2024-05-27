@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: 16
   m_EditorClassIdentifier: 
   backgroundColor: {r: 1, g: 1, b: 1, a: 1}
-  textColor: {r: 1, g: 0.6513465, b: 0, a: 1}
+  textColor: {r: 0, g: 0, b: 0, a: 1}
   tileImage: {fileID: 21300000, guid: 3eee832b146e28a43ad378e688750382, type: 3}

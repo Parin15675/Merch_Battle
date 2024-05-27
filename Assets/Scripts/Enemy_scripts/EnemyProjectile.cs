@@ -11,26 +11,28 @@ public class EnemyProjectile : MonoBehaviour
     public float curveHeight = 20.0f; // Adjust the height of the curve
     public float curveDuration = 1.0f; // Adjust the duration of the curve
 
-    private List<Transform> enemies = new List<Transform>();
-    private Transform targetHero;
+    private List<Transform> heroes = new List<Transform>();
+    private Vector3 targetPosition;
     private Vector3 startPosition;
     private float elapsedTime = 0f;
 
     private void Update()
     {
-        if (targetHero == null)
+        if (targetPosition == Vector3.zero)
         {
-            FindAllEnemies();
-            targetHero = GetClosestEnemy();
+            FindAllHeroes();
+            Transform targetHero = GetClosestHero();
+
             if (targetHero != null)
             {
+                targetPosition = targetHero.position;
                 startPosition = transform.position;
                 elapsedTime = 0f;
             }
         }
         else
         {
-            MoveTowardsEnemy();
+            MoveTowardsTarget();
         }
     }
 
@@ -46,64 +48,70 @@ public class EnemyProjectile : MonoBehaviour
                 {
                     heroHealth.TakeDamage(attackDamage);
                     Debug.Log("enemy hit by arrow");
-                    Destroy(gameObject);
                 }
+                Destroy(gameObject);
             }
         }
     }
 
-    private void FindAllEnemies()
+    private void FindAllHeroes()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Hero").Select(h => h.transform).ToList();
-        if (enemies.Count == 0)
+        heroes = GameObject.FindGameObjectsWithTag("Hero").Select(h => h.transform).ToList();
+        if (heroes.Count == 0)
         {
-            Debug.LogWarning("No heros found.");
+            Debug.LogWarning("No heroes found.");
         }
     }
 
-    private Transform GetClosestEnemy()
+    private Transform GetClosestHero()
     {
-        if (enemies == null || enemies.Count == 0) return null;
+        if (heroes == null || heroes.Count == 0) return null;
 
-        Transform closestEnemy = null;
+        Transform closestHero = null;
         float closestDistanceSqr = Mathf.Infinity;
         Vector3 currentPosition = transform.position;
 
-        foreach (Transform potentialEnemy in enemies)
+        foreach (Transform potentialHero in heroes)
         {
-            float distanceSqr = (potentialEnemy.position - currentPosition).sqrMagnitude;
+            float distanceSqr = (potentialHero.position - currentPosition).sqrMagnitude;
             if (distanceSqr < closestDistanceSqr)
             {
                 closestDistanceSqr = distanceSqr;
-                closestEnemy = potentialEnemy;
+                closestHero = potentialHero;
             }
         }
 
-        return closestEnemy;
+        return closestHero;
     }
 
-    private void MoveTowardsEnemy()
+    private void MoveTowardsTarget()
     {
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime > curveDuration)
         {
             // Move directly towards the target if the curve duration has elapsed
-            Vector3 direction = (targetHero.position - transform.position).normalized;
+            Vector3 direction = (targetPosition - transform.position).normalized;
             transform.position += direction * speed * Time.deltaTime;
         }
         else
         {
             float t = elapsedTime / curveDuration;
-            Vector3 midPoint = Vector3.Lerp(startPosition, targetHero.position, t);
+            Vector3 midPoint = Vector3.Lerp(startPosition, targetPosition, t);
             midPoint.y += Mathf.Sin(t * Mathf.PI) * curveHeight;
             transform.position = Vector3.Lerp(transform.position, midPoint, speed * Time.deltaTime);
         }
 
         // Calculate the angle in radians
-        Vector3 directionToTarget = (targetHero.position - transform.position).normalized;
+        Vector3 directionToTarget = (targetPosition - transform.position).normalized;
         float angle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
         // Apply rotation to the arrow
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+
+        // Destroy the projectile if it reaches the target position
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -154,4 +154,9 @@ public class HeroMovement : MonoBehaviour
         transform.Translate(moveDirection * speed * Time.deltaTime);
         Debug.Log("Moving " + moveDirection);
     }
+
+    public void AssignTarget(Transform enemy)
+    {
+        targetEnemy = enemy;
+    }
 }

@@ -32,14 +32,22 @@ public class UnitSelection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePos);
 
-        if (hitCollider != null && hitCollider.CompareTag("Hero") && hitCollider.GetType() == typeof(BoxCollider2D))
+        if (hitCollider != null)
         {
             GameObject selectedObject = hitCollider.gameObject;
-            if (!selectedObjects.Contains(selectedObject))
+            if (hitCollider.CompareTag("Hero") && hitCollider.GetType() == typeof(BoxCollider2D) && selectedObject.name != "player wall")
             {
-                selectedObjects.Add(selectedObject);
-                CreateSelectionIndicator(selectedObject);
-                Debug.Log("Single object selected: " + selectedObject.name);
+                if (!selectedObjects.Contains(selectedObject))
+                {
+                    selectedObjects.Add(selectedObject);
+                    CreateSelectionIndicator(selectedObject);
+                    Debug.Log("Single object selected: " + selectedObject.name);
+                }
+            }
+            else if (hitCollider.CompareTag("Enemy") && hitCollider.GetType() == typeof(BoxCollider2D))
+            {
+                AssignTargetEnemyToHeroes(selectedObject.transform);
+                Debug.Log("Enemy selected as target: " + selectedObject.name);
             }
         }
     }
@@ -98,7 +106,7 @@ public class UnitSelection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         foreach (GameObject obj in selectableObjects)
         {
             Vector2 objPos = Camera.main.WorldToScreenPoint(obj.transform.position);
-            if (objPos.x >= min.x && objPos.x <= max.x && objPos.y >= min.y && objPos.y <= max.y)
+            if (objPos.x >= min.x && objPos.x <= max.x && objPos.y >= min.y && objPos.y <= max.y && obj.name != "player wall")
             {
                 selectedObjects.Add(obj);
                 CreateSelectionIndicator(obj);
@@ -124,4 +132,15 @@ public class UnitSelection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         selectionIndicators[selectedObject] = indicator;
     }
 
+    void AssignTargetEnemyToHeroes(Transform enemy)
+    {
+        foreach (GameObject hero in selectedObjects)
+        {
+            HeroMovement heroMovement = hero.GetComponent<HeroMovement>();
+            if (heroMovement != null)
+            {
+                heroMovement.AssignTarget(enemy);
+            }
+        }
+    }
 }
